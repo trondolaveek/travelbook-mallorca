@@ -136,6 +136,55 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 .hero-photo{transform:scale(1.025);animation:heroKenBurns 18s ease-out forwards;will-change:transform}.hero-topline,.hero-title-wrap h1,.hero-lead,.hero-metric,.hero-actions a,.hero-panel{opacity:0;animation:fadeUpSoft .8s cubic-bezier(.2,.75,.22,1) forwards;will-change:opacity,transform}.hero-topline{animation-delay:.12s}.hero-title-wrap h1{animation-delay:.28s}.hero-lead{animation-delay:.46s}.hero-metric:nth-child(1){animation-delay:.64s}.hero-metric:nth-child(2){animation-delay:.74s}.hero-metric:nth-child(3){animation-delay:.84s}.hero-metric:nth-child(4){animation-delay:.94s}.hero-actions a:nth-child(1){animation-delay:1.08s}.hero-actions a:nth-child(2){animation-delay:1.18s}.hero-actions a:nth-child(3){animation-delay:1.28s}.hero-panel{animation-name:slideInRightSoft;animation-delay:.74s}.card,.dash-card,.day,.feature,.hero-action,.btn{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}.card:hover,.dash-card:hover,.feature:hover{transform:translateY(-3px);box-shadow:0 24px 54px rgba(62,73,55,.16)}.hero-action:hover,.btn:hover{transform:translateY(-2px)}.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.75,.22,1)}.js .reveal.in-view{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hero-photo{transform:none}.hero-topline,.hero-title-wrap h1,.hero-lead,.hero-metric,.hero-actions a,.hero-panel,.js .reveal{opacity:1!important;transform:none!important}}
 
+
+/* TravelBook WOW features: live weather, smart day, where-now and map */
+.live-weather-card{grid-column:span 12}
+.live-weather-grid{grid-template-columns:repeat(3,1fr)}
+.live-weather-tile{position:relative;min-height:112px;padding:14px;overflow:hidden}
+.live-weather-tile:after{content:"";position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:999px;background:rgba(246,215,139,.22)}
+.live-weather-tile strong{font-size:16px}
+.live-weather-tile .weather-temp{display:block;font-size:25px;letter-spacing:-.04em;color:var(--navy);font-weight:950;margin:8px 0 4px}
+.live-weather-tile small{display:block;color:var(--muted);font-weight:850;font-size:12px}
+.smart-note{margin:12px 0 0;color:var(--muted);font-weight:750;font-size:12px}
+.smart-card .btns{margin-top:12px}
+.today-now{padding:13px 14px;border-radius:21px;background:linear-gradient(180deg,#F8F5F0,#FFFDF9);border:1px solid rgba(111,143,122,.16)}
+.today-date{font-size:12px;font-weight:950;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.today-now strong{display:block;color:var(--navy);font-size:20px;letter-spacing:-.025em}
+.today-now p{margin:4px 0 0;color:var(--muted);line-height:1.4;font-size:13px}
+.today-list{display:grid;gap:7px;margin-top:10px}
+.today-list div{display:grid;grid-template-columns:58px 1fr;gap:9px;align-items:start;padding:8px 0;border-bottom:1px solid #EFE8DA}
+.today-list div:last-child{border-bottom:0}
+.today-list time{font-weight:950;color:var(--blue)}
+.today-list span{color:var(--navy);font-weight:850}
+.smart-map-card{background:rgba(255,253,249,.97);border:1px solid rgba(127,154,99,.20);border-radius:34px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1fr;gap:0}
+.smart-map-canvas{position:relative;min-height:360px;background:linear-gradient(135deg,#2F3D32,#7F9A63);overflow:hidden}
+.smart-map-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(.8);opacity:.58}
+.smart-map-canvas:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(47,61,50,.26),rgba(234,244,247,.10))}
+.smart-map-path{position:absolute;left:25%;right:20%;top:50%;height:4px;background:rgba(255,253,247,.72);border-radius:999px;transform:rotate(14deg);z-index:2;box-shadow:0 8px 20px rgba(0,0,0,.20)}
+.map-pin{position:absolute;z-index:3;transform:translate(-50%,-50%);border:0;background:transparent;color:white;font:inherit;cursor:pointer;padding:0}
+.map-pin:before{content:"";display:block;width:34px;height:34px;margin:0 auto 8px;border-radius:999px;background:#F6D78B;box-shadow:0 0 0 8px rgba(255,253,247,.20),0 14px 30px rgba(0,0,0,.28)}
+.map-pin:after{content:"";position:absolute;left:50%;top:17px;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:999px;background:#2F3D32}
+.map-pin span{display:block;background:rgba(255,253,249,.92);color:var(--navy);font-size:12px;font-weight:950;border-radius:999px;padding:7px 10px;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.map-pin.active:before{background:#fff;box-shadow:0 0 0 9px rgba(246,215,139,.40),0 18px 38px rgba(0,0,0,.32)}
+.map-pin.bonus:before{background:#EADCC5}
+.smart-map-info{padding:24px}
+.smart-map-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:950;margin-bottom:6px}
+.smart-map-info h3{margin:0 0 7px;font-size:30px;color:var(--navy);letter-spacing:-.04em}
+.smart-map-info p{margin:0;color:var(--muted);line-height:1.5}
+.map-filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+@media(min-width:820px){
+  .live-weather-card{grid-column:span 5}
+  .smart-map-card{grid-template-columns:1.35fr .85fr}
+  .smart-map-canvas{min-height:390px}
+}
+@media(max-width:640px){
+  .live-weather-grid{grid-template-columns:1fr}
+  .today-list div{grid-template-columns:52px 1fr}
+  .smart-map-canvas{min-height:300px}
+  .map-pin span{font-size:11px}
+  .smart-map-info h3{font-size:26px}
+}
+
 </style>
 </head>
 <body>
@@ -206,13 +255,15 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 
 <section class="status premium-status" id="status">
   <div class="dashboard premium-dashboard">
-    <article class="dash-card premium weather">
+    <article class="dash-card premium weather live-weather-card">
       <div class="dash-inner">
-        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-cloud-sun"></use></svg>Vær</h3>
-        <div class="weather-grid">
-          <a class="weather-tile" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-178758/Norge/Tr%C3%B8ndelag/R%C3%B8ros/R%C3%B8ros" target="_blank"><strong>Røros</strong><span>Åpne Yr</span></a>
-          <a class="weather-tile" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-211102/Norge/Tr%C3%B8ndelag/Trondheim/Trondheim" target="_blank"><strong>Trondheim</strong><span>Åpne Yr</span></a>
+        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-cloud-sun"></use></svg>Levende vær</h3>
+        <div class="weather-grid live-weather-grid">
+          <a class="weather-tile live-weather-tile" id="weatherRoros" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-178758/Norge/Tr%C3%B8ndelag/R%C3%B8ros/R%C3%B8ros" target="_blank" rel="noopener noreferrer"><strong>Røros</strong><span class="weather-temp">Henter…</span><small>Trykk for Yr</small></a>
+          <a class="weather-tile live-weather-tile" id="weatherTrondheim" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-211102/Norge/Tr%C3%B8ndelag/Trondheim/Trondheim" target="_blank" rel="noopener noreferrer"><strong>Trondheim</strong><span class="weather-temp">Henter…</span><small>Trykk for Yr</small></a>
+          <a class="weather-tile live-weather-tile" id="weatherLom" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-169685/Norge/Innlandet/Lom/Lom" target="_blank" rel="noopener noreferrer"><strong>Lom</strong><span class="weather-temp">Henter…</span><small>Bonusetappe</small></a>
         </div>
+        <p class="smart-note" id="weatherUpdated">Oppdateres automatisk når mobilen har nett.</p>
       </div>
     </article>
 
@@ -228,32 +279,55 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
       </div>
     </article>
 
-    <article class="dash-card premium hero-current">
+    <article class="dash-card premium hero-current smart-card">
       <div class="dash-inner current-feature">
-        <img src="images/olavsgruva.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Olavsgruva">
+        <img id="whereNowImage" src="images/hero-roros.jpg" alt="Hvor er vi nå">
         <div>
-          <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>Dagens høydepunkt</h3>
-          <strong>Olavsgruva og Smelthytta</strong>
-          <p>Historien bak Røros – først under fjellet, deretter på museum.</p>
+          <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hvor er vi nå?</h3>
+          <strong id="whereNowTitle">Før reisen</strong>
+          <p id="whereNowText">TravelBook gjør seg klar. Første stopp er Røros.</p>
+          <div class="btns smart-btns"><a class="btn light" id="whereNowMap" href="https://maps.google.com/?q=L%C3%B8renskog%20to%20R%C3%B8ros" target="_blank" rel="noopener noreferrer">Åpne kart</a></div>
         </div>
       </div>
     </article>
 
-    <article class="dash-card premium hero-links">
+    <article class="dash-card premium hero-links smart-card">
       <div class="dash-inner">
-        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Rask tilgang</h3>
-        <p class="small-muted">De viktigste knappene når dere står midt i reisen.</p>
-        <div class="btns">
-          <a class="btn" href="#program">Program</a>
-          <a class="btn light" href="#hotell">Hotell</a>
-          <a class="btn light" href="#restauranter">Restauranter</a>
-          <a class="btn light" href="#steder">Opplevelser</a>
+        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>Dagens program</h3>
+        <div class="today-now">
+          <div class="today-date" id="todayDateLabel">Før reisen</div>
+          <strong id="todayNextTitle">Avreise til Røros</strong>
+          <p id="todayNextText">Neste store punkt er avreise fra Lørenskog.</p>
         </div>
+        <div class="today-list" id="todayList"></div>
+        <div class="btns"><a class="btn" href="#program">Se hele programmet</a><a class="btn light" href="#kart">Kart</a></div>
       </div>
     </article>
   </div>
 </section>
-<div class="section-divider" aria-hidden="true"></div><section id="program">
+<div class="section-divider" aria-hidden="true"></div>
+<section id="kart" class="smart-map-section">
+  <div class="section-title"><h2>Kart</h2><p>Hotell, restauranter og opplevelser samlet</p></div>
+  <div class="smart-map-card">
+    <div class="smart-map-canvas" aria-label="Interaktivt kart over reisen">
+      <img src="images/hero-roros.jpg" alt="" class="smart-map-bg">
+      <button class="map-pin active" data-place="Røros" style="left:24%;top:42%"><span>Røros</span></button>
+      <button class="map-pin" data-place="Trondheim" style="left:61%;top:28%"><span>Trondheim</span></button>
+      <button class="map-pin bonus" data-place="Lom" style="left:77%;top:68%"><span>Lom</span></button>
+      <div class="smart-map-path" aria-hidden="true"></div>
+    </div>
+    <div class="smart-map-info">
+      <div class="smart-map-kicker">Trykk på markørene</div>
+      <h3 id="mapInfoTitle">Røros</h3>
+      <p id="mapInfoText">Erzscheidergården, Restaurant 1897, Olavsgruva, Smelthytta, Røros kirke og Kjerkgata.</p>
+      <div class="map-filter-row">
+        <a id="mapInfoLink" class="btn" href="https://maps.google.com/?q=R%C3%B8ros" target="_blank" rel="noopener noreferrer">Åpne i Google Maps</a>
+        <a class="btn light" href="#steder">Se opplevelser</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="program">
   <div class="section-title"><h2>Program</h2><p>Tidslinje med bilder, kart og anbefalinger</p></div>
   <div class="timeline">
     <article class="day-premium">
@@ -425,6 +499,164 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
     setText('travelClockNextTitle', 'Reisen er avsluttet');
     setText('travelClockNextText', 'Neste steg kan være bilder, minner og vinnotater fra turen.');
   }
+})();
+
+
+
+(function(){
+  const schedule = [
+    {date:'2026-07-11', day:'Lørdag 11. juli', place:'Røros', image:'images/hero-roros.jpg', map:'https://maps.google.com/?q=R%C3%B8ros', items:[
+      ['15:00','Ankomst Røros','Innsjekk på Erzscheidergården og rolig start.'],
+      ['16:00','Rusle i Bergstaden','Kjerkgata, små butikker og første Røros-stemning.'],
+      ['19:30','Middag på Restaurant 1897','Booket for 4 personer.']
+    ]},
+    {date:'2026-07-12', day:'Søndag 12. juli', place:'Røros', image:'images/olavsgruva.jpg', map:'https://maps.google.com/?q=Olavsgruva%20R%C3%B8ros', items:[
+      ['10:00','Olavsgruva','Guidet gruveopplevelse.'],
+      ['13:00','Lunsj i sentrum','Hold det lett og lokalt.'],
+      ['15:00','Smelthytta','Museum og bergstadshistorie.']
+    ]},
+    {date:'2026-07-13', day:'Mandag 13. juli', place:'Trondheim', image:'images/hero-trondheim.jpg', map:'https://maps.google.com/?q=Britannia%20Hotel%20Trondheim', items:[
+      ['10:00','Kjøring til Trondheim','Ca. 2 timer fra Røros.'],
+      ['14:00','Britannia Hotel','Innsjekk og pustepause.'],
+      ['19:30','Middag på Emilies Eld','Booket for 4 personer.']
+    ]},
+    {date:'2026-07-14', day:'Tirsdag 14. juli', place:'Trondheim', image:'images/bakklandet.jpg', map:'https://maps.google.com/?q=Bakklandet%20Trondheim', items:[
+      ['10:30','Nidarosdomen','Start dagen med klassikeren.'],
+      ['12:00','Gamle Bybro og Bakklandet','Kaffe, foto og rusling.'],
+      ['15:00','K-U-K kunstmuseum','Moderne kunststopp i Kjøpmannsgata.']
+    ]},
+    {date:'2026-07-15', day:'Onsdag 15. juli', place:'Lom', image:'images/brimibue.jpg', map:'https://maps.google.com/?q=Brimibue%20Lom', items:[
+      ['Dag','Kjøring Trondheim → Lom','Bonusetappe for Trond og Elin.'],
+      ['Kveld','Brimibue','Fjellmat og rolig avslutning.']
+    ]}
+  ];
+
+  const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+  const setAttr = (id, attr, value) => { const el = document.getElementById(id); if (el) el.setAttribute(attr, value); };
+  const dateKey = (d) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  };
+  const now = new Date();
+  const todayKey = dateKey(now);
+  const today = schedule.find(d => d.date === todayKey);
+  const nextDay = schedule.find(d => new Date(d.date + 'T23:59:59') >= now) || schedule[schedule.length - 1];
+
+  function minutesUntil(time){
+    if(!/^\d{2}:\d{2}$/.test(time)) return null;
+    const target = new Date(todayKey + 'T' + time + ':00');
+    return Math.round((target - now) / 60000);
+  }
+
+  function renderToday(){
+    const day = today || nextDay;
+    const list = document.getElementById('todayList');
+    if(!day || !list) return;
+
+    setText('todayDateLabel', today ? day.day : 'Neste reisedag');
+    let nextItem = day.items[0];
+    if(today){
+      const future = day.items.find(([time]) => {
+        const mins = minutesUntil(time);
+        return mins === null || mins >= -15;
+      });
+      nextItem = future || day.items[day.items.length - 1];
+    }
+
+    let lead = today ? 'Neste aktivitet' : 'Første punkt';
+    const mins = today ? minutesUntil(nextItem[0]) : null;
+    if(mins !== null && mins > 0){
+      const h = Math.floor(mins / 60), m = mins % 60;
+      lead = h > 0 ? `Neste aktivitet om ${h} t ${m} min` : `Neste aktivitet om ${m} min`;
+    }
+
+    setText('todayNextTitle', `${nextItem[0]} · ${nextItem[1]}`);
+    setText('todayNextText', lead + ' – ' + nextItem[2]);
+
+    list.innerHTML = day.items.slice(0,4).map(([time,title]) => `<div><time>${time}</time><span>${title}</span></div>`).join('');
+  }
+
+  function renderWhereNow(){
+    const card = today || (now < new Date('2026-07-11T00:00:00') ? null : nextDay);
+    if(!card){
+      setText('whereNowTitle','Før reisen');
+      setText('whereNowText','Dere starter fra Lørenskog. Første stopp er Røros.');
+      setAttr('whereNowImage','src','images/hero-roros.jpg');
+      setAttr('whereNowMap','href','https://maps.google.com/?q=L%C3%B8renskog%20to%20R%C3%B8ros');
+      return;
+    }
+    setText('whereNowTitle', card.place);
+    setText('whereNowText', card.place === 'Lom' ? 'Bonusetappe med Brimibue, fjellmat og roligere tempo.' : `Dagens base er ${card.place}. TravelBook viser neste naturlige stopp automatisk.`);
+    setAttr('whereNowImage','src',card.image);
+    setAttr('whereNowMap','href',card.map);
+  }
+
+  renderToday();
+  renderWhereNow();
+
+  const mapData = {
+    'Røros': { text:'Erzscheidergården, Restaurant 1897, Olavsgruva, Smelthytta, Røros kirke og Kjerkgata.', link:'https://maps.google.com/?q=R%C3%B8ros' },
+    'Trondheim': { text:'Britannia Hotel, Emilies Eld, Vinbaren, Nidarosdomen, Bakklandet, Gamle Bybro, Solsiden og K-U-K.', link:'https://maps.google.com/?q=Trondheim' },
+    'Lom': { text:'Bonusetappe med Brimibue, fjellmat og avslutning i roligere tempo.', link:'https://maps.google.com/?q=Brimibue%20Lom' }
+  };
+  document.querySelectorAll('.map-pin').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.map-pin').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const place = btn.dataset.place;
+      const data = mapData[place];
+      setText('mapInfoTitle', place);
+      setText('mapInfoText', data.text);
+      setAttr('mapInfoLink','href',data.link);
+    });
+  });
+
+  const weatherCodes = {
+    0:'Klart',1:'Mest klart',2:'Delvis skyet',3:'Skyet',45:'Tåke',48:'Rimtåke',
+    51:'Yr',53:'Lett regn',55:'Regn',61:'Lett regn',63:'Regn',65:'Kraftig regn',
+    71:'Lett snø',73:'Snø',75:'Kraftig snø',80:'Regnbyger',81:'Regnbyger',82:'Kraftige byger',
+    95:'Torden'
+  };
+  const weatherEmoji = (code) => code === 0 ? '☀️' : ([1,2].includes(code) ? '🌤' : ([3,45,48].includes(code) ? '☁️' : ([71,73,75].includes(code) ? '❄️' : ([95].includes(code) ? '⛈' : '🌦'))));
+  const windText = (speed) => {
+    if(speed == null) return '';
+    if(speed < 10) return 'Svak vind';
+    if(speed < 25) return 'Lett bris';
+    if(speed < 40) return 'Frisk bris';
+    return 'Vindfullt';
+  };
+
+  async function loadWeather(tileId, lat, lon){
+    const tile = document.getElementById(tileId);
+    if(!tile) return;
+    try{
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m,weather_code&timezone=Europe%2FOslo`;
+      const res = await fetch(url, {cache:'no-store'});
+      if(!res.ok) throw new Error('weather');
+      const json = await res.json();
+      const c = json.current || {};
+      const temp = Math.round(c.temperature_2m);
+      const code = Number(c.weather_code || 0);
+      const wind = Math.round(c.wind_speed_10m || 0);
+      const tempEl = tile.querySelector('.weather-temp');
+      const small = tile.querySelector('small');
+      if(tempEl) tempEl.textContent = `${weatherEmoji(code)} ${temp}°`;
+      if(small) small.textContent = `${weatherCodes[code] || 'Vær'} · ${windText(wind)}`;
+      const updated = document.getElementById('weatherUpdated');
+      if(updated) updated.textContent = 'Live værdata. Trykk på et kort for detaljert varsel hos Yr.';
+    }catch(e){
+      const tempEl = tile.querySelector('.weather-temp');
+      const small = tile.querySelector('small');
+      if(tempEl) tempEl.textContent = 'Åpne Yr';
+      if(small) small.textContent = 'Live vær kunne ikke hentes nå';
+    }
+  }
+
+  loadWeather('weatherRoros', 62.5747, 11.3842);
+  loadWeather('weatherTrondheim', 63.4305, 10.3951);
+  loadWeather('weatherLom', 61.8377, 8.5681);
 })();
 
 
