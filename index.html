@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>TravelBook Premium – Røros & Trondheim 2026</title>
 <meta name="theme-color" content="#7F9A63" />
+<script>document.documentElement.classList.add('js');</script>
 <style>
 :root{--navy:#2F3D32;--blue:#7F9A63;--deep:#263329;--ice:#FBF8F2;--sky:#EAF4F7;--ink:#2F3D32;--muted:#766F64;--gold:#B97945;--sand:#EADCC5;--card:#FFFDF7;--sun:#F6D78B;--copper:#B97945;--leaf:#7F9A63;--shadow:0 18px 42px rgba(62,73,55,.12);--r:32px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#FBF8F2 0%,#FFFEFA 44%,#F1E6D3 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);padding-bottom:96px}.app{max-width:1060px;margin:0 auto}.hero{position:relative;min-height:88vh;overflow:hidden;border-radius:0 0 42px 42px;background:linear-gradient(135deg,#2E3A34,#6F8F7A);color:white}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,58,52,.12),rgba(46,58,52,.50) 45%,rgba(46,58,52,.92));}.hero-content{position:relative;z-index:1;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;padding:30px}.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-weight:950;font-size:12px;opacity:.9}.hero h1{font-size:clamp(46px,12vw,98px);line-height:.88;margin:12px 0;text-shadow:0 10px 34px rgba(0,0,0,.38);letter-spacing:-.07em}.hero p{font-size:18px;line-height:1.45;max-width:720px}.pillrow{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:10px 13px;border-radius:999px;font-weight:850;backdrop-filter:blur(10px)}.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}.quick a{color:white;text-decoration:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);padding:14px 9px;border-radius:19px;text-align:center;font-weight:950;backdrop-filter:blur(12px);transition:.18s transform}.quick a:hover{transform:translateY(-2px)}
@@ -114,6 +115,16 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 .route-stats span,.socials a{background:#F3E9D8;color:#2F3D32}
 .bottomnav{background:rgba(47,61,50,.92);box-shadow:0 16px 40px rgba(47,61,50,.28)}
 @media(max-width:640px){section{padding-top:38px;padding-bottom:38px}.photo,.photo.tall,.photo.hero-card{height:285px}.hero,.hero-content{min-height:82vh}}
+
+
+
+/* Premium entrance animations */
+@keyframes heroKenBurns{from{transform:scale(1.025)}to{transform:scale(1.075)}}
+@keyframes fadeUpSoft{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInRightSoft{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes cardLiftIn{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.hero-photo{transform:scale(1.025);animation:heroKenBurns 18s ease-out forwards;will-change:transform}.hero-topline,.hero-title-wrap h1,.hero-lead,.hero-metric,.hero-actions a,.hero-panel{opacity:0;animation:fadeUpSoft .8s cubic-bezier(.2,.75,.22,1) forwards;will-change:opacity,transform}.hero-topline{animation-delay:.12s}.hero-title-wrap h1{animation-delay:.28s}.hero-lead{animation-delay:.46s}.hero-metric:nth-child(1){animation-delay:.64s}.hero-metric:nth-child(2){animation-delay:.74s}.hero-metric:nth-child(3){animation-delay:.84s}.hero-metric:nth-child(4){animation-delay:.94s}.hero-actions a:nth-child(1){animation-delay:1.08s}.hero-actions a:nth-child(2){animation-delay:1.18s}.hero-actions a:nth-child(3){animation-delay:1.28s}.hero-panel{animation-name:slideInRightSoft;animation-delay:.74s}.card,.dash-card,.day,.feature,.hero-action,.btn{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}.card:hover,.dash-card:hover,.feature:hover{transform:translateY(-3px);box-shadow:0 24px 54px rgba(62,73,55,.16)}.hero-action:hover,.btn:hover{transform:translateY(-2px)}.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.75,.22,1)}.js .reveal.in-view{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hero-photo{transform:none}.hero-topline,.hero-title-wrap h1,.hero-lead,.hero-metric,.hero-actions a,.hero-panel,.js .reveal{opacity:1!important;transform:none!important}}
 
 </style>
 </head>
@@ -333,10 +344,10 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 </div></section>
 
 <section id="folk"><div class="section-title"><h2>Reisefølget</h2><p>Fire venner på tur</p></div><div class="grid">
-  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo trond" src="images/trond.jpg" alt="Trond Olav Eek"><div><h3>Trond Olav Eek</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-wine"></use></svg>Vinsjef & reiseapp-ansvarlig</div><p>Teknologinerd, vinentusiast og initiativtaker. Særlig svak for Chardonnay, Pinot Noir og gode restaurantopplevelser.</p></div></div><div class="profile-tags"><span>Favorittvin: Chardonnay</span><span>Gleder seg til: mat & vin</span><span>Rolle: planlegger</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
-  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo elin" src="images/elin.jpg" alt="Elin Sundli Eek"><div><h3>Elin Sundli Eek</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-sparkle"></use></svg>Design & atmosfære</div><p>Driver Indigo Boligstyling og har blikk for interiør, detaljer, stil og hyggelige steder.</p></div></div><div class="profile-tags"><span>Favoritt: design</span><span>Gleder seg til: små butikker</span><span>Rolle: estetikk</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
-  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo halvard" src="images/halvard.jpg" alt="Halvard Askilsrud"><div><h3>Halvard Askilsrud</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-walk"></use></svg>Oppdager & kaffeinspektør</div><p>Tidligere politimann, nå hobbypensjonist. Perfekt mann for byvandring, observasjoner og gode historier.</p></div></div><div class="profile-tags"><span>Favoritt: gode historier</span><span>Gleder seg til: byvandring</span><span>Rolle: observatør</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
-  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo elisabet" src="images/elisabet.jpg" alt="Elisabet Askilsrud"><div><h3>Elisabet Askilsrud</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-briefcase"></use></svg>Stil & kvalitet</div><p>Leder i Pierre Robert, med sans for kvalitet, design og gode opplevelser.</p></div></div><div class="profile-tags"><span>Favoritt: kvalitet</span><span>Gleder seg til: restaurantene</span><span>Rolle: kvalitetssikrer</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo trond" src="images/trond.jpg" alt="Trond Olav Eek"><div><h3>Trond Olav Eek</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-wine"></use></svg>Vinsjef & reiseapp-ansvarlig</div><p>Teknologinerd, vinentusiast og initiativtaker. Særlig svak for Chardonnay, Pinot Noir og gode restaurantopplevelser.</p></div></div><div class="profile-tags"><span>Favorittvin: Chardonnay</span><span>Gleder seg til: mat & vin</span><span>Rolle: planlegger</span></div><div class="socials"><a href="https://www.linkedin.com/in/trondolaveek/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo elin" src="images/elin.jpg" alt="Elin Sundli Eek"><div><h3>Elin Sundli Eek</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-sparkle"></use></svg>Design & atmosfære</div><p>Driver Indigo Boligstyling og har blikk for interiør, detaljer, stil og hyggelige steder.</p></div></div><div class="profile-tags"><span>Favoritt: design</span><span>Gleder seg til: små butikker</span><span>Rolle: estetikk</span></div><div class="socials"><a href="https://www.indigoboligstyling.no/" target="_blank" rel="noopener noreferrer">Indigo Boligstyling</a></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo halvard" src="images/halvard.jpg" alt="Halvard Askilsrud"><div><h3>Halvard Askilsrud</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-walk"></use></svg>Oppdager & kaffeinspektør</div><p>Tidligere politimann, nå hobbypensjonist. Perfekt mann for byvandring, observasjoner og gode historier.</p></div></div><div class="profile-tags"><span>Favoritt: gode historier</span><span>Gleder seg til: byvandring</span><span>Rolle: observatør</span></div><div class="socials"><span class="placeholder">Holder kortet rent uten eksterne lenker</span></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo elisabet" src="images/elisabet.jpg" alt="Elisabet Askilsrud"><div><h3>Elisabet Askilsrud</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-briefcase"></use></svg>Stil & kvalitet</div><p>Leder i Pierre Robert, med sans for kvalitet, design og gode opplevelser.</p></div></div><div class="profile-tags"><span>Favoritt: kvalitet</span><span>Gleder seg til: restaurantene</span><span>Rolle: kvalitetssikrer</span></div><div class="socials"><a href="https://www.linkedin.com/in/elisabet-askilsrud-a441b15a/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></article>
 </div></section>
 
 <section id="praktisk"><div class="section-title"><h2>Praktisk</h2><p>Alt samlet</p></div><div class="grid">
@@ -404,6 +415,28 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
     setText('travelClockNextTitle', 'Reisen er avsluttet');
     setText('travelClockNextText', 'Neste steg kan være bilder, minner og vinnotater fra turen.');
   }
+})();
+
+
+(function(){
+  const items = document.querySelectorAll('section, .card, .day, .feature');
+  items.forEach((el, index) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = Math.min(index * 18, 180) + 'ms';
+  });
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(el => observer.observe(el));
 })();
 </script>
 </body>
