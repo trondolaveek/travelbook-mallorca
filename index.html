@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TravelBook Premium – Røros & Trondheim 2026</title>
+<meta name="theme-color" content="#7F9A63" />
+<style>
+:root{--navy:#2F3D32;--blue:#7F9A63;--deep:#263329;--ice:#FBF8F2;--sky:#EAF4F7;--ink:#2F3D32;--muted:#766F64;--gold:#B97945;--sand:#EADCC5;--card:#FFFDF7;--sun:#F6D78B;--copper:#B97945;--leaf:#7F9A63;--shadow:0 18px 42px rgba(62,73,55,.12);--r:32px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#FBF8F2 0%,#FFFEFA 44%,#F1E6D3 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);padding-bottom:96px}.app{max-width:1060px;margin:0 auto}.hero{position:relative;min-height:88vh;overflow:hidden;border-radius:0 0 42px 42px;background:linear-gradient(135deg,#2E3A34,#6F8F7A);color:white}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,58,52,.12),rgba(46,58,52,.50) 45%,rgba(46,58,52,.92));}.hero-content{position:relative;z-index:1;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;padding:30px}.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-weight:950;font-size:12px;opacity:.9}.hero h1{font-size:clamp(46px,12vw,98px);line-height:.88;margin:12px 0;text-shadow:0 10px 34px rgba(0,0,0,.38);letter-spacing:-.07em}.hero p{font-size:18px;line-height:1.45;max-width:720px}.pillrow{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:10px 13px;border-radius:999px;font-weight:850;backdrop-filter:blur(10px)}.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}.quick a{color:white;text-decoration:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);padding:14px 9px;border-radius:19px;text-align:center;font-weight:950;backdrop-filter:blur(12px);transition:.18s transform}.quick a:hover{transform:translateY(-2px)}
+section{padding:34px 18px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:8px 0 18px}.section-title h2{font-size:34px;margin:0;color:var(--navy);letter-spacing:-.045em}.section-title p{margin:0;color:var(--muted);font-weight:780}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 12;background:rgba(255,255,255,.97);border:1px solid rgba(111,143,122,.20);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}.pad{padding:21px}.card h3{font-size:23px;margin:0 0 8px;color:var(--navy);letter-spacing:-.025em}.card p{line-height:1.56;color:#48564E}.photo{width:100%;height:285px;object-fit:cover;display:block;background:linear-gradient(135deg,#2E3A34,#6F8F7A)}.photo.tall{height:385px}.photo.hero-card{height:430px}.photo-wrap{position:relative;overflow:hidden;background:#EFE8DA}.photo-caption{position:absolute;left:15px;bottom:15px;background:rgba(8,43,82,.78);color:white;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:950;backdrop-filter:blur(10px)}.tag{display:inline-flex;align-items:center;background:var(--sky);color:var(--navy);font-weight:950;border-radius:999px;padding:7px 10px;font-size:13px;margin:4px 4px 4px 0}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:var(--navy);color:white;padding:10px 12px;border-radius:14px;font-weight:950;font-size:14px}.btn.light{background:var(--sky);color:var(--navy)}.btn.gold{background:#F3E3BD;color:#5E4420}
+.status{margin-top:-44px;position:relative;z-index:3;padding-top:0}.dashboard{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.dash-card{grid-column:span 12;background:rgba(255,255,255,.94);border:1px solid rgba(111,143,122,.22);border-radius:28px;box-shadow:var(--shadow);padding:18px;backdrop-filter:blur(14px)}.dash-card h3{margin:0 0 8px;color:var(--navy);font-size:19px}.count-number{font-size:56px;line-height:.9;font-weight:950;color:var(--navy);letter-spacing:-.06em}.count-label{font-weight:950;color:var(--blue);margin-top:6px}.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.weather-tile{background:linear-gradient(180deg,var(--sky),#fff);border:1px solid rgba(111,143,122,.18);border-radius:18px;padding:12px;text-decoration:none;color:var(--ink)}.weather-tile strong{display:block;color:var(--navy)}.weather-tile span{font-size:12px;font-weight:900;color:var(--blue)}.route{display:grid;gap:10px}.route-leg{display:flex;align-items:center;gap:10px}.dot{width:12px;height:12px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 5px var(--sky);flex:0 0 auto}.route-leg b{color:var(--navy)}.route-leg small{color:var(--muted);font-weight:850}.today-card{background:linear-gradient(135deg,#2E3A34,#6F8F7A);color:white}.today-card h3{color:white}.today-card p{color:rgba(255,255,255,.9);margin:0}.today-card .btn{background:white;color:var(--navy)}.location-card{background:linear-gradient(135deg,#F3EFE7,#FFFDF9)}.small-muted{color:var(--muted);font-size:13px;line-height:1.4}.map-card{min-height:260px;background:linear-gradient(135deg,#4F6857,#8DA88F);position:relative;color:white}.map-card:before{content:"";position:absolute;inset:20px;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);border-radius:24px}.map-line{position:absolute;left:17%;right:14%;top:51%;height:4px;background:rgba(255,255,255,.65);transform:rotate(5deg);border-radius:99px}.map-place{position:absolute;z-index:2;background:white;color:var(--navy);font-weight:950;border-radius:999px;padding:9px 12px;box-shadow:0 12px 24px rgba(0,0,0,.22)}.map-place.roros{left:10%;top:35%}.map-place.trondheim{left:45%;top:24%}.map-place.lom{right:10%;bottom:28%}
+.day{background:white;border:1px solid rgba(111,143,122,.20);border-radius:25px;box-shadow:0 10px 26px rgba(46,58,52,.08);overflow:hidden;margin-bottom:16px}.day-head{padding:17px 19px;background:linear-gradient(135deg,var(--navy),var(--blue));color:white;display:flex;justify-content:space-between;gap:10px;align-items:center}.day-head strong{font-size:18px}.day-body{padding:16px 18px}.item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #EFE8DA}.item:last-child{border-bottom:0}.time{min-width:76px;font-weight:950;color:var(--blue)}.winebox{background:linear-gradient(135deg,#2E3A34,#6F8F7A);color:white;border-radius:24px;padding:19px;box-shadow:var(--shadow);margin-top:12px}.winebox h3{color:white}.winebox p{color:rgba(255,255,255,.9)}.note{border-left:5px solid var(--gold);background:#FCF4E6;border-radius:18px;padding:15px;margin-top:12px;line-height:1.45}.profile-card .pad{padding:20px}.profile-head{display:flex;gap:18px;align-items:center}.person-photo{width:128px;height:128px;border-radius:999px;object-fit:cover;border:6px solid white;box-shadow:0 16px 30px rgba(46,58,52,.18);flex:0 0 auto;background:linear-gradient(135deg,#174d87,#7bbdf0)}.person-photo.trond{object-position:center 45%}.person-photo.elin{object-position:center 32%}.person-photo.halvard{object-position:center 28%}.person-photo.elisabet{object-position:center 42%}.role{font-weight:950;color:var(--blue)}.profile-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.profile-tags span{font-size:12px;font-weight:950;background:var(--sky);color:var(--navy);border-radius:999px;padding:6px 9px}.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.socials a{font-size:12px;text-decoration:none;font-weight:950;background:#F3EFE7;color:var(--navy);border-radius:999px;padding:7px 10px}.placeholder{color:var(--muted);font-size:12px}.bottomnav{position:fixed;left:50%;bottom:13px;transform:translateX(-50%);width:min(94vw,740px);display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:8px;border-radius:24px;background:rgba(46,58,52,.92);backdrop-filter:blur(16px);box-shadow:0 16px 40px rgba(0,0,0,.25);z-index:20}.bottomnav a{text-decoration:none;color:white;text-align:center;font-size:12px;font-weight:950;padding:8px 4px;border-radius:16px}.bottomnav span{display:block;font-size:20px}.sources{font-size:12px;color:#756F65;line-height:1.45}.feature{grid-column:span 12;min-height:280px;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);position:relative;background-size:cover;background-position:center;display:flex;align-items:flex-end}.feature:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(8,43,82,.86))}.feature div{position:relative;z-index:1;color:white;padding:24px}.feature h3{color:white;margin:0 0 6px;font-size:30px}.feature p{color:rgba(255,255,255,.9);margin:0;max-width:650px}
+@media(min-width:760px){section{padding:42px 28px}.card.half{grid-column:span 6}.card.third{grid-column:span 4}.card.two{grid-column:span 8}.hero-content{padding:56px}.dash-card.count{grid-column:span 3}.dash-card.weather{grid-column:span 4}.dash-card.route-card{grid-column:span 5}.dash-card.today-card{grid-column:span 7}.dash-card.location-card{grid-column:span 5}.card.quarter{grid-column:span 3}.feature.half{grid-column:span 6}}@media(max-width:640px){.quick{grid-template-columns:repeat(2,1fr)}.item{display:block}.time{margin-bottom:4px}.hero,.hero-content{min-height:80vh}.section-title{display:block}.section-title p{margin-top:4px}.photo,.photo.tall,.photo.hero-card{height:270px}.status{margin-top:-28px}.weather-grid{grid-template-columns:1fr}.count-number{font-size:46px}.profile-head{align-items:flex-start}.person-photo{width:96px;height:96px}.map-card{min-height:220px}.map-place{font-size:12px}.map-place.roros{left:8%;top:32%}.map-place.trondheim{left:38%;top:24%}.map-place.lom{right:8%;bottom:24%}}
+
+.route-visual{padding:0;overflow:hidden;background:#FFFDF9}.route-visual-head{padding:20px 22px 10px}.route-visual-head h3{display:flex;align-items:center;gap:10px;margin:0 0 6px;color:var(--navy)}.route-visual-head p{margin:0;color:var(--muted);font-weight:720}.route-cards{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;padding:12px 20px 10px}.route-stop{min-width:0;background:linear-gradient(180deg,#F8F5F0,#fff);border:1px solid rgba(111,143,122,.18);border-radius:22px;overflow:hidden;box-shadow:0 12px 26px rgba(46,58,52,.08)}.route-stop img{width:100%;height:135px;object-fit:cover;display:block}.route-stop div{padding:12px}.route-stop strong{display:block;color:var(--navy);font-size:18px}.route-stop span{display:block;color:var(--muted);font-weight:850;font-size:12px;margin-top:3px}.route-arrow{display:grid;place-items:center;color:var(--gold);font-size:28px;font-weight:950}.route-stats{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 18px}.route-stats span{background:#F1E9DA;color:var(--navy);font-size:12px;font-weight:950;border-radius:999px;padding:8px 10px}
+@media(max-width:640px){.route-cards{grid-template-columns:1fr;}.route-arrow{transform:rotate(90deg);height:22px}.route-stop img{height:165px}}
+
+/* Premium icon system */
+.icon{width:18px;height:18px;display:inline-block;vertical-align:-3px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.icon.sm{width:15px;height:15px;vertical-align:-2px}.icon.lg{width:24px;height:24px}.icon-xl{width:32px;height:32px}
+.icon-bubble{width:42px;height:42px;border-radius:999px;display:inline-grid;place-items:center;background:linear-gradient(180deg,#F3EFE7,#fff);border:1px solid rgba(111,143,122,.18);color:var(--navy);box-shadow:0 10px 22px rgba(46,58,52,.08)}
+.quick a{display:flex;align-items:center;justify-content:center;gap:9px}
+.quick .icon{width:20px;height:20px}
+.dash-title{display:flex;align-items:center;gap:10px;margin:0 0 8px;color:var(--navy);font-size:19px}
+.btn .icon{width:16px;height:16px}.role{display:flex;align-items:center;gap:7px}.role .icon{width:17px;height:17px;color:var(--blue)}
+.bottomnav a{display:flex;flex-direction:column;align-items:center;gap:3px}.bottomnav .icon{width:21px;height:21px}.bottomnav span{display:grid;place-items:center;font-size:0}
+.card h3 .icon,.winebox h3 .icon{margin-right:8px;color:var(--blue)}
+.winebox h3 .icon{color:white}
+
+/* Warm summer premium palette overrides */
+.hero-photo{filter:saturate(.96) contrast(1.03) brightness(.96)}
+.hero:after{background:linear-gradient(180deg,rgba(46,58,52,.08),rgba(46,58,52,.44) 42%,rgba(46,58,52,.90));}
+.pill,.quick a{background:rgba(255,253,249,.16);border-color:rgba(255,253,249,.28)}
+.card,.dash-card,.day{background:rgba(255,253,249,.96);border-color:rgba(111,143,122,.20)}
+.photo-caption{background:rgba(46,58,52,.78)}
+.btn{background:var(--navy)}
+.btn.light{background:var(--sky);color:var(--navy)}
+.tag,.profile-tags span{background:#F1E9DA;color:var(--navy)}
+.day-head{background:linear-gradient(135deg,#2E3A34,#6F8F7A)}
+.winebox,.today-card{background:linear-gradient(135deg,#2E3A34,#6F8F7A)}
+.bottomnav{background:rgba(46,58,52,.92)}
+.bottomnav a:hover{background:rgba(255,253,249,.12)}
+.weather-tile{background:linear-gradient(180deg,#F1E9DA,#FFFDF9)}
+.map-card{background:linear-gradient(135deg,#4F6857,#91A77B)}
+.icon-bubble{background:linear-gradient(180deg,#F1E9DA,#FFFDF9);color:var(--navy)}
+
+
+/* Premium travel timeline and experience gallery */
+.timeline{display:grid;gap:18px}
+.day-premium{background:rgba(255,253,249,.97);border:1px solid rgba(111,143,122,.22);border-radius:32px;box-shadow:var(--shadow);overflow:hidden}
+.day-premium-header{display:grid;grid-template-columns:1fr;gap:0;background:#2E3A34;color:white}
+.day-premium-header img{width:100%;height:230px;object-fit:cover;display:block;opacity:.92}
+.day-premium-title{padding:22px;background:linear-gradient(135deg,rgba(46,58,52,.94),rgba(111,143,122,.94))}
+.day-premium-title h3{margin:0;font-size:27px;letter-spacing:-.04em;color:white}
+.day-premium-title p{margin:6px 0 0;color:rgba(255,255,255,.86);line-height:1.45}
+.timeline-list{padding:8px 22px 22px;position:relative}
+.timeline-list:before{content:"";position:absolute;left:37px;top:18px;bottom:28px;width:2px;background:#E4D7C2}
+.timeline-event{display:grid;grid-template-columns:66px 1fr;gap:14px;position:relative;padding:16px 0;border-bottom:1px solid #EFE8DA}
+.timeline-event:last-child{border-bottom:0}
+.timeline-time{font-weight:950;color:#6F8F7A;font-size:15px;padding-top:2px}
+.timeline-dot{position:absolute;left:9px;top:21px;width:14px;height:14px;border-radius:999px;background:#6F8F7A;border:3px solid #FFFDF9;box-shadow:0 0 0 4px #F1E9DA}
+.timeline-copy strong{display:block;font-size:17px;color:#2E3A34;margin-bottom:3px}
+.timeline-copy p{margin:0;color:#59675E;line-height:1.45}
+.timeline-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.mini-btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-weight:950;font-size:12px;border-radius:999px;padding:7px 10px;background:#F1E9DA;color:#2E3A34;border:1px solid rgba(111,143,122,.18)}
+.experience-card .photo{height:260px}.experience-card .pad{padding:22px}.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.meta-row span{font-size:12px;font-weight:950;border-radius:999px;background:#F1E9DA;color:#2E3A34;padding:7px 10px}.rating{display:inline-flex;align-items:center;gap:7px;color:#8A642B;background:#F7EDDA;border-radius:999px;padding:8px 11px;font-weight:950;font-size:13px;margin-bottom:10px}.magazine-intro{grid-column:span 12;background:linear-gradient(135deg,#2E3A34,#6F8F7A);color:white;border-radius:32px;padding:26px;box-shadow:var(--shadow)}.magazine-intro h3{color:white;margin:0 0 8px;font-size:30px;letter-spacing:-.04em}.magazine-intro p{color:rgba(255,255,255,.9);margin:0;line-height:1.55;max-width:780px}
+@media(min-width:760px){.day-premium-header{grid-template-columns:42% 58%;align-items:stretch}.day-premium-header img{height:100%}.experience-card.third{grid-column:span 4}.experience-card.half{grid-column:span 6}}
+
+
+/* Timeline spacing fix: separate time, dot/line and content */
+.timeline-list{padding:10px 28px 26px 28px}
+.timeline-list:before{left:158px;top:22px;bottom:32px;width:2px;background:#E4D7C2}
+.timeline-event{grid-template-columns:120px 1fr;gap:70px;align-items:start;padding:20px 0}
+.timeline-time{text-align:right;font-size:17px;line-height:1.2;padding-top:6px;color:#6F8F7A;white-space:nowrap}
+.timeline-dot{left:150px;top:24px;width:18px;height:18px;border:4px solid #FFFDF9;box-shadow:0 0 0 5px #F1E9DA}
+.timeline-copy{min-width:0}
+@media(max-width:640px){
+  .timeline-list{padding:8px 18px 22px 18px}
+  .timeline-list:before{left:112px}
+  .timeline-event{grid-template-columns:74px 1fr;gap:54px;padding:18px 0}
+  .timeline-time{text-align:right;font-size:13px;padding-top:7px}
+  .timeline-dot{left:104px;top:23px;width:16px;height:16px}
+}
+
+
+
+/* Section 1 upgrade: premium landing + dashboard */
+.hero-premium{min-height:92vh;border-radius:0 0 52px 52px}.hero-premium .hero-photo{opacity:.96}.hero-premium:after{background:linear-gradient(180deg,rgba(31,44,37,.08),rgba(31,44,37,.28) 34%,rgba(31,44,37,.88));}.hero-content.premium-hero-content{min-height:92vh;display:grid;grid-template-columns:1fr;align-content:end;gap:20px;padding-bottom:42px}.hero-topline{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;padding:10px 14px;border-radius:999px;background:rgba(255,253,249,.17);border:1px solid rgba(255,253,249,.28);backdrop-filter:blur(14px);font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:950}.hero-title-wrap{max-width:760px}.hero-title-wrap h1{margin:14px 0 14px}.hero-lead{font-size:clamp(18px,2.3vw,23px);max-width:700px;color:rgba(255,255,255,.92);line-height:1.45;text-shadow:0 6px 18px rgba(0,0,0,.22)}.hero-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:end}.hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:720px}.hero-metric{background:rgba(255,253,249,.15);border:1px solid rgba(255,253,249,.24);border-radius:22px;padding:13px 14px;backdrop-filter:blur(14px)}.hero-metric strong{display:block;font-size:21px;letter-spacing:-.04em}.hero-metric span{display:block;font-size:12px;font-weight:900;color:rgba(255,255,255,.80);margin-top:2px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}.hero-action{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 16px;font-weight:950;background:#FFFDF9;color:var(--navy);box-shadow:0 14px 30px rgba(0,0,0,.18)}.hero-action.secondary{background:rgba(255,253,249,.14);color:white;border:1px solid rgba(255,253,249,.25);box-shadow:none;backdrop-filter:blur(12px)}.hero-panel{background:rgba(255,253,249,.92);border:1px solid rgba(255,253,249,.35);border-radius:32px;color:var(--navy);box-shadow:0 24px 60px rgba(0,0,0,.24);padding:18px;backdrop-filter:blur(18px);max-width:430px}.hero-panel h3{margin:0 0 9px;font-size:21px;letter-spacing:-.03em;color:var(--navy)}.hero-panel p{margin:0;color:#536157;line-height:1.45;font-size:14px}.hero-next{display:grid;grid-template-columns:auto 1fr;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(111,143,122,.18)}.hero-next-time{font-weight:950;color:var(--blue);background:#F1E9DA;border-radius:15px;padding:10px 11px;height:max-content}.hero-next strong{display:block;color:var(--navy)}.status.premium-status{margin-top:-34px}.dashboard.premium-dashboard{gap:16px}.dash-card.premium{position:relative;overflow:hidden}.dash-card.premium:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 0%,rgba(199,154,75,.14),transparent 34%);pointer-events:none}.dash-inner{position:relative;z-index:1}.hero-count{font-size:32px;font-weight:950;letter-spacing:-.06em;color:var(--navy)}.weather-tile{transition:.18s transform,.18s box-shadow}.weather-tile:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(46,58,52,.10)}.mini-route{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.mini-route span{display:inline-flex;align-items:center;gap:6px;background:#F1E9DA;border-radius:999px;padding:8px 10px;font-size:12px;font-weight:950;color:var(--navy)}.mini-route i{font-style:normal;color:var(--gold)}.current-feature{display:grid;grid-template-columns:88px 1fr;gap:14px;align-items:center}.current-feature img{width:88px;height:88px;border-radius:22px;object-fit:cover}.current-feature strong{display:block;color:var(--navy);font-size:18px}.current-feature p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.35}.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(111,143,122,.28),transparent);margin:2px 18px 0}
+.travel-clock{max-width:460px;padding:20px}.travel-clock-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:950;color:var(--blue);margin-bottom:10px}.travel-clock-main{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}.travel-clock-number{min-width:76px;height:76px;border-radius:24px;background:linear-gradient(180deg,#F3EFE7,#FFFDF9);display:grid;place-items:center;font-size:38px;font-weight:950;color:var(--navy);box-shadow:inset 0 0 0 1px rgba(111,143,122,.16)}.travel-clock-main h3{margin:0;font-size:26px;letter-spacing:-.04em}.travel-clock-main p{font-size:13px;margin:4px 0 0}.travel-clock-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}.travel-clock-grid div{background:#F8F5F0;border:1px solid rgba(111,143,122,.18);border-radius:17px;padding:10px 11px}.travel-clock-grid span{display:block;font-size:11px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.travel-clock-grid strong{display:block;color:var(--navy);font-size:15px;margin-top:3px}.travel-next{margin-top:15px}.travel-next .hero-next-time{background:#6F8F7A;color:white}
+@media(min-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) 430px}.hero-panel{justify-self:end}.dash-card.count{grid-column:span 3}.dash-card.weather{grid-column:span 4}.dash-card.route-card{grid-column:span 5}.dash-card.today-card{grid-column:span 7}.dash-card.location-card{grid-column:span 5}.dash-card.hero-current{grid-column:span 6}.dash-card.hero-links{grid-column:span 6}}
+@media(max-width:640px){.hero-premium,.hero-content.premium-hero-content{min-height:86vh}.hero-content.premium-hero-content{padding:26px 20px 34px}.hero-metrics{grid-template-columns:repeat(2,1fr)}.hero-metric strong{font-size:19px}.hero-panel{border-radius:26px}.hero-title-wrap h1{font-size:clamp(44px,14vw,66px)}.hero-lead{font-size:17px}.quick{display:none}.status.premium-status{margin-top:-22px}.current-feature{grid-template-columns:74px 1fr}.current-feature img{width:74px;height:74px;border-radius:18px}}
+
+
+/* TravelBook Summer Edition – warmer, lighter, more July */
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 18% 8%,rgba(169,211,233,.28),transparent 28%),radial-gradient(circle at 86% 2%,rgba(246,215,139,.22),transparent 24%);z-index:-1}
+.hero{min-height:90vh;border-radius:0 0 48px 48px;background:linear-gradient(135deg,#2F3D32,#7F9A63)}
+.hero-photo{filter:saturate(1.08) contrast(1.03) brightness(1.02)}
+.hero:after{background:linear-gradient(180deg,rgba(47,61,50,.05),rgba(47,61,50,.30) 34%,rgba(47,61,50,.86));}
+.hero h1{letter-spacing:-.075em;text-shadow:0 12px 36px rgba(0,0,0,.35)}
+.pill{background:rgba(255,253,247,.20);border-color:rgba(255,253,247,.34)}
+.quick a{background:rgba(255,253,247,.18);border-color:rgba(255,253,247,.32)}
+section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(32px,5vw,46px)}
+.card,.dash-card,.day{background:rgba(255,253,247,.97);border-color:rgba(127,154,99,.20);box-shadow:0 18px 44px rgba(62,73,55,.10)}
+.card:hover{transform:translateY(-2px);transition:transform .18s ease, box-shadow .18s ease;box-shadow:0 22px 54px rgba(62,73,55,.14)}
+.photo{height:315px}.photo.tall{height:415px}.photo.hero-card{height:460px}
+.photo-caption{background:rgba(47,61,50,.74)}
+.btn{background:#2F3D32}.btn.light{background:#EAF4F7;color:#2F3D32}.btn.gold{background:#F6D78B;color:#5D4324}
+.tag,.profile-tags span{background:#F3E9D8;color:#2F3D32}
+.weather-tile{background:linear-gradient(180deg,#EAF4F7,#FFFDF7);border-color:rgba(127,154,99,.18)}
+.today-card,.winebox{background:linear-gradient(135deg,#2F3D32,#7F9A63)}
+.day-head{background:linear-gradient(135deg,#2F3D32,#7F9A63)}
+.dot{background:#7F9A63;box-shadow:0 0 0 5px #EAF4F7}.route-arrow{color:#B97945}
+.route-stats span,.socials a{background:#F3E9D8;color:#2F3D32}
+.bottomnav{background:rgba(47,61,50,.92);box-shadow:0 16px 40px rgba(47,61,50,.28)}
+@media(max-width:640px){section{padding-top:38px;padding-bottom:38px}.photo,.photo.tall,.photo.hero-card{height:285px}.hero,.hero-content{min-height:82vh}}
+
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-6h6v6"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4"/><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-wine" viewBox="0 0 24 24"><path d="M8 3h8l-1 8a4 4 0 0 1-6 0L8 3Z"/><path d="M12 15v6"/><path d="M8 21h8"/><path d="M9 7h6"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-cloud-sun" viewBox="0 0 24 24"><path d="M12 2v2M4.2 4.2l1.4 1.4M2 12h2"/><path d="M16 6.5A4.5 4.5 0 0 0 7.5 9"/><path d="M17 18H8a4 4 0 1 1 1.4-7.75A5 5 0 1 1 17 18Z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14l-1.6-5.2A3 3 0 0 0 14.5 10h-5a3 3 0 0 0-2.9 1.8L5 17Z"/><path d="M7 17v2M17 17v2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M4 3v8M8 3v8M4 7h4M6 11v10"/><path d="M16 3c2 1.5 3 3.5 3 6 0 2-1 3.5-3 4v8"/></symbol>
+  <symbol id="i-hotel" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v15"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M10 21v-5h4v5"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18M5 18h14M6 10h12"/><path d="M8 18v-8M12 18v-8M16 18v-8"/><path d="m12 3 8 5H4l8-5Z"/></symbol>
+  <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="M12 7l-2 5 4 2 2 7"/><path d="M9 21l2-7"/><path d="M10 12 6 10"/><path d="M14 14l4-1"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></symbol>
+</svg>
+
+<div class="app">
+<header class="hero hero-premium" id="top">
+  <img class="hero-photo" src="images/hero-roros.jpg" alt="Røros bergstad">
+  <div class="hero-content premium-hero-content">
+    <div class="hero-grid">
+      <div class="hero-title-wrap">
+        <div class="hero-topline"><svg class="icon sm" aria-hidden="true"><use href="#i-sparkle"></use></svg> TravelBook · Sommer 2026</div>
+        <h1>Røros &<br>Trondheim</h1>
+        <p class="hero-lead">En personlig sommerguide for Trond, Elin, Halvard og Elisabet – med program, hotell, restauranter, opplevelser og mat-/vintips samlet på mobilen.</p>
+        <div class="hero-metrics" aria-label="Reiseoversikt">
+          <div class="hero-metric"><strong>4</strong><span>netter</span></div>
+          <div class="hero-metric"><strong>2</strong><span>byer</span></div>
+          <div class="hero-metric"><strong>4</strong><span>reisende</span></div>
+          <div class="hero-metric"><strong id="heroCountdown">–</strong><span>dager igjen</span></div>
+        </div>
+        <div class="hero-actions">
+          <a class="hero-action" href="#program"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>Start reisen</a>
+          <a class="hero-action secondary" href="#matvin"><svg class="icon" aria-hidden="true"><use href="#i-wine"></use></svg>Mat & vin</a>
+          <a class="hero-action secondary" href="#steder"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Opplevelser</a>
+        </div>
+      </div>
+      <aside class="hero-panel travel-clock" aria-label="Reiseklokke">
+        <div class="travel-clock-kicker">Reiseklokke</div>
+        <div class="travel-clock-main">
+          <div class="travel-clock-number" id="travelClockNumber">–</div>
+          <div>
+            <h3 id="travelClockLabel">dager igjen</h3>
+            <p id="travelClockSubtitle">Avreise fra Lørenskog · første stopp Røros</p>
+          </div>
+        </div>
+        <div class="travel-clock-grid">
+          <div><span>Start</span><strong>Lørenskog</strong></div>
+          <div><span>Første stopp</span><strong>Røros</strong></div>
+          <div><span>Dato</span><strong>11. juli</strong></div>
+          <div><span>Kjøretid</span><strong>ca. 5 t 45 min</strong></div>
+        </div>
+        <div class="hero-next travel-next">
+          <div class="hero-next-time" id="travelClockNextTime">15:00</div>
+          <div><strong id="travelClockNextTitle">Ankomst Røros</strong><p id="travelClockNextText">Innsjekk på Erzscheidergården og rusletur i bergstaden før middag.</p></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<section class="status premium-status" id="status">
+  <div class="dashboard premium-dashboard">
+    <article class="dash-card premium weather">
+      <div class="dash-inner">
+        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-cloud-sun"></use></svg>Vær</h3>
+        <div class="weather-grid">
+          <a class="weather-tile" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-178758/Norge/Tr%C3%B8ndelag/R%C3%B8ros/R%C3%B8ros" target="_blank"><strong>Røros</strong><span>Åpne Yr</span></a>
+          <a class="weather-tile" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-211102/Norge/Tr%C3%B8ndelag/Trondheim/Trondheim" target="_blank"><strong>Trondheim</strong><span>Åpne Yr</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="dash-card premium route-card">
+      <div class="dash-inner">
+        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-car"></use></svg>Reiserute</h3>
+        <div class="mini-route">
+          <span>Lørenskog <i>→</i> Røros</span>
+          <span>Røros <i>→</i> Trondheim</span>
+        </div>
+        <div class="small-muted" style="margin-top:10px">Lom ligger fortsatt som bonusetappe i programmet, men forsiden viser fellesreisen for alle fire.</div>
+        <div class="btns"><a class="btn light" href="https://maps.google.com/?q=L%C3%B8renskog%20R%C3%B8ros%20Trondheim" target="_blank">Åpne fellesruten i Google Maps</a></div>
+      </div>
+    </article>
+
+    <article class="dash-card premium hero-current">
+      <div class="dash-inner current-feature">
+        <img src="images/olavsgruva.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Olavsgruva">
+        <div>
+          <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>Dagens høydepunkt</h3>
+          <strong>Olavsgruva og Smelthytta</strong>
+          <p>Historien bak Røros – først under fjellet, deretter på museum.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="dash-card premium hero-links">
+      <div class="dash-inner">
+        <h3 class="dash-title"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Rask tilgang</h3>
+        <p class="small-muted">De viktigste knappene når dere står midt i reisen.</p>
+        <div class="btns">
+          <a class="btn" href="#program">Program</a>
+          <a class="btn light" href="#hotell">Hotell</a>
+          <a class="btn light" href="#restauranter">Restauranter</a>
+          <a class="btn light" href="#steder">Opplevelser</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+<div class="section-divider" aria-hidden="true"></div><section id="program">
+  <div class="section-title"><h2>Program</h2><p>Tidslinje med bilder, kart og anbefalinger</p></div>
+  <div class="timeline">
+    <article class="day-premium">
+      <div class="day-premium-header">
+        <img src="images/hero-roros.jpg" alt="Røros">
+        <div class="day-premium-title"><h3>Lørdag 11. juli</h3><p>Ankomst Røros, rolig start i bergstaden og første middag på Restaurant 1897.</p></div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">15:00</div><div class="timeline-copy"><strong>Ankomst Røros</strong><p>Innsjekk på Erzscheidergården og en rolig start på turen.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Erzscheiderg%C3%A5rden%20R%C3%B8ros" target="_blank">Kart hotell</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">16:00</div><div class="timeline-copy"><strong>Rusle i Bergstaden</strong><p>Kjerkgata, små butikker, kaffe og første møte med Røros-stemningen.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Kjerkgata%20R%C3%B8ros" target="_blank">Kjerkgata</a><a class="mini-btn" href="#steder">Se opplevelser</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">19:30</div><div class="timeline-copy"><strong>Middag på Restaurant 1897</strong><p>Booket for 4 personer. Lokalmat og vin med friskhet og eleganse.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Restaurant%201897%20R%C3%B8ros" target="_blank">Kart</a><a class="mini-btn" href="#matvin">Vintips</a></div></div></div>
+      </div>
+    </article>
+
+    <article class="day-premium">
+      <div class="day-premium-header">
+        <img src="images/olavsgruva.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Olavsgruva">
+        <div class="day-premium-title"><h3>Søndag 12. juli</h3><p>Gruvehistorie, lunsj og Smelthytta. Dette blir den tydeligste Røros-dagen.</p></div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">10:00</div><div class="timeline-copy"><strong>Olavsgruva</strong><p>Guidet gruveopplevelse og et av de mest interessante stoppene på Røros.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Olavsgruva%20R%C3%B8ros" target="_blank">Kart</a><a class="mini-btn" href="https://rorosmuseet.no/olavsgruva/" target="_blank">Nettside</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">13:00</div><div class="timeline-copy"><strong>Lunsj i sentrum</strong><p>Rolig lunsj med lokale råvarer. Hold det lett før museum og ettermiddagstur.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=R%C3%B8ros%20sentrum%20lunsj" target="_blank">Finn lunsj</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">15:00</div><div class="timeline-copy"><strong>Smelthytta</strong><p>Røros Museum – fint for å forstå historien bak bergstaden.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=R%C3%B8ros%20Museum%20Smelthytta" target="_blank">Kart</a><a class="mini-btn" href="https://rorosmuseet.no/smelthytta/" target="_blank">Nettside</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">Kveld</div><div class="timeline-copy"><strong>Åpen middag</strong><p>Lokalmat, uformell restaurant eller vin/øl etter dagsformen.</p><div class="timeline-actions"><a class="mini-btn" href="#matvin">Mat & vin</a></div></div></div>
+      </div>
+    </article>
+
+    <article class="day-premium">
+      <div class="day-premium-header">
+        <img src="images/hero-trondheim.jpg" alt="Trondheim">
+        <div class="day-premium-title"><h3>Mandag 13. juli</h3><p>Fra Røros til Trondheim, innsjekk på Britannia og middag på Emilies Eld.</p></div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">kl. 10:00</div><div class="timeline-copy"><strong>Kjøring til Trondheim</strong><p>Ca. 2 timer. God overgang fra fjell- og trehusstemning til byliv.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=R%C3%B8ros%20to%20Britannia%20Hotel%20Trondheim" target="_blank">Rute</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">kl. 14:00</div><div class="timeline-copy"><strong>Britannia Hotel</strong><p>Innsjekk, pustepause og gjerne et glass i Vinbaren før middag.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Britannia%20Hotel%20Trondheim" target="_blank">Kart hotell</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">19:30</div><div class="timeline-copy"><strong>Middag på Emilies Eld</strong><p>Booket for 4 personer. Vinpakke kan være et godt valg.</p><div class="timeline-actions"><a class="mini-btn" href="https://emilieseld.no/" target="_blank">Meny</a><a class="mini-btn" href="https://maps.google.com/?q=Emilies%20Eld%20Trondheim" target="_blank">Kart</a></div></div></div>
+      </div>
+    </article>
+
+    <article class="day-premium">
+      <div class="day-premium-header">
+        <img src="images/bakklandet.jpg" alt="Bakklandet">
+        <div class="day-premium-title"><h3>Tirsdag 14. juli</h3><p>Trondheim-dagen: Nidarosdomen, Bakklandet, Gamle Bybro og K-U-K.</p></div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">10:30</div><div class="timeline-copy"><strong>Nidarosdomen</strong><p>Klassisk Trondheim-opplevelse. Start her før rusleturen over mot Bakklandet.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Nidarosdomen" target="_blank">Kart</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">12:00</div><div class="timeline-copy"><strong>Gamle Bybro og Bakklandet</strong><p>Fotostopp, kaffe og rolig rusling i Trondheims mest sjarmerende gater.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Bakklandet%20Trondheim" target="_blank">Kart</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">15:00</div><div class="timeline-copy"><strong>K-U-K kunstmuseum</strong><p>Kjøpmannsgata Ung Kunst – et moderne og litt annerledes stopp i Trondheim.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=K-U-K%20Kj%C3%B8pmannsgata%20Ung%20Kunst%20Trondheim" target="_blank">Kart</a><a class="mini-btn" href="https://www.k-u-k.no/" target="_blank">Nettside</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">Kveld</div><div class="timeline-copy"><strong>Åpen middag / Vinbaren</strong><p>Brasserie, sjømat, vinbar eller klassisk Trondheim – velg etter dagsform.</p><div class="timeline-actions"><a class="mini-btn" href="#restauranter">Restauranttips</a></div></div></div>
+      </div>
+    </article>
+
+    <article class="day-premium">
+      <div class="day-premium-header">
+        <img src="images/brimibue.jpg" alt="Brimibue Lom">
+        <div class="day-premium-title"><h3>Onsdag 15. juli</h3><p>Videre til Lom og Brimibue – roligere tempo, fjell og god avslutning.</p></div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">Dag</div><div class="timeline-copy"><strong>Kjøring Trondheim → Lom</strong><p>Ca. 4 timer. Ta pauser og gjør turen til en del av opplevelsen.</p><div class="timeline-actions"><a class="mini-btn" href="https://maps.google.com/?q=Trondheim%20to%20Brimibue%20Lom" target="_blank">Rute</a></div></div></div>
+        <div class="timeline-event"><span class="timeline-dot"></span><div class="timeline-time">Kveld</div><div class="timeline-copy"><strong>Brimibue</strong><p>Fjellmat, overnatting og en fin avrunding før turen går videre.</p><div class="timeline-actions"><a class="mini-btn" href="https://brimibuehotel.no/" target="_blank">Nettside</a><a class="mini-btn" href="https://maps.google.com/?q=Brimibue%20Lom" target="_blank">Kart</a></div></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="hotell"><div class="section-title"><h2>Hotell</h2><p>Base for dagene</p></div><div class="grid">
+  <article class="card half"><div class="photo-wrap"><img class="photo tall" src="images/erzscheidergaarden.jpg" alt="Erzscheidergården"><div class="photo-caption">Røros</div></div><div class="pad"><h3>Erzscheidergården – Røros</h3><p>Lite og historisk hotell nær sentrum. Fin base for å gå rundt i bergstaden.</p><span class="tag">Innsjekk ca. 15:00</span><span class="tag">Frokost</span><span class="tag">Sentrum</span><div class="btns"><a class="btn" href="https://www.roroshotellene.no/erzscheidergaarden/" target="_blank">Nettside</a><a class="btn light" href="https://maps.google.com/?q=Erzscheiderg%C3%A5rden%20R%C3%B8ros" target="_blank">Kart</a></div></div></article>
+  <article class="card half"><div class="photo-wrap"><img class="photo tall" src="images/britannia-hotel.jpg" alt="Britannia Hotel"><div class="photo-caption">Trondheim</div></div><div class="pad"><h3>Britannia – Trondheim</h3><p>Byens klassiker. Naturlig sted for aperitiff, vinbar og litt ekstra god hotellfølelse.</p><span class="tag">Innsjekk ca. 15:00</span><span class="tag">Sentrum</span><span class="tag">Vinbar</span><div class="btns"><a class="btn" href="https://britannia.no/" target="_blank">Nettside</a><a class="btn light" href="https://maps.google.com/?q=Britannia%20Hotel%20Trondheim" target="_blank">Kart</a></div></div></article>
+  <article class="card"><div class="photo-wrap"><img class="photo hero-card" src="images/brimibue.jpg" alt="Brimibue"><div class="photo-caption">Lom</div></div><div class="pad"><h3>Brimibue – Lom</h3><p>Fjellmat, overnatting og en fin avrunding før turen går videre.</p><span class="tag">Overnatting</span><span class="tag">Middag</span><span class="tag">Fjellmat</span><div class="btns"><a class="btn" href="https://brimibuehotel.no/" target="_blank">Nettside</a><a class="btn light" href="https://brimibuehotel.no/mat-og-drikke/" target="_blank">Mat & drikke</a><a class="btn light" href="https://maps.google.com/?q=Brimibue%20Lom" target="_blank">Kart</a></div></div></article>
+</div></section>
+
+<section id="restauranter"><div class="section-title"><h2>Restauranter</h2><p>Booket + gode stopp</p></div><div class="grid">
+  <article class="card third"><div class="photo-wrap"><img class="photo" src="images/restaurant1897.jpg" alt="Restaurant 1897"><div class="photo-caption">11. juli · 19:30</div></div><div class="pad"><h3>Restaurant 1897</h3><p>Første middag på Røros. Gå for lokal råvareprofil hvis menyen tillater det.</p><span class="tag">Signatur: lokalmat</span><span class="tag">Vin: Pinot Noir/Syrah</span><div class="btns"><a class="btn" href="https://maps.google.com/?q=Restaurant%201897%20R%C3%B8ros" target="_blank">Google Maps</a><a class="btn light" href="https://www.roroshotellene.no/" target="_blank">Meny/nettside</a></div></div></article>
+  <article class="card third"><div class="photo-wrap"><img class="photo" src="images/emilieseld.jpg" alt="Emilies Eld"><div class="photo-caption">13. juli · 19:30</div></div><div class="pad"><h3>Emilies Eld</h3><p>Moderne kjøkken med norske råvarer og kontinentalt preg. Passer godt med vinpakke.</p><span class="tag">Signatur: kull/ild</span><span class="tag">Vin: vinpakke</span><div class="btns"><a class="btn" href="https://emilieseld.no/" target="_blank">Meny</a><a class="btn light" href="https://maps.google.com/?q=Emilies%20Eld%20Trondheim" target="_blank">Google Maps</a></div></div></article>
+  <article class="card third"><div class="photo-wrap"><img class="photo" src="images/britannia-vinbaren.jpg" alt="Britannia Vinbaren"><div class="photo-caption">Vinbar</div></div><div class="pad"><h3>Britannia Vinbaren</h3><p>Naturlig stopp for vininteresserte. Godt egnet for et glass før eller etter middag.</p><span class="tag">Signatur: vin på glass</span><span class="tag">Vin: Chardonnay</span><div class="btns"><a class="btn" href="https://britannia.no/mat-og-drikke/vinbaren-2" target="_blank">Meny</a><a class="btn light" href="https://maps.google.com/?q=Britannia%20Vinbaren%20Trondheim" target="_blank">Google Maps</a></div></div></article>
+</div></section>
+
+<section id="matvin"><div class="section-title"><h2>Mat & vin</h2><p>Appens hyggeligste seksjon</p></div><div class="grid">
+  <article class="feature" style="background-image:url('images/restaurant1897.jpg')"><div><h3>Røros: lokalmat med struktur</h3><p>Reinsdyr, lam, spekemat, fjellørret og lokale meieriprodukter. Velg vin med friskhet og eleganse.</p></div></article>
+  <article class="card half"><div class="pad"><h3><svg class="icon " aria-hidden="true"><use href="#i-utensils"></use></svg>Til reinsdyr og lam</h3><p>Gå for rødvin som ikke overdøver råvaren.</p><span class="tag">Burgund Pinot Noir</span><span class="tag">Oregon Pinot Noir</span><span class="tag">Nord-Rhône Syrah</span><span class="tag">Nebbiolo</span><div class="note"><strong>Tronds valg:</strong> Pinot Noir hvis kjøttet er elegant. Syrah hvis sausen er mørkere og kraftigere.</div></div></article>
+  <article class="card half"><div class="pad"><h3><svg class="icon " aria-hidden="true"><use href="#i-utensils"></use></svg>Til fjellørret og sjømat</h3><p>Frisk hvitvin med syre, mineralitet og gjerne litt tekstur.</p><span class="tag">Chablis</span><span class="tag">Chardonnay</span><span class="tag">Riesling trocken</span><span class="tag">Assyrtiko</span><div class="note"><strong>Tips:</strong> Chardonnay med litt fat fungerer fint hvis retten har smørsaus eller kremet tilbehør.</div></div></article>
+  <article class="card half"><div class="photo-wrap"><img class="photo" src="images/britannia-vinbaren.jpg" alt="Vinbaren"><div class="photo-caption">Vinbaren</div></div><div class="pad"><h3><svg class="icon " aria-hidden="true"><use href="#i-wine"></use></svg>Britannia Vinbaren</h3><p>Bruk anledningen til å prøve noe dere ikke har hjemme: moden Chardonnay, tysk Pinot Noir eller en god glassvin med litt alder.</p></div></article>
+  <article class="card half"><div class="photo-wrap"><img class="photo" src="images/emilieseld.jpg" alt="Emilies Eld"><div class="photo-caption">Restaurant</div></div><div class="pad"><h3><svg class="icon " aria-hidden="true"><use href="#i-utensils"></use></svg>Middag i Trondheim</h3><p>Vinpakke kan være smart på Emilies Eld. Hvis dere velger flaske: start med en god hvit, og bytt til rød hvis menyen drar mot kjøtt.</p></div></article>
+</div></section>
+
+<section id="steder"><div class="section-title"><h2>Opplevelser</h2><p>Store bilder, kart og anbefalt tidsbruk</p></div><div class="grid">
+  <div class="magazine-intro"><h3>Reiseguiden</h3><p>Opplevelsene er valgt for å gi en god balanse mellom historie, mat, arkitektur, kunst og rolig rusling. Røros skal nytes sakte. Trondheim tåler litt mer bypuls.</p></div>
+  <article class="card half experience-card"><div class="photo-wrap"><img class="photo tall" src="images/olavsgruva.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Olavsgruva"><div class="photo-caption">Røros</div></div><div class="pad"><div class="rating">Må oppleves</div><h3>Olavsgruva</h3><p>Guidet tur ned i gruvefjellet. Gir tyngde og forståelse for hvorfor Røros ble til.</p><div class="meta-row"><span>2 timer</span><span>Historie</span><span>Guidet tur</span></div><div class="btns"><a class="btn" href="https://rorosmuseet.no/olavsgruva/" target="_blank">Nettside</a><a class="btn light" href="https://maps.google.com/?q=Olavsgruva%20R%C3%B8ros" target="_blank">Kart</a></div></div></article>
+  <article class="card half experience-card"><div class="photo-wrap"><img class="photo tall" src="images/smelthytta.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Smelthytta"><div class="photo-caption">Røros Museum</div></div><div class="pad"><div class="rating">Historisk kjerne</div><h3>Smelthytta</h3><p>Røros Museum og historien om kobberverket. Perfekt etter Olavsgruva.</p><div class="meta-row"><span>1–1,5 time</span><span>Museum</span><span>Røros</span></div><div class="btns"><a class="btn" href="https://rorosmuseet.no/smelthytta/" target="_blank">Nettside</a><a class="btn light" href="https://maps.google.com/?q=R%C3%B8ros%20Museum%20Smelthytta" target="_blank">Kart</a></div></div></article>
+  <article class="card third experience-card"><div class="photo-wrap"><img class="photo" src="images/roros-kirke.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Røros kirke"><div class="photo-caption">Bergstadens Ziir</div></div><div class="pad"><h3>Røros kirke</h3><p>Bergstadens landemerke. Fint stopp på rusleturen i sentrum.</p><div class="meta-row"><span>30–45 min</span><span>Arkitektur</span></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=R%C3%B8ros%20kirke" target="_blank">Kart</a></div></div></article>
+  <article class="card third experience-card"><div class="photo-wrap"><img class="photo" src="images/kjerkgata.jpg" onerror="this.src='images/hero-roros.jpg'" alt="Kjerkgata Røros"><div class="photo-caption">Sentrum</div></div><div class="pad"><h3>Kjerkgata</h3><p>Butikker, trehus, kaffe og lokal stemning. Best uten for stramt tidsskjema.</p><div class="meta-row"><span>1 time</span><span>Shopping</span><span>Kaffe</span></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=Kjerkgata%20R%C3%B8ros" target="_blank">Kart</a></div></div></article>
+  <article class="card third experience-card"><div class="photo-wrap"><img class="photo" src="images/nidarosdomen.jpg" alt="Nidarosdomen"><div class="photo-caption">Trondheim</div></div><div class="pad"><h3>Nidarosdomen</h3><p>Klassikeren i Trondheim. Kombiner med Gamle Bybro og Bakklandet.</p><div class="meta-row"><span>1 time</span><span>Kultur</span><span>Arkitektur</span></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=Nidarosdomen" target="_blank">Kart</a></div></div></article>
+  <article class="card half experience-card"><div class="photo-wrap"><img class="photo tall" src="images/bakklandet.jpg" alt="Bakklandet"><div class="photo-caption">Bakklandet</div></div><div class="pad"><div class="rating">Beste rusletur</div><h3>Bakklandet</h3><p>Fargerike trehus, kafeer, brostein og hyggelig bystemning. Kanskje turens beste bildepunkt.</p><div class="meta-row"><span>1–2 timer</span><span>Kaffe</span><span>Foto</span></div><div class="btns"><a class="btn" href="https://maps.google.com/?q=Bakklandet%20Trondheim" target="_blank">Kart</a></div></div></article>
+  <article class="card half experience-card"><div class="photo-wrap"><img class="photo tall" src="images/kuk.jpg" onerror="this.src='images/hero-trondheim.jpg'" alt="K-U-K Trondheim"><div class="photo-caption">K-U-K</div></div><div class="pad"><div class="rating">Skjult perle</div><h3>K-U-K kunstmuseum</h3><p>Kjøpmannsgata Ung Kunst. Samtidskunst i spennende lokaler – et godt brudd med de klassiske turiststoppene.</p><div class="meta-row"><span>1 time</span><span>Kunst</span><span>Trondheim</span></div><div class="btns"><a class="btn" href="https://www.k-u-k.no/" target="_blank">Nettside</a><a class="btn light" href="https://maps.google.com/?q=K-U-K%20Kj%C3%B8pmannsgata%20Ung%20Kunst%20Trondheim" target="_blank">Kart</a></div></div></article>
+  <article class="card third experience-card"><div class="photo-wrap"><img class="photo" src="images/gamle-bybro.jpg" onerror="this.src='images/bakklandet.jpg'" alt="Gamle Bybro"><div class="photo-caption">Trondheim</div></div><div class="pad"><h3>Gamle Bybro</h3><p>Fotostopp mellom sentrum og Bakklandet.</p><div class="meta-row"><span>20 min</span><span>Foto</span></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=Gamle%20Bybro%20Trondheim" target="_blank">Kart</a></div></div></article>
+  <article class="card third experience-card"><div class="photo-wrap"><img class="photo" src="images/solsiden.jpg" onerror="this.src='images/hero-trondheim.jpg'" alt="Solsiden Trondheim"><div class="photo-caption">Solsiden</div></div><div class="pad"><h3>Solsiden</h3><p>Byliv, servering og en fin kontrast til de historiske stoppene.</p><div class="meta-row"><span>Åpent</span><span>Mat</span><span>Uteliv</span></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=Solsiden%20Trondheim" target="_blank">Kart</a></div></div></article>
+  <article class="card third experience-card"><div class="photo-wrap"><img class="photo" src="images/britannia-vinbaren.jpg" alt="Britannia Vinbaren"><div class="photo-caption">Vinbaren</div></div><div class="pad"><h3>Britannia Vinbaren</h3><p>Perfekt stopp før eller etter middag. Se etter gode glassviner med litt særpreg.</p><div class="meta-row"><span>1 glass</span><span>Vin</span><span>Trondheim</span></div><div class="btns"><a class="btn light" href="https://britannia.no/mat-og-drikke/vinbaren-2" target="_blank">Se mer</a></div></div></article>
+</div></section>
+
+<section id="folk"><div class="section-title"><h2>Reisefølget</h2><p>Fire venner på tur</p></div><div class="grid">
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo trond" src="images/trond.jpg" alt="Trond Olav Eek"><div><h3>Trond Olav Eek</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-wine"></use></svg>Vinsjef & reiseapp-ansvarlig</div><p>Teknologinerd, vinentusiast og initiativtaker. Særlig svak for Chardonnay, Pinot Noir og gode restaurantopplevelser.</p></div></div><div class="profile-tags"><span>Favorittvin: Chardonnay</span><span>Gleder seg til: mat & vin</span><span>Rolle: planlegger</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo elin" src="images/elin.jpg" alt="Elin Sundli Eek"><div><h3>Elin Sundli Eek</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-sparkle"></use></svg>Design & atmosfære</div><p>Driver Indigo Boligstyling og har blikk for interiør, detaljer, stil og hyggelige steder.</p></div></div><div class="profile-tags"><span>Favoritt: design</span><span>Gleder seg til: små butikker</span><span>Rolle: estetikk</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo halvard" src="images/halvard.jpg" alt="Halvard Askilsrud"><div><h3>Halvard Askilsrud</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-walk"></use></svg>Oppdager & kaffeinspektør</div><p>Tidligere politimann, nå hobbypensjonist. Perfekt mann for byvandring, observasjoner og gode historier.</p></div></div><div class="profile-tags"><span>Favoritt: gode historier</span><span>Gleder seg til: byvandring</span><span>Rolle: observatør</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
+  <article class="card half profile-card"><div class="pad"><div class="profile-head"><img class="person-photo elisabet" src="images/elisabet.jpg" alt="Elisabet Askilsrud"><div><h3>Elisabet Askilsrud</h3><div class="role"><svg class="icon " aria-hidden="true"><use href="#i-briefcase"></use></svg>Stil & kvalitet</div><p>Leder i Pierre Robert, med sans for kvalitet, design og gode opplevelser.</p></div></div><div class="profile-tags"><span>Favoritt: kvalitet</span><span>Gleder seg til: restaurantene</span><span>Rolle: kvalitetssikrer</span></div><div class="socials"><a href="#">Facebook</a><a href="#">LinkedIn</a><span class="placeholder">Lenker kan fylles inn</span></div></div></article>
+</div></section>
+
+<section id="praktisk"><div class="section-title"><h2>Praktisk</h2><p>Alt samlet</p></div><div class="grid">
+  <article class="card half"><div class="pad"><h3>Nyttige lenker</h3><div class="btns"><a class="btn" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-178758/Norge/Tr%C3%B8ndelag/R%C3%B8ros/R%C3%B8ros" target="_blank">Vær Røros</a><a class="btn light" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-211102/Norge/Tr%C3%B8ndelag/Trondheim/Trondheim" target="_blank">Vær Trondheim</a><a class="btn" href="https://en.roros.no/" target="_blank">Visit Røros</a></div></div></article>
+  <article class="card half"><div class="pad"><h3>Pakk smart</h3><p>Gode sko, lett jakke, solbriller, lader og plass til litt lokalmat i bagasjen.</p></div></article>
+</div></section>
+</div>
+<nav class="bottomnav"><a href="#top"><span><svg class="icon " aria-hidden="true"><use href="#i-home"></use></svg></span>Hjem</a><a href="#program"><span><svg class="icon " aria-hidden="true"><use href="#i-calendar"></use></svg></span>Plan</a><a href="#hotell"><span><svg class="icon " aria-hidden="true"><use href="#i-hotel"></use></svg></span>Hotell</a><a href="#matvin"><span><svg class="icon " aria-hidden="true"><use href="#i-wine"></use></svg></span>Vin</a><a href="#steder"><span><svg class="icon " aria-hidden="true"><use href="#i-map-pin"></use></svg></span>Steder</a><a href="#folk"><span><svg class="icon " aria-hidden="true"><use href="#i-users"></use></svg></span>Folk</a></nav>
+<script>
+(function(){
+  const departure = new Date('2026-07-11T08:00:00');
+  const tripEnd = new Date('2026-07-15T23:59:00');
+  const now = new Date();
+  const ms = departure - now;
+  const days = Math.ceil(ms / 86400000);
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  if(days > 1){
+    setText('heroCountdown', days);
+    setText('travelClockNumber', days);
+    setText('travelClockLabel', 'dager igjen');
+    setText('travelClockSubtitle', 'Avreise fra Lørenskog · første stopp Røros');
+  } else if(days === 1){
+    setText('heroCountdown', '1');
+    setText('travelClockNumber', '1');
+    setText('travelClockLabel', 'dag igjen');
+    setText('travelClockSubtitle', 'I morgen starter reisen fra Lørenskog');
+  } else if(days === 0){
+    setText('heroCountdown', 'I dag');
+    setText('travelClockNumber', 'I dag');
+    setText('travelClockLabel', 'starter reisen');
+    setText('travelClockSubtitle', 'God tur fra Lørenskog til Røros');
+    setText('travelClockNextTime', '15:00');
+    setText('travelClockNextTitle', 'Ankomst Røros');
+    setText('travelClockNextText', 'Innsjekk på Erzscheidergården og rusletur før middag.');
+  } else if(now <= tripEnd){
+    const dayNo = Math.max(1, Math.floor((now - departure) / 86400000) + 1);
+    setText('heroCountdown', 'Nå');
+    setText('travelClockNumber', 'Dag ' + dayNo);
+    setText('travelClockLabel', 'reisen er i gang');
+    setText('travelClockSubtitle', dayNo < 3 ? 'Dere er i Røros' : 'Dere er i Trondheim');
+    if(dayNo === 1){
+      setText('travelClockNextTime', '16:00');
+      setText('travelClockNextTitle', 'Rusle i bergstaden');
+      setText('travelClockNextText', 'Rolig start med Kjerkgata, Sleggveien og middag på Restaurant 1897.');
+    } else if(dayNo === 2){
+      setText('travelClockNextTime', '10:00');
+      setText('travelClockNextTitle', 'Olavsgruva');
+      setText('travelClockNextText', 'Guidet tur under fjellet før lunsj og Smelthytta.');
+    } else {
+      setText('travelClockNextTime', '19:30');
+      setText('travelClockNextTitle', 'Middag i Trondheim');
+      setText('travelClockNextText', 'Emilies Eld, Britannia Vinbaren og rolig byliv.');
+    }
+  } else {
+    setText('heroCountdown', 'Ferdig');
+    setText('travelClockNumber', 'Takk');
+    setText('travelClockLabel', 'for turen');
+    setText('travelClockSubtitle', 'TravelBook ble reisealbumet for Røros & Trondheim');
+    setText('travelClockNextTime', '✓');
+    setText('travelClockNextTitle', 'Reisen er avsluttet');
+    setText('travelClockNextText', 'Neste steg kan være bilder, minner og vinnotater fra turen.');
+  }
+})();
+</script>
+</body>
+</html>
