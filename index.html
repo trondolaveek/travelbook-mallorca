@@ -127,52 +127,27 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hero-photo{transform:none}.hero-topline,.hero-title-wrap h1,.hero-lead,.hero-metric,.hero-actions a,.hero-panel,.js .reveal{opacity:1!important;transform:none!important}}
 
 
-
-/* TravelBook 4.1 – visible premium motion upgrade */
-@keyframes heroCinematicDrift{
-  0%{transform:scale(1.02) translate3d(0,0,0)}
-  100%{transform:scale(1.11) translate3d(-1.4%, -1.0%, 0)}
-}
-@keyframes softSunSweep{
-  0%{opacity:0;transform:translateX(-35%) rotate(8deg)}
-  18%{opacity:.34}
-  100%{opacity:0;transform:translateX(45%) rotate(8deg)}
-}
-@keyframes premiumTitleReveal{
-  0%{opacity:0;transform:translateY(28px);filter:blur(8px)}
-  100%{opacity:1;transform:translateY(0);filter:blur(0)}
-}
-@keyframes panelFloatIn{
-  0%{opacity:0;transform:translateX(42px) translateY(10px) scale(.985);filter:blur(7px)}
-  100%{opacity:1;transform:translateX(0) translateY(0) scale(1);filter:blur(0)}
-}
-@keyframes metricPopIn{
-  0%{opacity:0;transform:translateY(22px) scale(.96)}
-  100%{opacity:1;transform:translateY(0) scale(1)}
-}
-.hero{isolation:isolate}
-.hero-photo{animation:heroCinematicDrift 22s ease-out forwards!important;transform-origin:center center;will-change:transform}
-.hero:before{content:"";position:absolute;inset:-20% -35%;z-index:1;pointer-events:none;background:linear-gradient(105deg,transparent 28%,rgba(255,255,255,.30) 48%,rgba(246,215,139,.18) 54%,transparent 72%);mix-blend-mode:screen;animation:softSunSweep 4.6s ease-out .55s forwards}
-.hero:after{z-index:0}.hero-content{z-index:2}
-.hero-title-wrap h1{animation:premiumTitleReveal 1.05s cubic-bezier(.18,.72,.18,1) .20s forwards!important}
-.hero-lead{animation-duration:.95s!important;animation-delay:.55s!important}
-.hero-topline{animation-duration:.75s!important;animation-delay:.05s!important}
-.hero-metric{animation-name:metricPopIn!important;animation-duration:.70s!important;animation-timing-function:cubic-bezier(.16,.78,.2,1.1)!important}
-.hero-metric:nth-child(1){animation-delay:.78s!important}.hero-metric:nth-child(2){animation-delay:.90s!important}.hero-metric:nth-child(3){animation-delay:1.02s!important}.hero-metric:nth-child(4){animation-delay:1.14s!important}
-.hero-panel{animation:panelFloatIn .95s cubic-bezier(.16,.78,.2,1) .88s forwards!important;background:rgba(255,253,249,.78)!important;border:1px solid rgba(255,255,255,.55)!important;box-shadow:0 30px 78px rgba(31,44,37,.34), inset 0 1px 0 rgba(255,255,255,.65)!important;backdrop-filter:blur(22px) saturate(1.15)!important}
-.travel-clock-number{box-shadow:inset 0 0 0 1px rgba(127,154,99,.18),0 10px 24px rgba(47,61,50,.10)!important}
-.hero-action{transition:transform .18s ease,box-shadow .18s ease,background .18s ease!important}
-.hero-action:active,.btn:active,.mini-btn:active,.bottomnav a:active{transform:scale(.975)!important}
-.hero-action:hover{box-shadow:0 18px 38px rgba(0,0,0,.20)!important}
-.quick a,.hero-metric,.travel-clock-grid div,.weather-tile,.route-stop,.profile-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
-.hero-metric:hover,.travel-clock-grid div:hover,.route-stop:hover,.profile-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(47,61,50,.14)}
-.js .reveal{transition-duration:.90s!important;transition-timing-function:cubic-bezier(.17,.72,.18,1)!important}
-@media(max-width:640px){
-  .hero-photo{animation-duration:20s!important}
-  .hero:before{animation-duration:3.8s}
-  .hero-panel{backdrop-filter:blur(18px) saturate(1.1)!important}
-}
-@media(prefers-reduced-motion:reduce){.hero:before{display:none!important}}
+/* TravelBook 4.2 – lighter hero, quieter facts, slower motion */
+.hero-premium,.hero-content.premium-hero-content{min-height:82vh}
+.hero-content.premium-hero-content{padding-bottom:34px}
+.hero-title-wrap{max-width:780px}
+.hero-facts{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0 12px;color:white}
+.hero-facts span{display:inline-flex;align-items:center;min-height:34px;padding:8px 12px;border-radius:999px;background:rgba(255,253,247,.15);border:1px solid rgba(255,253,247,.26);backdrop-filter:blur(12px);font-size:13px;font-weight:950;letter-spacing:.01em;color:rgba(255,255,255,.94)}
+.hero-panel.travel-clock{background:rgba(255,253,249,.88);border-color:rgba(255,253,249,.48);box-shadow:0 28px 70px rgba(31,44,37,.28);backdrop-filter:blur(22px) saturate(1.08)}
+.hero:before{content:"";position:absolute;inset:-20% -30%;z-index:1;pointer-events:none;background:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.10) 38%,rgba(246,215,139,.16) 50%,transparent 64%);transform:translateX(-22%);animation:summerLight 14s ease-out forwards;mix-blend-mode:screen}
+.hero:after{z-index:1}.hero-content{z-index:2}
+@keyframes summerLight{from{transform:translateX(-28%) rotate(0.001deg);opacity:.35}to{transform:translateX(16%) rotate(0.001deg);opacity:.12}}
+@keyframes heroKenBurns{from{transform:scale(1.012) translate3d(0,0,0)}to{transform:scale(1.045) translate3d(-1.1%,.45%,0)}}
+.hero-photo{animation-duration:28s;animation-timing-function:cubic-bezier(.16,.7,.2,1)}
+.hero-topline,.hero-title-wrap h1,.hero-lead,.hero-facts span,.hero-actions a,.hero-panel{animation-duration:1.15s;animation-timing-function:cubic-bezier(.16,.7,.2,1)}
+.hero-title-wrap h1{animation-delay:.35s}.hero-lead{animation-delay:.68s}
+.hero-facts span:nth-child(1){opacity:0;animation:fadeUpSoft 1.05s cubic-bezier(.16,.7,.2,1) forwards;animation-delay:.98s}
+.hero-facts span:nth-child(2){opacity:0;animation:fadeUpSoft 1.05s cubic-bezier(.16,.7,.2,1) forwards;animation-delay:1.10s}
+.hero-facts span:nth-child(3){opacity:0;animation:fadeUpSoft 1.05s cubic-bezier(.16,.7,.2,1) forwards;animation-delay:1.22s}
+.hero-facts span:nth-child(4){opacity:0;animation:fadeUpSoft 1.05s cubic-bezier(.16,.7,.2,1) forwards;animation-delay:1.34s}
+.hero-panel{animation-duration:1.35s;animation-delay:1.05s}
+.hero-actions a:nth-child(1){animation-delay:1.50s}.hero-actions a:nth-child(2){animation-delay:1.62s}.hero-actions a:nth-child(3){animation-delay:1.74s}
+@media(max-width:640px){.hero-premium,.hero-content.premium-hero-content{min-height:76vh}.hero-content.premium-hero-content{padding-bottom:28px}.hero-facts{gap:7px;margin-top:14px}.hero-facts span{font-size:12px;min-height:31px;padding:7px 10px}.hero-panel.travel-clock{margin-top:2px}}
 
 </style>
 </head>
@@ -206,11 +181,11 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
         <div class="hero-topline"><svg class="icon sm" aria-hidden="true"><use href="#i-sparkle"></use></svg> TravelBook · Sommer 2026</div>
         <h1>Røros &<br>Trondheim</h1>
         <p class="hero-lead">En personlig sommerguide for Trond, Elin, Halvard og Elisabet – med program, hotell, restauranter, opplevelser og mat-/vintips samlet på mobilen.</p>
-        <div class="hero-metrics" aria-label="Reiseoversikt">
-          <div class="hero-metric"><strong>4</strong><span>netter</span></div>
-          <div class="hero-metric"><strong>2</strong><span>byer</span></div>
-          <div class="hero-metric"><strong>4</strong><span>reisende</span></div>
-          <div class="hero-metric"><strong id="heroCountdown">–</strong><span>dager igjen</span></div>
+        <div class="hero-facts" aria-label="Reiseoversikt">
+          <span>4 netter</span>
+          <span>2 byer</span>
+          <span>4 reisende</span>
+          <span>Avreise 11. juli</span>
         </div>
         <div class="hero-actions">
           <a class="hero-action" href="#program"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>Start reisen</a>
