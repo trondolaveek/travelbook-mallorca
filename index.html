@@ -198,6 +198,76 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 @media(min-width:760px){.memory-form-card{grid-column:span 7}.memory-info-card{grid-column:span 5}.memory-card{grid-column:span 4}.memory-card.wide{grid-column:span 6}}
 @media(max-width:640px){.memory-card img{height:245px}.memory-day-grid{grid-template-columns:1fr 1fr}.memory-day-grid img{height:130px}.memory-hero h3{font-size:28px}}
 
+
+/* Minnebok bildevisning: vis hele bildet + fullskjerm */
+.memory-card > img{
+  height:340px;
+  object-fit:contain!important;
+  background:linear-gradient(135deg,#263329,#4F6857);
+  padding:10px;
+  cursor:zoom-in;
+}
+.memory-day-grid img{
+  object-fit:contain!important;
+  background:linear-gradient(135deg,#263329,#4F6857);
+  padding:6px;
+  cursor:zoom-in;
+}
+.memory-preview img{
+  object-fit:contain!important;
+  background:linear-gradient(135deg,#263329,#4F6857);
+}
+.memory-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(18,28,22,.92);
+  backdrop-filter:blur(18px);
+}
+.memory-lightbox.open{display:flex}
+.memory-lightbox-inner{
+  width:min(96vw,980px);
+  max-height:92vh;
+  display:grid;
+  gap:12px;
+}
+.memory-lightbox img{
+  width:100%;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:28px;
+  background:linear-gradient(135deg,#263329,#4F6857);
+  box-shadow:0 28px 80px rgba(0,0,0,.42);
+}
+.memory-lightbox-caption{
+  color:#FFFDF7;
+  background:rgba(255,253,247,.10);
+  border:1px solid rgba(255,253,247,.18);
+  border-radius:22px;
+  padding:12px 14px;
+  line-height:1.45;
+}
+.memory-lightbox-caption strong{display:block;margin-bottom:4px}
+.memory-lightbox-close{
+  position:fixed;
+  right:18px;
+  top:18px;
+  border:0;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  background:rgba(255,253,247,.90);
+  color:var(--navy);
+  font-size:24px;
+  font-weight:950;
+  cursor:pointer;
+}
+@media(max-width:640px){.memory-card > img{height:320px;padding:8px}.memory-lightbox{padding:12px}.memory-lightbox img{max-height:76vh;border-radius:20px}}
+
 </style>
 </head>
 <body>
@@ -527,6 +597,14 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   <article class="card half"><div class="pad"><h3>Pakk smart</h3><p>Gode sko, lett jakke, solbriller, lader og plass til litt lokalmat i bagasjen.</p></div></article>
 </div></section>
 </div>
+<div class="memory-lightbox" id="memoryLightbox" aria-hidden="true">
+  <button class="memory-lightbox-close" id="memoryLightboxClose" type="button" aria-label="Lukk bilde">×</button>
+  <div class="memory-lightbox-inner">
+    <img id="memoryLightboxImg" alt="Minnebilde i stor visning">
+    <div class="memory-lightbox-caption" id="memoryLightboxCaption"></div>
+  </div>
+</div>
+
 <nav class="bottomnav"><a href="#top"><span><svg class="icon " aria-hidden="true"><use href="#i-home"></use></svg></span>Hjem</a><a href="#program"><span><svg class="icon " aria-hidden="true"><use href="#i-calendar"></use></svg></span>Plan</a><a href="#hotell"><span><svg class="icon " aria-hidden="true"><use href="#i-hotel"></use></svg></span>Hotell</a><a href="#matvin"><span><svg class="icon " aria-hidden="true"><use href="#i-wine"></use></svg></span>Vin</a><a href="#steder"><span><svg class="icon " aria-hidden="true"><use href="#i-map-pin"></use></svg></span>Steder</a><a href="#minnebok"><span><svg class="icon " aria-hidden="true"><use href="#i-camera"></use></svg></span>Minner</a><a href="#folk"><span><svg class="icon " aria-hidden="true"><use href="#i-users"></use></svg></span>Folk</a></nav>
 <script>
 (function(){
@@ -763,6 +841,10 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   const exportBtn = document.getElementById('exportMemories');
   const importBtn = document.getElementById('importMemoriesBtn');
   const importInput = document.getElementById('importMemories');
+  const lightbox = document.getElementById('memoryLightbox');
+  const lightboxImg = document.getElementById('memoryLightboxImg');
+  const lightboxCaption = document.getElementById('memoryLightboxCaption');
+  const lightboxClose = document.getElementById('memoryLightboxClose');
   let pendingImage = '';
   let currentView = 'gallery';
 
@@ -775,6 +857,27 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   function formatDate(value){
     try { return new Date(value).toLocaleString('no-NO', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}); }
     catch(e){ return ''; }
+  }
+  function openLightbox(img){
+    if(!lightbox || !lightboxImg || !img) return;
+    lightboxImg.src = img.src;
+    const day = img.dataset.day || 'Minne';
+    const kind = img.dataset.kind || 'Bilde';
+    const date = img.dataset.date || '';
+    const note = img.dataset.note || '';
+    if(lightboxCaption){
+      lightboxCaption.innerHTML = `<strong>${escapeHtml(day)} · ${escapeHtml(kind)}</strong>${note ? escapeHtml(note) : 'Hele bildet vises her.'}${date ? `<br><span>${escapeHtml(date)}</span>` : ''}`;
+    }
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    if(!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(lightboxImg) lightboxImg.removeAttribute('src');
   }
   function compressImage(file){
     return new Promise((resolve, reject) => {
@@ -815,7 +918,7 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   }
   function cardHtml(item){
     return `<article class="memory-card ${item.favorite ? 'favorite' : ''} ${item.kind === 'Vinminne' ? 'wine-memory' : ''}" data-id="${item.id}">
-      <img src="${item.image}" alt="Minne fra ${escapeHtml(item.day)}">
+      <img src="${item.image}" alt="Minne fra ${escapeHtml(item.day)}" data-action="open" data-note="${escapeHtml(item.text || '')}" data-day="${escapeHtml(item.day)}" data-kind="${escapeHtml(item.kind || 'Bilde')}" data-date="${formatDate(item.createdAt)}">
       <div class="memory-card-body">
         <div class="memory-card-top"><div><span class="memory-day">${escapeHtml(item.day)}</span><span class="memory-kind">${escapeHtml(item.kind || 'Bilde')}</span></div><button class="memory-fav" type="button" data-action="favorite">${item.favorite ? '♥ Favoritt' : '♡ Favoritt'}</button></div>
         <p class="memory-note">${item.text ? escapeHtml(item.text) : 'Uten tekst ennå.'}</p>
@@ -834,7 +937,7 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
     items.forEach(item => { (groups[item.day] ||= []).push(item); });
     return '<div class="memory-book">' + Object.entries(groups).map(([day, arr]) => {
       const notes = arr.filter(x => x.text).slice(0,3).map(x => `<p>${escapeHtml(x.text)}</p>`).join('');
-      return `<article class="memory-day-group"><div class="memory-day-head"><h3>${escapeHtml(day)}</h3><span>${arr.length} minner</span></div><div class="memory-day-grid">${arr.slice(0,6).map(x => `<img src="${x.image}" alt="${escapeHtml(day)}">`).join('')}</div><div class="memory-day-text">${notes || '<p>Ingen tekst ennå – bare gode bilder.</p>'}</div></article>`;
+      return `<article class="memory-day-group"><div class="memory-day-head"><h3>${escapeHtml(day)}</h3><span>${arr.length} minner</span></div><div class="memory-day-grid">${arr.slice(0,6).map(x => `<img src="${x.image}" alt="${escapeHtml(day)}" data-action="open" data-note="${escapeHtml(x.text || '')}" data-day="${escapeHtml(day)}" data-kind="${escapeHtml(x.kind || 'Bilde')}" data-date="${formatDate(x.createdAt)}">`).join('')}</div><div class="memory-day-text">${notes || '<p>Ingen tekst ennå – bare gode bilder.</p>'}</div></article>`;
     }).join('') + '</div>';
   }
   function render(){
@@ -873,6 +976,8 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   });
   if(gallery){
     gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img[data-action="open"]');
+      if(img){ openLightbox(img); return; }
       const btn = e.target.closest('button');
       const card = e.target.closest('.memory-card');
       if(!btn || !card) return;
@@ -886,6 +991,9 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
       }
     });
   }
+  if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if(lightbox) lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
   if(exportBtn){
     exportBtn.addEventListener('click', () => {
       const blob = new Blob([JSON.stringify(load(), null, 2)], {type:'application/json'});
