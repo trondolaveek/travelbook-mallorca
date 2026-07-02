@@ -187,12 +187,16 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 
 
 
-/* Minnebok V1 */
-.memory-hero{grid-column:span 12;background:linear-gradient(135deg,#2F3D32,#7F9A63);color:white;border-radius:34px;box-shadow:var(--shadow);padding:26px;position:relative;overflow:hidden}
-.memory-hero:before{content:"";position:absolute;inset:-40px;background:radial-gradient(circle at 18% 10%,rgba(246,215,139,.28),transparent 34%),radial-gradient(circle at 86% 8%,rgba(169,211,233,.20),transparent 30%);pointer-events:none}
-.memory-hero>*{position:relative;z-index:1}.memory-hero h3{margin:0 0 8px;color:white;font-size:32px;letter-spacing:-.04em}.memory-hero p{margin:0;color:rgba(255,255,255,.88);line-height:1.55;max-width:760px}.memory-form{display:grid;gap:12px}.memory-form label{font-weight:950;color:var(--navy);font-size:13px}.memory-input,.memory-select,.memory-textarea{width:100%;border:1px solid rgba(111,143,122,.22);background:#FFFDF9;color:var(--navy);border-radius:18px;padding:13px 14px;font:inherit;font-weight:750;outline:none}.memory-textarea{min-height:96px;resize:vertical}.memory-input:focus,.memory-select:focus,.memory-textarea:focus{border-color:#7F9A63;box-shadow:0 0 0 4px rgba(127,154,99,.14)}.memory-preview{display:none;border-radius:24px;overflow:hidden;background:#F3E9D8;border:1px solid rgba(111,143,122,.18)}.memory-preview img{width:100%;height:260px;object-fit:cover;display:block}.memory-preview-caption{padding:12px 14px;color:var(--muted);font-size:12px;font-weight:850}.memory-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.memory-gallery{grid-column:span 12;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.memory-empty{grid-column:span 12;background:#FFFDF9;border:1px dashed rgba(111,143,122,.35);border-radius:28px;padding:24px;text-align:center;color:var(--muted);font-weight:850}.memory-card{grid-column:span 12;background:rgba(255,253,247,.98);border:1px solid rgba(127,154,99,.20);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;position:relative}.memory-card.favorite{border-color:rgba(185,121,69,.55);box-shadow:0 22px 52px rgba(185,121,69,.16)}.memory-card img{width:100%;height:290px;object-fit:cover;display:block;background:#F1E9DA}.memory-card-body{padding:17px}.memory-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.memory-day{display:inline-flex;background:#F3E9D8;color:var(--navy);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:950}.memory-fav{border:0;border-radius:999px;background:#FFF4DA;color:#8A642B;font-weight:950;padding:8px 11px;cursor:pointer}.memory-note{margin:0;color:#48564E;line-height:1.48}.memory-date{margin-top:10px;color:var(--muted);font-size:12px;font-weight:850}.memory-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.memory-delete{background:#F8E9E5!important;color:#7E3429!important}.memory-count{font-size:13px;font-weight:950;color:var(--blue)}
-@media(min-width:760px){.memory-form-card{grid-column:span 5}.memory-info-card{grid-column:span 7}.memory-card{grid-column:span 4}.memory-card img{height:240px}}
-@media(max-width:640px){.memory-hero{padding:22px}.memory-hero h3{font-size:28px}.memory-card img{height:260px}}
+/* TravelBook Minnebok V2 */
+.memory-hero{grid-column:span 12;border-radius:36px;padding:28px;background:linear-gradient(135deg,#2F3D32,#7F9A63);color:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.memory-hero:after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:999px;background:rgba(246,215,139,.18)}
+.memory-hero h3{font-size:34px;margin:0 0 8px;color:white;letter-spacing:-.045em}.memory-hero p{max-width:760px;margin:0;color:rgba(255,255,255,.90);line-height:1.55}
+.memory-form-card{grid-column:span 12}.memory-info-card{grid-column:span 12}.memory-input,.memory-select,.memory-textarea{width:100%;border:1px solid rgba(111,143,122,.22);background:#FFFDF9;border-radius:18px;padding:13px 14px;font:inherit;color:var(--ink);margin:7px 0 13px;outline:none}.memory-textarea{min-height:92px;resize:vertical}.memory-form label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.10em;font-weight:950;color:var(--blue)}
+.memory-preview{display:none;margin:8px 0 14px;border-radius:24px;overflow:hidden;background:#F3E9D8;border:1px solid rgba(111,143,122,.20)}.memory-preview img{width:100%;max-height:330px;object-fit:cover;display:block}.memory-preview-caption{padding:10px 12px;font-size:12px;font-weight:800;color:var(--muted)}
+.memory-toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.memory-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.memory-tab{border:0;border-radius:999px;padding:9px 12px;background:#F3E9D8;color:var(--navy);font-weight:950;cursor:pointer}.memory-tab.active{background:var(--navy);color:white}.memory-gallery{grid-column:span 12;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.memory-empty{grid-column:span 12;background:#FFFDF9;border:1px dashed rgba(111,143,122,.36);border-radius:28px;padding:24px;color:var(--muted);line-height:1.5;text-align:center}
+.memory-card{grid-column:span 12;background:#FFFDF9;border:1px solid rgba(111,143,122,.20);border-radius:30px;overflow:hidden;box-shadow:0 16px 36px rgba(62,73,55,.10);position:relative}.memory-card.favorite{border-color:rgba(185,121,69,.45);box-shadow:0 18px 44px rgba(185,121,69,.16)}.memory-card img{width:100%;height:280px;object-fit:cover;display:block}.memory-card-body{padding:18px}.memory-card-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}.memory-day{display:inline-flex;background:#F3E9D8;color:var(--navy);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:950}.memory-kind{display:inline-flex;background:#EAF4F7;color:var(--navy);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:950;margin-left:5px}.memory-fav{border:0;border-radius:999px;padding:7px 10px;background:#F7EDDA;color:#8A642B;font-weight:950;cursor:pointer}.memory-note{margin:8px 0;color:#47554D;line-height:1.5}.memory-date{font-size:12px;font-weight:850;color:var(--muted)}.memory-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.memory-delete{border:0;cursor:pointer}.memory-book{grid-column:span 12;display:grid;gap:15px}.memory-day-group{background:#FFFDF9;border:1px solid rgba(111,143,122,.20);border-radius:30px;box-shadow:0 14px 32px rgba(62,73,55,.08);overflow:hidden}.memory-day-head{padding:18px 20px;background:linear-gradient(135deg,#F3E9D8,#FFFDF9);display:flex;justify-content:space-between;gap:10px;align-items:center}.memory-day-head h3{margin:0;color:var(--navy);font-size:22px}.memory-day-head span{font-size:12px;font-weight:950;color:var(--blue)}.memory-day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}.memory-day-grid img{width:100%;height:150px;object-fit:cover;border-radius:18px}.memory-day-text{padding:0 18px 18px;color:#47554D;line-height:1.5}.wine-memory{border-left:5px solid var(--gold)}.memory-backup{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+@media(min-width:760px){.memory-form-card{grid-column:span 7}.memory-info-card{grid-column:span 5}.memory-card{grid-column:span 4}.memory-card.wide{grid-column:span 6}}
+@media(max-width:640px){.memory-card img{height:245px}.memory-day-grid{grid-template-columns:1fr 1fr}.memory-day-grid img{height:130px}.memory-hero h3{font-size:28px}}
 
 </style>
 </head>
@@ -215,8 +219,7 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></symbol>
   <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></symbol>
   <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></symbol>
-  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"/><circle cx="12" cy="14" r="4"/></symbol>
-  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h2l1.5-2h5L16 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z"/><circle cx="12" cy="13" r="4"/></symbol>
 </svg>
 
 <div class="app">
@@ -448,20 +451,31 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 
 
 <section id="minnebok">
-  <div class="section-title"><h2>Minnebok</h2><p>Lagre små øyeblikk fra turen på mobilen</p></div>
+  <div class="section-title"><h2>Minnebok</h2><p>Bilder, vinminner og små øyeblikk fra turen</p></div>
   <div class="grid">
     <article class="memory-hero">
-      <h3>Fra reiseguide til minnebok</h3>
-      <p>Legg inn bilder, velg dag og skriv en kort tekst. I V1 lagres minnene lokalt i nettleseren på den enheten du bruker.</p>
+      <h3>Fra reiseguide til reisebok</h3>
+      <p>Legg inn bilder underveis, skriv en kort tekst og merk dem med dag eller sted. Alt lagres lokalt på enheten i V1 – perfekt for å teste før vi eventuelt lager skylagring senere.</p>
+      <div class="memory-backup"><button class="btn gold" id="exportMemories" type="button">Eksporter minner</button><button class="btn light" id="importMemoriesBtn" type="button">Importer backup</button><input id="importMemories" type="file" accept="application/json" hidden></div>
     </article>
 
     <article class="card memory-form-card">
       <div class="pad">
-        <h3><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg> Legg til bilde</h3>
+        <h3><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg> Legg til minne</h3>
         <div class="memory-form">
           <label for="memoryImage">Bilde</label>
           <input class="memory-input" id="memoryImage" type="file" accept="image/*">
           <div class="memory-preview" id="memoryPreview"><img alt="Forhåndsvisning"><div class="memory-preview-caption">Bildet komprimeres automatisk før lagring.</div></div>
+
+          <label for="memoryKind">Type minne</label>
+          <select class="memory-select" id="memoryKind">
+            <option value="Bilde">Bilde</option>
+            <option value="Vinminne">Vinminne</option>
+            <option value="Middag">Middag</option>
+            <option value="Opplevelse">Opplevelse</option>
+            <option value="Favorittøyeblikk">Favorittøyeblikk</option>
+          </select>
+
           <label for="memoryDay">Dag / sted</label>
           <select class="memory-select" id="memoryDay">
             <option>Dag 1 – Røros</option>
@@ -471,13 +485,14 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
             <option>Bonus – Lom og Brimibue</option>
             <option>Favorittøyeblikk</option>
           </select>
-          <label for="memoryText">Kort minne</label>
-          <textarea class="memory-textarea" id="memoryText" placeholder="Skriv f.eks. 'Fantastisk middag på Restaurant 1897'"></textarea>
+
+          <label for="memoryText">Kort tekst</label>
+          <textarea class="memory-textarea" id="memoryText" placeholder="Skriv f.eks. 'Fantastisk middag på Restaurant 1897' eller 'Perfekt Chardonnay til kvelden.'"></textarea>
           <div class="memory-toolbar">
             <button class="btn" id="saveMemory" type="button"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Lagre minne</button>
             <button class="btn light" id="clearMemoryForm" type="button">Tøm</button>
           </div>
-          <p class="small-muted">Tips: legg inn 3–5 gode bilder per dag. Da blir minneboken hyggelig å bla i etter turen.</p>
+          <p class="small-muted">Tips: legg inn 3–5 gode bilder per dag. Da blir TravelBook en hyggelig reisebok etter turen.</p>
         </div>
       </div>
     </article>
@@ -487,10 +502,21 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
       <div class="pad">
         <h3>Privat og enkelt</h3>
         <p>Bildene lagres lokalt på denne telefonen eller Mac-en. Ingen opplasting, ingen konto og ingen server i V1.</p>
-        <span class="tag">Lokal lagring</span><span class="tag">Favoritter</span><span class="tag">Galleri</span>
-        <div class="note"><strong>Viktig:</strong> Sletter du nettleserdata, kan minnene forsvinne. Når V1 fungerer godt, kan vi lage V2 med skylagring.</div>
+        <span class="tag">Lokal lagring</span><span class="tag">Favoritter</span><span class="tag">Reisebok</span><span class="tag">Vinminner</span>
+        <div class="note"><strong>Viktig:</strong> Sletter du nettleserdata, kan minnene forsvinne. Bruk “Eksporter minner” som enkel backup.</div>
       </div>
     </article>
+
+    <article class="card" style="grid-column:span 12"><div class="pad">
+      <h3>Visning</h3>
+      <div class="memory-tabs" role="tablist" aria-label="Minnebokvisning">
+        <button class="memory-tab active" type="button" data-view="gallery">Galleri</button>
+        <button class="memory-tab" type="button" data-view="book">Reisebok</button>
+        <button class="memory-tab" type="button" data-view="wine">Vinminner</button>
+        <button class="memory-tab" type="button" data-view="favorites">Favoritter</button>
+      </div>
+      <p class="small-muted" id="memorySummary">Ingen minner lagret ennå.</p>
+    </div></article>
 
     <div class="memory-gallery" id="memoryGallery"></div>
   </div>
@@ -723,48 +749,31 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 
 
 (function(){
-  const items = document.querySelectorAll('section, .card, .day, .feature');
-  items.forEach((el, index) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = Math.min(index * 18, 180) + 'ms';
-  });
-  if (!('IntersectionObserver' in window)) {
-    items.forEach(el => el.classList.add('in-view'));
-    return;
-  }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
-  items.forEach(el => observer.observe(el));
-})();
-
-
-(function(){
-  const STORAGE_KEY = 'travelbook_memories_v1';
+  const KEY = 'travelbook_memories_v2';
   const imageInput = document.getElementById('memoryImage');
   const preview = document.getElementById('memoryPreview');
   const previewImg = preview ? preview.querySelector('img') : null;
   const dayInput = document.getElementById('memoryDay');
+  const kindInput = document.getElementById('memoryKind');
   const textInput = document.getElementById('memoryText');
   const saveBtn = document.getElementById('saveMemory');
   const clearBtn = document.getElementById('clearMemoryForm');
   const gallery = document.getElementById('memoryGallery');
+  const summary = document.getElementById('memorySummary');
+  const exportBtn = document.getElementById('exportMemories');
+  const importBtn = document.getElementById('importMemoriesBtn');
+  const importInput = document.getElementById('importMemories');
   let pendingImage = '';
+  let currentView = 'gallery';
 
   function load(){
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
     catch(e){ return []; }
   }
-  function save(items){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  }
-  function formatDate(iso){
-    try { return new Date(iso).toLocaleString('nb-NO', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}); }
+  function save(items){ localStorage.setItem(KEY, JSON.stringify(items)); }
+  function escapeHtml(str){ return String(str || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+  function formatDate(value){
+    try { return new Date(value).toLocaleString('no-NO', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}); }
     catch(e){ return ''; }
   }
   function compressImage(file){
@@ -789,33 +798,52 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
       reader.readAsDataURL(file);
     });
   }
-  function render(){
-    if(!gallery) return;
-    const items = load().sort((a,b) => (b.favorite - a.favorite) || (new Date(b.createdAt) - new Date(a.createdAt)));
-    if(!items.length){
-      gallery.innerHTML = '<div class="memory-empty"><strong>Ingen minner ennå.</strong><br>Legg inn første bilde når turen starter – eller test med et bilde allerede nå.</div>';
-      return;
-    }
-    gallery.innerHTML = items.map(item => `
-      <article class="memory-card ${item.favorite ? 'favorite' : ''}" data-id="${item.id}">
-        <img src="${item.image}" alt="Minne fra ${item.day}">
-        <div class="memory-card-body">
-          <div class="memory-card-top"><span class="memory-day">${item.day}</span><button class="memory-fav" type="button" data-action="favorite">${item.favorite ? '♥ Favoritt' : '♡ Favoritt'}</button></div>
-          <p class="memory-note">${item.text ? escapeHtml(item.text) : 'Uten tekst ennå.'}</p>
-          <div class="memory-date">${formatDate(item.createdAt)}</div>
-          <div class="memory-actions"><button class="btn light memory-delete" type="button" data-action="delete">Slett</button></div>
-        </div>
-      </article>`).join('');
-  }
-  function escapeHtml(str){
-    return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-  }
   function resetForm(){
     pendingImage = '';
     if(imageInput) imageInput.value = '';
     if(textInput) textInput.value = '';
+    if(kindInput) kindInput.value = 'Bilde';
     if(preview) preview.style.display = 'none';
     if(previewImg) previewImg.removeAttribute('src');
+  }
+  function updateSummary(items){
+    if(!summary) return;
+    if(!items.length){ summary.textContent = 'Ingen minner lagret ennå.'; return; }
+    const favs = items.filter(x => x.favorite).length;
+    const wines = items.filter(x => x.kind === 'Vinminne').length;
+    summary.textContent = `${items.length} minner lagret · ${favs} favoritter · ${wines} vinminner`;
+  }
+  function cardHtml(item){
+    return `<article class="memory-card ${item.favorite ? 'favorite' : ''} ${item.kind === 'Vinminne' ? 'wine-memory' : ''}" data-id="${item.id}">
+      <img src="${item.image}" alt="Minne fra ${escapeHtml(item.day)}">
+      <div class="memory-card-body">
+        <div class="memory-card-top"><div><span class="memory-day">${escapeHtml(item.day)}</span><span class="memory-kind">${escapeHtml(item.kind || 'Bilde')}</span></div><button class="memory-fav" type="button" data-action="favorite">${item.favorite ? '♥ Favoritt' : '♡ Favoritt'}</button></div>
+        <p class="memory-note">${item.text ? escapeHtml(item.text) : 'Uten tekst ennå.'}</p>
+        <div class="memory-date">${formatDate(item.createdAt)}</div>
+        <div class="memory-actions"><button class="btn light memory-delete" type="button" data-action="delete">Slett</button></div>
+      </div>
+    </article>`;
+  }
+  function renderGallery(items){
+    if(!items.length) return '<div class="memory-empty"><strong>Ingen minner ennå.</strong><br>Legg inn første bilde når turen starter – eller test med et bilde allerede nå.</div>';
+    return items.map(cardHtml).join('');
+  }
+  function renderBook(items){
+    if(!items.length) return '<div class="memory-empty"><strong>Reiseboken er tom.</strong><br>Når du legger inn bilder, grupperes de automatisk per dag her.</div>';
+    const groups = {};
+    items.forEach(item => { (groups[item.day] ||= []).push(item); });
+    return '<div class="memory-book">' + Object.entries(groups).map(([day, arr]) => {
+      const notes = arr.filter(x => x.text).slice(0,3).map(x => `<p>${escapeHtml(x.text)}</p>`).join('');
+      return `<article class="memory-day-group"><div class="memory-day-head"><h3>${escapeHtml(day)}</h3><span>${arr.length} minner</span></div><div class="memory-day-grid">${arr.slice(0,6).map(x => `<img src="${x.image}" alt="${escapeHtml(day)}">`).join('')}</div><div class="memory-day-text">${notes || '<p>Ingen tekst ennå – bare gode bilder.</p>'}</div></article>`;
+    }).join('') + '</div>';
+  }
+  function render(){
+    if(!gallery) return;
+    let items = load().sort((a,b) => (b.favorite - a.favorite) || (new Date(b.createdAt) - new Date(a.createdAt)));
+    updateSummary(items);
+    if(currentView === 'favorites') items = items.filter(x => x.favorite);
+    if(currentView === 'wine') items = items.filter(x => x.kind === 'Vinminne');
+    gallery.innerHTML = currentView === 'book' ? renderBook(items) : renderGallery(items);
   }
   if(imageInput){
     imageInput.addEventListener('change', async () => {
@@ -826,36 +854,23 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
         pendingImage = await compressImage(file);
         if(previewImg) previewImg.src = pendingImage;
         if(preview) preview.style.display = 'block';
-      }catch(e){
-        alert('Klarte ikke å lese bildet. Prøv et annet bilde.');
-      }finally{
-        if(saveBtn) saveBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Lagre minne';
-      }
+      }catch(e){ alert('Klarte ikke å lese bildet. Prøv et annet bilde.'); }
+      finally{ if(saveBtn) saveBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Lagre minne'; }
     });
   }
   if(saveBtn){
     saveBtn.addEventListener('click', () => {
       if(!pendingImage){ alert('Velg et bilde først.'); return; }
       const items = load();
-      items.push({
-        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
-        image: pendingImage,
-        day: dayInput ? dayInput.value : 'Minne',
-        text: textInput ? textInput.value.trim() : '',
-        favorite: false,
-        createdAt: new Date().toISOString()
-      });
-      try{
-        save(items);
-        resetForm();
-        render();
-        location.hash = '#minnebok';
-      }catch(e){
-        alert('Bildet ble for stort for lokal lagring. Prøv et mindre bilde.');
-      }
+      items.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2), image: pendingImage, day: dayInput ? dayInput.value : 'Minne', kind: kindInput ? kindInput.value : 'Bilde', text: textInput ? textInput.value.trim() : '', favorite: false, createdAt: new Date().toISOString() });
+      try{ save(items); resetForm(); currentView = 'gallery'; document.querySelectorAll('.memory-tab').forEach(t => t.classList.toggle('active', t.dataset.view === currentView)); render(); location.hash = '#minnebok'; }
+      catch(e){ alert('Bildet ble for stort for lokal lagring. Prøv et mindre bilde.'); }
     });
   }
   if(clearBtn) clearBtn.addEventListener('click', resetForm);
+  document.querySelectorAll('.memory-tab').forEach(tab => {
+    tab.addEventListener('click', () => { currentView = tab.dataset.view || 'gallery'; document.querySelectorAll('.memory-tab').forEach(t => t.classList.toggle('active', t === tab)); render(); });
+  });
   if(gallery){
     gallery.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
@@ -864,20 +879,59 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
       const id = card.dataset.id;
       let items = load();
       if(btn.dataset.action === 'delete'){
-        if(confirm('Slette dette minnet?')){
-          items = items.filter(item => item.id !== id);
-          save(items); render();
-        }
+        if(confirm('Slette dette minnet?')){ items = items.filter(item => item.id !== id); save(items); render(); }
       }
       if(btn.dataset.action === 'favorite'){
-        items = items.map(item => item.id === id ? {...item, favorite: !item.favorite} : item);
-        save(items); render();
+        items = items.map(item => item.id === id ? {...item, favorite: !item.favorite} : item); save(items); render();
       }
+    });
+  }
+  if(exportBtn){
+    exportBtn.addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(load(), null, 2)], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'travelbook-minner-backup.json';
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+  }
+  if(importBtn && importInput){
+    importBtn.addEventListener('click', () => importInput.click());
+    importInput.addEventListener('change', () => {
+      const file = importInput.files && importInput.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try{ const data = JSON.parse(reader.result); if(Array.isArray(data)){ save(data); render(); alert('Backup importert.'); } else throw new Error(); }
+        catch(e){ alert('Dette så ikke ut som en TravelBook-backup.'); }
+      };
+      reader.readAsText(file);
     });
   }
   render();
 })();
 
+
+(function(){
+  const items = document.querySelectorAll('section, .card, .day, .feature');
+  items.forEach((el, index) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = Math.min(index * 18, 180) + 'ms';
+  });
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(el => observer.observe(el));
+})();
 </script>
 </body>
 </html>
