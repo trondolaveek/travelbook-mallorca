@@ -192,6 +192,11 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
 @media(min-width:760px){.memory-card{grid-column:span 6}.memory-form-card{grid-column:span 5}.memory-list-card{grid-column:span 7}}
 @media(max-width:640px){.bottomnav{grid-template-columns:repeat(7,1fr);gap:4px;padding:7px}.bottomnav a{font-size:10.5px;padding:7px 2px}.bottomnav .icon{width:19px;height:19px}.memory-img-wrap{min-height:180px}}
 
+
+
+/* Minnebok 3.0 – rask lagring */
+.required-note{font-weight:800;color:var(--muted);font-size:12px;margin-left:6px}.memory-form-simple textarea{min-height:74px}.memory-preview{display:none;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,#1F2A23,#3F5144);min-height:160px;place-items:center}.memory-preview.has-image{display:grid}.memory-preview img{width:100%;max-height:280px;object-fit:contain;display:block}.memory-more-options{border:1px solid rgba(127,154,99,.20);background:#F8F5F0;border-radius:22px;padding:0 14px}.memory-more-options summary{cursor:pointer;font-weight:950;color:var(--navy);padding:13px 0;list-style:none}.memory-more-options summary::-webkit-details-marker{display:none}.memory-more-options summary:after{content:" ▾";color:var(--blue)}.memory-more-options[open] summary:after{content:" ▴"}.memory-more-options label{display:block;margin:0 0 12px}.memory-check{display:flex!important;align-items:center;gap:9px;background:#FFFDF9;border-radius:16px;padding:11px 12px}.memory-check input{width:18px;height:18px}.memory-status.saved{color:#2F3D32;background:#EAF4F7;border-radius:999px;padding:8px 11px;width:max-content;max-width:100%}
+
 </style>
 </head>
 <body>
@@ -448,29 +453,39 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   <div class="section-title"><h2>Minnebok</h2><p>Felles bilder og små minner fra turen</p></div>
   <div class="grid">
     <article class="memory-hero">
-      <h3>TravelBook Cloud</h3>
-      <p>Legg inn bilder fra mobilen. Minnene lagres i skyen og vises for alle som bruker TravelBook.</p>
+      <h3>Minnebok</h3>
+      <p>Velg et bilde, skriv eventuelt én kort tekst og lagre. Alt deles automatisk i felles TravelBook.</p>
     </article>
     <article class="card memory-form-card">
       <div class="pad">
-        <h3>Legg til minne</h3>
-        <form class="memory-form" id="memoryForm">
-          <div class="memory-file"><label for="memoryImage">Bilde</label><input id="memoryImage" name="image" type="file" accept="image/*" required></div>
-          <label>Dag/sted
-            <select id="memoryDay" required>
-              <option value="Dag 1 · Røros">Dag 1 · Røros</option>
-              <option value="Dag 2 · Olavsgruva / Smelthytta">Dag 2 · Olavsgruva / Smelthytta</option>
-              <option value="Dag 3 · Trondheim / Britannia">Dag 3 · Trondheim / Britannia</option>
-              <option value="Dag 4 · Trondheim">Dag 4 · Trondheim</option>
-              <option value="Bonus · Lom">Bonus · Lom</option>
-              <option value="Vinminne">Vinminne</option>
-            </select>
+        <h3>Legg til bilde</h3>
+        <form class="memory-form memory-form-simple" id="memoryForm">
+          <div class="memory-file">
+            <label for="memoryImage">Bilde <span class="required-note">obligatorisk</span></label>
+            <input id="memoryImage" name="image" type="file" accept="image/*" required>
+          </div>
+          <div class="memory-preview" id="memoryPreview" aria-live="polite"></div>
+          <label>Hva vil du huske?
+            <textarea id="memoryDescription" placeholder="Kan stå tomt – du kan skrive mer senere."></textarea>
           </label>
-          <label>Tittel <input id="memoryTitle" type="text" placeholder="F.eks. Kveld på Restaurant 1897" required></label>
-          <label>Tekst <textarea id="memoryDescription" placeholder="Skriv et lite minne..."></textarea></label>
-          <label>Sted <input id="memoryPlace" type="text" placeholder="F.eks. Røros, Britannia eller K-U-K"></label>
-          <button class="memory-submit" type="submit">Lagre i felles Minnebok</button>
-          <div class="memory-status" id="memoryStatus">Klar til å lagre første minne.</div>
+          <details class="memory-more-options" id="memoryMoreOptions">
+            <summary>Flere valg</summary>
+            <label>Dag/sted
+              <select id="memoryDay">
+                <option value="">Foreslå automatisk / ikke valgt</option>
+                <option value="Dag 1 · Røros">Dag 1 · Røros</option>
+                <option value="Dag 2 · Olavsgruva / Smelthytta">Dag 2 · Olavsgruva / Smelthytta</option>
+                <option value="Dag 3 · Trondheim / Britannia">Dag 3 · Trondheim / Britannia</option>
+                <option value="Dag 4 · Trondheim">Dag 4 · Trondheim</option>
+                <option value="Bonus · Lom">Bonus · Lom</option>
+                <option value="Vinminne">Vinminne</option>
+              </select>
+            </label>
+            <label>Sted <input id="memoryPlace" type="text" placeholder="F.eks. Røros, Britannia eller K-U-K"></label>
+            <label class="memory-check"><input id="memoryFavorite" type="checkbox"> Marker som favoritt</label>
+          </details>
+          <button class="memory-submit" type="submit">Lagre til felles Minnebok</button>
+          <div class="memory-status" id="memoryStatus">Kun bilde er obligatorisk.</div>
         </form>
       </div>
     </article>
@@ -755,7 +770,38 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
   let filter = 'all';
   if(!grid || !form) return;
 
-  function setStatus(text){ if(status) status.textContent = text; }
+  function setStatus(text, saved=false){ if(status){ status.textContent = text; status.classList.toggle('saved', !!saved); } }
+  function suggestMemoryDay(){
+    const d = new Date();
+    const m = d.getMonth()+1, day = d.getDate();
+    if(m === 7 && day === 11) return 'Dag 1 · Røros';
+    if(m === 7 && day === 12) return 'Dag 2 · Olavsgruva / Smelthytta';
+    if(m === 7 && day === 13) return 'Dag 3 · Trondheim / Britannia';
+    if(m === 7 && day === 14) return 'Dag 4 · Trondheim';
+    if(m === 7 && day >= 15) return 'Bonus · Lom';
+    return 'Minne';
+  }
+  function makeMemoryTitle(text){
+    const first = text.split(/[.!?\n]/).map(s=>s.trim()).find(Boolean) || 'Minne';
+    return first.length > 42 ? first.slice(0,39).trim() + '…' : first;
+  }
+  function clearMemoryPreview(){
+    const preview = document.getElementById('memoryPreview');
+    if(preview){ preview.classList.remove('has-image'); preview.innerHTML=''; }
+  }
+  const memoryImageInput = document.getElementById('memoryImage');
+  if(memoryImageInput){
+    memoryImageInput.addEventListener('change', ()=>{
+      const file = memoryImageInput.files && memoryImageInput.files[0];
+      const preview = document.getElementById('memoryPreview');
+      if(!preview) return;
+      if(!file){ clearMemoryPreview(); return; }
+      const url = URL.createObjectURL(file);
+      preview.innerHTML = `<img src="${url}" alt="Forhåndsvisning av minne">`;
+      preview.classList.add('has-image');
+      setStatus('Bildet er klart. Skriv tekst hvis du vil, eller lagre direkte.');
+    });
+  }
   function escapeHtml(str){ return String(str||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
   async function resizeImage(file){
     const img = await new Promise((resolve,reject)=>{ const i=new Image(); i.onload=()=>resolve(i); i.onerror=reject; i.src=URL.createObjectURL(file); });
@@ -808,7 +854,7 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
     if(!list.length){ grid.innerHTML = '<div class="memory-empty">Ingen minner her ennå. Legg inn første bilde fra turen.</div>'; return; }
     grid.innerHTML = list.map(m => `
       <article class="memory-card" data-id="${m.id}">
-        <button type="button" class="memory-img-wrap" data-open="${escapeHtml(m.image)}" style="border:0;width:100%;padding:0;cursor:pointer"><img src="${escapeHtml(m.image)}" alt="${escapeHtml(m.title)}" loading="lazy"></button>
+        <button type="button" class="memory-img-wrap" data-open="${escapeHtml(m.image)}" style="border:0;width:100%;padding:0;cursor:pointer"><img src="${escapeHtml(m.image)}" alt="${escapeHtml(m.title || 'Minne')}" loading="lazy"></button>
         <div class="memory-pad">
           <div class="memory-meta"><span>${escapeHtml(m.day || 'Minne')}</span>${m.place ? `<span>${escapeHtml(m.place)}</span>` : ''}${m.favorite ? '<span>Favoritt</span>' : ''}</div>
           <h3>${escapeHtml(m.title || 'Uten tittel')}</h3>
@@ -828,16 +874,22 @@ section{padding-top:46px;padding-bottom:46px}.section-title h2{font-size:clamp(3
       setStatus('Laster opp bilde…');
       const image = await uploadImage(file);
       setStatus('Lagrer minne…');
+      const description = document.getElementById('memoryDescription').value.trim();
+      const selectedDay = document.getElementById('memoryDay').value || suggestMemoryDay();
+      const title = description ? makeMemoryTitle(description) : `Minne fra ${selectedDay.replace(/^Dag \d+ · /,'')}`;
       await insertMemory({
-        day: document.getElementById('memoryDay').value,
+        day: selectedDay,
         place: document.getElementById('memoryPlace').value.trim(),
-        title: document.getElementById('memoryTitle').value.trim(),
-        description: document.getElementById('memoryDescription').value.trim(),
+        title,
+        description,
         image,
-        favorite: false
+        favorite: !!document.getElementById('memoryFavorite')?.checked
       });
       form.reset();
-      setStatus('Minne lagret i skyen.');
+      clearMemoryPreview();
+      const moreOptions = document.getElementById('memoryMoreOptions');
+      if(moreOptions) moreOptions.open = false;
+      setStatus('✓ Minnet er lagret i felles Minnebok.', true);
       await fetchMemories();
     }catch(err){ console.error(err); setStatus('Kunne ikke lagre. Sjekk Supabase-oppsett og nett.'); }
   });
