@@ -43,6 +43,17 @@
 .arrival-card{background:linear-gradient(180deg,#E4FAFC,#fffdf7)}
 @media(max-width:640px){.assistant-grid{grid-template-columns:1fr 1fr}.assistant-checks{grid-template-columns:1fr}.assistant-card h3{font-size:28px}}
 
+/* Praktisk reiseplan */
+.packing-card{background:linear-gradient(180deg,#fffdf7,#E4FAFC)}
+.packing-list{display:grid;gap:9px;margin-top:14px}
+.pack-item{display:flex;align-items:center;gap:10px;background:white;border:1px solid rgba(21,151,165,.16);border-radius:16px;padding:11px 12px;font-weight:850}
+.pack-item input{width:20px;height:20px;accent-color:var(--sea)}
+.pack-item.done{opacity:.68;text-decoration:line-through}
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.info-strip div{background:#FFF4DF;border:1px solid rgba(21,151,165,.13);border-radius:18px;padding:11px 12px}
+.info-strip span{display:block;font-size:11px;font-weight:950;color:#7C7A65;text-transform:uppercase;letter-spacing:.08em}.info-strip strong{display:block;margin-top:3px}
+@media(max-width:640px){.info-strip{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -97,6 +108,8 @@
   <article class="card half reveal"><div class="pad"><h3>🛄 Innsjekk og dokumenter</h3><ul class="checklist"><li>Innsjekk åpner normalt 24 timer før avgang</li><li>Hent boardingkort i Norwegian-appen</li><li>Pass til alle reisende</li><li>Kontroller bagasje og seter før avreise</li><li>Bookingreferanse: <b>Z9K5G3</b></li></ul></div></article>
   <article class="card half reveal"><div class="pad"><h3>🚗 Praktisk avreise</h3><p>Legg inn parkering, oppmøtetid og når dere bør kjøre hjemmefra når dette er klart.</p><div class="flight-meta"><div><span>Anbefalt på flyplassen</span><strong>ca. 2 t før</strong></div><div><span>Foreløpig oppmøte</span><strong>06:30</strong></div><div><span>Avgang</span><strong>08:30</strong></div><div><span>Reisefølge</span><strong>12 personer</strong></div></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=Oslo+Gardermoen" target="_blank">Veibeskrivelse</a><a class="btn light" href="https://avinor.no/flyplass/oslo/" target="_blank">Avinor OSL</a></div></div></article>
   <article class="card half reveal arrival-card"><div class="pad"><h3>☀️ Ved landing i Palma</h3><p>Når dere lander er det raskt videre til Alcúdia. Denne boksen kan senere få hotellets adresse, sjåfør/leiebil og eksakt kjøretid.</p><div class="flight-meta"><div><span>Flyplass</span><strong>Palma de Mallorca</strong></div><div><span>Base</span><strong>Alcúdia</strong></div><div><span>Kjøretid</span><strong>ca. 45–55 min</strong></div><div><span>Første fokus</span><strong>Transport og innsjekk</strong></div></div><div class="btns"><a class="btn light" href="https://maps.google.com/?q=Palma+de+Mallorca+Airport+to+Alc%C3%BAdia" target="_blank">Rute til Alcúdia</a><a class="btn light" href="#minnebok">Første feriebilde</a></div></div></article>
+  <article class="card half reveal packing-card"><div class="pad"><h3>🧳 Bagasje og dokumenter</h3><p>En enkel felles sjekkliste som lagres på denne enheten. Perfekt siste dagene før avreise.</p><div class="packing-list" id="packingList"><label class="pack-item"><input type="checkbox" data-pack="pass"> Pass til alle</label><label class="pack-item"><input type="checkbox" data-pack="boarding"> Boardingkort i Norwegian</label><label class="pack-item"><input type="checkbox" data-pack="solkrem"> Solkrem og caps</label><label class="pack-item"><input type="checkbox" data-pack="ladere"> Ladere og powerbank</label><label class="pack-item"><input type="checkbox" data-pack="medisin"> Medisiner og plaster</label><label class="pack-item"><input type="checkbox" data-pack="barn"> Badetøy / barneting</label></div></div></article>
+  <article class="card half reveal"><div class="pad"><h3>📌 Reisehurtigvalg</h3><p>Samler de viktigste snarveiene før og under flyreisen.</p><div class="info-strip"><div><span>Booking</span><strong>Z9K5G3</strong></div><div><span>Oppmøte</span><strong>ca. 06:30</strong></div><div><span>Første base</span><strong>Alcúdia</strong></div></div><div class="btns"><a class="btn" href="https://www.norwegian.com/no/" target="_blank" rel="noopener noreferrer">Norwegian</a><a class="btn light" href="https://avinor.no/flyplass/oslo/" target="_blank" rel="noopener noreferrer">Avinor OSL</a><a class="btn light" href="https://maps.google.com/?q=Alc%C3%BAdia%20Mallorca" target="_blank" rel="noopener noreferrer">Kart Alcúdia</a></div></div></article>
 </div></section>
 <section class="section" id="program"><div class="section-title"><h2>Program</h2><p>Første skisse – fylles ut med deres detaljer</p></div><article class="program-day reveal"><div class="day-head"><h3>Dag 1 · Ankomst</h3><p>Innsjekk, bli kjent med området og enkel middag.</p></div><div class="event"><div class="time">Etterm.</div><div><b>Ankomst Mallorca</b><p>Transport til Alcúdia og innsjekk.</p></div></div><div class="event"><div class="time">Kveld</div><div><b>Første tapasrunde</b><p>Uformell middag med noe alle liker.</p></div></div></article><article class="program-day reveal"><div class="day-head"><h3>Dag 2 · Alcúdia</h3><p>Gamlebyen, strand og rolig ferietempo.</p></div><div class="event"><div class="time">10:30</div><div><b>Alcúdia gamleby</b><p>Rusle i gatene, små butikker, kaffe og is.</p></div></div><div class="event"><div class="time">15:00</div><div><b>Playa de Muro</b><p>Barnevennlig strand, klart vann og god plass.</p></div></div></article><article class="program-day reveal"><div class="day-head"><h3>Dag 3 · Utflukt</h3><p>Pollença, Formentor eller Palma – avhengig av vær og energi.</p></div><div class="event"><div class="time">Form.</div><div><b>Cap de Formentor</b><p>Spektakulær utsikt. Start tidlig hvis det er varmt.</p></div></div></article></section>
 <section class="section" id="strender"><div class="section-title"><h2>Strender</h2><p>De trygge valgene først</p></div><div class="grid"><article class="feature half reveal"><div><h3>Playa de Muro</h3><p>Langgrunt, lyst vann og perfekt med barn.</p></div></article><article class="feature half reveal"><div><h3>Formentor</h3><p>Mer dramatisk og eksklusiv stemning – fint som utflukt.</p></div></article><article class="card third reveal"><div class="pad"><h3>🏖️ Alcúdia Beach</h3><p>Nærmest og enklest. God start for første stranddag.</p><span class="tag">Barnevennlig</span><span class="tag">Enkelt</span></div></article><article class="card third reveal"><div class="pad"><h3>🌊 Cala Sant Vicenç</h3><p>Liten bukt med klart vann. Fint hvis dere vil ha variasjon.</p><span class="tag">Bukt</span><span class="tag">Foto</span></div></article><article class="card third reveal"><div class="pad"><h3>⛵ Port de Pollença</h3><p>Roligere havnefølelse, promenade og gode lunsjmuligheter.</p><span class="tag">Lunsj</span><span class="tag">Promenade</span></div></article></div></section>
@@ -154,6 +167,22 @@ function updateTravelAssistant(){
 updateTravelAssistant();setInterval(updateTravelAssistant,60000);
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const form=document.getElementById('memoryForm'),file=document.getElementById('memoryImage'),preview=document.getElementById('preview'),grid=document.getElementById('memoryGrid');let selectedImage='';function renderMemories(){const memories=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');grid.innerHTML=memories.map((m,i)=>`<article class="memory"><img src="${m.image}" alt="Minne"><div class="pad"><b>${m.day}</b><p>${m.text||'Uten tekst'}</p><button class="btn light" onclick="deleteMemory(${i})">Slett</button></div></article>`).join('')}window.deleteMemory=i=>{const a=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');a.splice(i,1);localStorage.setItem('mallorcaMemories',JSON.stringify(a));renderMemories()};file.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{selectedImage=reader.result;preview.src=selectedImage;preview.style.display='block'};reader.readAsDataURL(f)});form.addEventListener('submit',e=>{e.preventDefault();if(!selectedImage){alert('Velg et bilde først');return}const memories=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');memories.unshift({image:selectedImage,text:document.getElementById('memoryText').value,day:document.getElementById('memoryDay').value,created:new Date().toISOString()});localStorage.setItem('mallorcaMemories',JSON.stringify(memories));form.reset();selectedImage='';preview.style.display='none';document.getElementById('savedNote').style.display='block';setTimeout(()=>document.getElementById('savedNote').style.display='none',1600);renderMemories()});renderMemories();
+
+function initPackingList(){
+  const items=document.querySelectorAll('#packingList input[type="checkbox"]');
+  if(!items.length)return;
+  const saved=JSON.parse(localStorage.getItem('mallorcaPacking')||'{}');
+  items.forEach(input=>{
+    input.checked=!!saved[input.dataset.pack];
+    input.closest('.pack-item').classList.toggle('done',input.checked);
+    input.addEventListener('change',()=>{
+      saved[input.dataset.pack]=input.checked;
+      localStorage.setItem('mallorcaPacking',JSON.stringify(saved));
+      input.closest('.pack-item').classList.toggle('done',input.checked);
+    });
+  });
+}
+initPackingList();
 </script>
 </body>
 </html>
