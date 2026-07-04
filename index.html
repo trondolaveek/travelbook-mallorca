@@ -110,6 +110,75 @@
 .villa-lightbox .prev{left:18px}.villa-lightbox .next{right:18px}.villa-caption{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(255,255,255,.92);color:#083B4C;border-radius:999px;padding:10px 16px;font-weight:950;max-width:90vw;text-align:center}
 @media(max-width:760px){.hero.villa-main-hero{min-height:88vh}.villa-premium-panel{grid-template-columns:1fr}.villa-amenity-grid{grid-template-columns:1fr}.villa-lightbox .nav{width:42px;height:42px}.villa-lightbox .prev{left:10px}.villa-lightbox .next{right:10px}}
 
+
+/* Norwegian background for Travel Assistant */
+.assistant-card{
+  background:
+    linear-gradient(90deg,rgba(8,59,76,.96) 0%,rgba(8,59,76,.88) 34%,rgba(8,59,76,.48) 68%,rgba(8,59,76,.22) 100%),
+    url('images/norwegian-assistant-bg.jpg'),
+    linear-gradient(135deg,#083B4C,#1597A5 62%,#F7C948);
+  background-size:cover;
+  background-position:center right;
+  min-height:430px;
+}
+.assistant-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 15% 18%,rgba(255,255,255,.20),transparent 22%),
+             linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.06));
+  z-index:0;
+}
+.assistant-card:after{
+  content:"Norwegian";
+  right:24px;
+  top:22px;
+  width:auto;
+  height:auto;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  color:#D71920;
+  padding:9px 14px;
+  font-size:14px;
+  font-weight:950;
+  letter-spacing:.02em;
+  opacity:.95;
+  z-index:1;
+}
+.assistant-inner{
+  max-width:660px;
+  margin:22px;
+  padding:24px;
+  border-radius:30px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.24);
+  backdrop-filter:blur(14px);
+  box-shadow:0 24px 70px rgba(0,0,0,.24);
+}
+.assistant-kicker{color:rgba(255,255,255,.86)}
+.assistant-card h3{font-size:38px;text-shadow:0 8px 24px rgba(0,0,0,.22)}
+.assistant-card p{max-width:560px}
+.assistant-grid div,.assistant-checks span{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.26);
+}
+.assistant-card .btn{background:white;color:var(--deep)}
+.assistant-card .btn.light{background:rgba(255,255,255,.82);color:var(--deep)}
+@media(max-width:640px){
+  .assistant-card{
+    min-height:520px;
+    background:
+      linear-gradient(180deg,rgba(8,59,76,.92) 0%,rgba(8,59,76,.74) 52%,rgba(8,59,76,.45) 100%),
+      url('images/norwegian-assistant-bg.jpg'),
+      linear-gradient(135deg,#083B4C,#1597A5 62%,#F7C948);
+    background-size:cover;
+    background-position:center top;
+  }
+  .assistant-card:after{right:18px;top:16px;font-size:12px}
+  .assistant-inner{margin:18px;padding:20px;border-radius:26px}
+  .assistant-card h3{font-size:30px}
+}
+
 </style>
 </head>
 <body>
