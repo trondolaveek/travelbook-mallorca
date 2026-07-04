@@ -1,30 +1,31 @@
 {
-  "name": "TravelBook",
+  "name": "TravelBook Mallorca 2026",
   "short_name": "TravelBook",
-  "description": "Din digitale reiseguide for Røros og Trondheim.",
-  "start_url": "./",
+  "description": "Personlig reiseapp for Mallorca 2026",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#FBF8F2",
-  "theme_color": "#7F9A63",
+  "background_color": "#FFF9EF",
+  "theme_color": "#083B4C",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "images/app-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "images/app-icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "apple-touch-icon.png",
+      "src": "images/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
