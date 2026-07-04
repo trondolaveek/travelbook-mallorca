@@ -152,11 +152,32 @@
   }
 }
 
+
+/* V2.1.2: Robust image layers for main hero and Travel Assistant */
+.hero{background:#083B4C !important;}
+.hero-photo-bg{position:absolute;inset:0;background-image:url('images/villa-hero.jpg');background-size:cover;background-position:center;z-index:0;transform:scale(1.03);animation:tbHeroPhotoZoom 24s ease-in-out infinite alternate;}
+.hero-photo-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,22,29,.68) 0%,rgba(8,59,76,.28) 48%,rgba(8,59,76,.08) 100%),linear-gradient(180deg,rgba(8,59,76,.05),rgba(8,59,76,.30) 42%,rgba(8,59,76,.88));}
+.hero:before{z-index:1;background:linear-gradient(180deg,rgba(8,59,76,.08),rgba(8,59,76,.24) 38%,rgba(8,59,76,.86)) !important;}
+.hero:after{display:none !important;}
+.hero .sea-art{display:none !important;}
+.hero-content{z-index:2;}
+@keyframes tbHeroPhotoZoom{from{transform:scale(1.03)}to{transform:scale(1.10)}}
+@media(max-width:760px){.hero-photo-bg{background-position:center top}.hero-photo-bg:after{background:linear-gradient(180deg,rgba(3,22,29,.22),rgba(8,59,76,.55) 48%,rgba(8,59,76,.94));}}
+
+.assistant-card{background:#083B4C !important;isolation:isolate;}
+.assistant-card:before{content:"";position:absolute;inset:0;background-image:url('images/norwegian-assistant-bg.jpg');background-size:cover;background-position:center;z-index:0;opacity:.82;transform:scale(1.02);}
+.assistant-card:after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(8,59,76,.90) 0%,rgba(8,59,76,.68) 45%,rgba(8,59,76,.20) 100%),linear-gradient(180deg,rgba(8,59,76,.20),rgba(8,59,76,.72));}
+.assistant-inner{position:relative;z-index:1;}
+.assistant-grid div,.assistant-checks span{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.26);box-shadow:0 10px 24px rgba(0,0,0,.10)}
+.assistant-card .btn.light{background:rgba(255,255,255,.92);color:var(--deep)}
+@media(max-width:640px){.assistant-card:before{background-position:60% center;opacity:.55}.assistant-card:after{background:linear-gradient(180deg,rgba(8,59,76,.86),rgba(8,59,76,.72));}}
+
 </style>
 </head>
 <body>
 <div class="app">
 <header class="hero" id="top">
+  <div class="hero-photo-bg" aria-hidden="true"></div>
   <div class="sea-art"><div class="island"></div><div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div></div>
   <div class="hero-content">
     <div class="hero-grid">
