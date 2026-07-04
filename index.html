@@ -570,5 +570,89 @@ function initPackingList(){
 }
 initPackingList();
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+(function(){
+  const url = window.TRAVELBOOK_SUPABASE_URL;
+  const key = window.TRAVELBOOK_SUPABASE_KEY;
+  const ready = url && key && !String(key).includes('LIM_INN') && window.supabase;
+  if(!ready){ console.log('TravelBook Cloud ikke aktivert ennå.'); return; }
+  const client = window.supabase.createClient(url, key);
+  window.travelbookSupabase = client;
+
+  function esc(v){return String(v||'').replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+
+  async function loadCloudFamilyNews(){
+    const list=document.getElementById('familyNewsList');
+    if(!list)return;
+    const {data,error}=await client.from('family_news').select('*').order('created_at',{ascending:false}).limit(8);
+    if(error){console.warn('family_news:', error.message);return;}
+    if(!data || !data.length)return;
+    list.innerHTML=data.map(item=>`<div class="news-item"><span>${esc(item.author||'Familienytt')}</span><b>${esc(item.message||'')}</b><small>${new Date(item.created_at).toLocaleString('no-NO',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</small></div>`).join('');
+  }
+
+  async function loadCloudProgram(){
+    const timeline=document.getElementById('todayTimeline');
+    if(!timeline)return;
+    const {data,error}=await client.from('program').select('*').order('time',{ascending:true}).limit(12);
+    if(error){console.warn('program:', error.message);return;}
+    if(!data || !data.length)return;
+    timeline.innerHTML=data.map(item=>`<div class="timeline-item"><div class="timeline-time">${esc(item.time||'')}</div><div class="timeline-icon">📅</div><div><b>${esc(item.title||'Program')}</b><p>${esc(item.day||'')}</p></div></div>`).join('');
+  }
+
+  async function loadCloudMemories(){
+    const grid=document.getElementById('memoryGrid');
+    if(!grid)return;
+    const {data,error}=await client.from('memories').select('*').order('created_at',{ascending:false}).limit(50);
+    if(error){console.warn('memories:', error.message);return;}
+    if(!data || !data.length){grid.innerHTML='';return;}
+    grid.innerHTML=data.map(m=>`<article class="memory"><img src="${esc(m.image_url)}" alt="Minne"><div class="pad"><b>${esc(m.day||'Mallorca-minne')}</b><p>${esc(m.caption||'Uten tekst')}</p><small>${esc(m.author||'')}</small></div></article>`).join('');
+  }
+
+  function enableCloudMemoryForm(){
+    const old=document.getElementById('memoryForm');
+    const grid=document.getElementById('memoryGrid');
+    if(!old || !grid)return;
+    const fresh=old.cloneNode(true);
+    old.parentNode.replaceChild(fresh, old);
+    const file=fresh.querySelector('#memoryImage');
+    const preview=fresh.querySelector('#preview');
+    const note=fresh.querySelector('#savedNote');
+    file.addEventListener('change',()=>{
+      const f=file.files[0]; if(!f)return;
+      preview.src=URL.createObjectURL(f); preview.style.display='block';
+    });
+    fresh.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const f=file.files[0];
+      if(!f){alert('Velg et bilde først');return;}
+      const ext=(f.name.split('.').pop()||'jpg').toLowerCase();
+      const name=`${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+      const up=await client.storage.from('memories').upload(name,f,{cacheControl:'3600',upsert:false});
+      if(up.error){alert('Kunne ikke laste opp bilde: '+up.error.message);return;}
+      const {data:pub}=client.storage.from('memories').getPublicUrl(name);
+      const payload={
+        image_url:pub.publicUrl,
+        caption:fresh.querySelector('#memoryText').value||'',
+        day:fresh.querySelector('#memoryDay').value||'',
+        author:'TravelBook'
+      };
+      const ins=await client.from('memories').insert(payload);
+      if(ins.error){alert('Bildet ble lastet opp, men minnet ble ikke lagret: '+ins.error.message);return;}
+      fresh.reset(); preview.style.display='none';
+      if(note){note.textContent='✓ Minnet er delt med alle'; note.style.display='block'; setTimeout(()=>note.style.display='none',1800);}
+      loadCloudMemories();
+    });
+  }
+
+  loadCloudFamilyNews();
+  loadCloudProgram();
+  loadCloudMemories();
+  enableCloudMemoryForm();
+})();
+</script>
+
 </body>
 </html>

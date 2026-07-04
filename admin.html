@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TravelBook Admin</title>
+<meta name="theme-color" content="#083B4C" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<style>
+:root{--sea:#1597A5;--deep:#083B4C;--ink:#173A3F;--cream:#FFF9EF;--sand:#FFF4DF;--shadow:0 18px 44px rgba(8,59,76,.16)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#EAFBFC,#FFF9EF 46%,#F6E5C7);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);padding:20px}.wrap{max-width:860px;margin:auto}.hero{background:linear-gradient(135deg,var(--deep),var(--sea));color:white;border-radius:30px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px}.hero h1{margin:0;font-size:38px;letter-spacing:-.05em}.hero p{margin:8px 0 0;color:rgba(255,255,255,.86);font-weight:750}.card{background:rgba(255,253,247,.96);border:1px solid rgba(21,151,165,.16);border-radius:26px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}h2{margin:0 0 12px;font-size:26px;letter-spacing:-.035em}label{display:block;font-weight:900;margin:10px 0 6px}input,textarea,select{width:100%;border:1px solid rgba(21,151,165,.22);border-radius:16px;padding:13px 14px;font:inherit;background:white;color:var(--ink)}textarea{min-height:90px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;background:var(--deep);color:white;border-radius:16px;padding:13px 16px;font-weight:950;font-size:15px;cursor:pointer;margin-top:14px}.btn.light{background:#DDF5F7;color:var(--deep)}.status{font-weight:900;color:var(--sea);margin-top:10px;min-height:22px}.list{display:grid;gap:8px;margin-top:10px}.item{background:white;border:1px solid rgba(21,151,165,.14);border-radius:18px;padding:12px}.item small{color:#6D7875;font-weight:800}.preview{max-width:100%;max-height:320px;object-fit:contain;background:#083B4C;border-radius:18px;display:none;margin-top:10px}@media(max-width:640px){.row{grid-template-columns:1fr}.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero"><h1>TravelBook Admin</h1><p>Oppdater Familienytt, dagens program og Minnebok uten GitHub.</p></section>
+
+  <section class="card"><h2>📢 Ny beskjed</h2><form id="newsForm"><label>Beskjed</label><input id="newsMessage" placeholder="🏃 Felles løpetur kl. 07:00" required><label>Avsender</label><input id="newsAuthor" placeholder="Trond" value="Trond"><button class="btn">Lagre beskjed</button><div class="status" id="newsStatus"></div></form><div class="list" id="newsList"></div></section>
+
+  <section class="card"><h2>📅 Program</h2><form id="programForm"><div class="row"><div><label>Tid</label><input id="programTime" placeholder="09:00"></div><div><label>Dag/tekst</label><input id="programDay" placeholder="Lørdag 25. juli"></div></div><label>Tittel</label><input id="programTitle" placeholder="Frokost på terrassen" required><button class="btn">Legg til program</button><div class="status" id="programStatus"></div></form><div class="list" id="programList"></div></section>
+
+  <section class="card"><h2>📸 Nytt minne</h2><form id="memoryForm"><label>Bilde</label><input id="memoryFile" type="file" accept="image/*" required><img id="memoryPreview" class="preview" alt="Forhåndsvisning"><label>Tekst</label><textarea id="memoryCaption" placeholder="Første kveld på terrassen 🍷"></textarea><div class="row"><div><label>Dag</label><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Stranddag</option><option>Middag</option><option>Marked</option><option>Villa</option></select></div><div><label>Avsender</label><input id="memoryAuthor" value="Trond"></div></div><button class="btn">Last opp minne</button><div class="status" id="memoryStatus"></div></form><div class="list" id="memoryList"></div></section>
+
+  <p><a class="btn light" href="index.html">Tilbake til TravelBook</a></p>
+</div>
+<script>
+const ready = window.TRAVELBOOK_SUPABASE_URL && window.TRAVELBOOK_SUPABASE_KEY && !window.TRAVELBOOK_SUPABASE_KEY.includes('LIM_INN') && window.supabase;
+if(!ready){alert('Lim inn Publishable key i supabase-config.js først.');}
+const client = ready ? window.supabase.createClient(window.TRAVELBOOK_SUPABASE_URL, window.TRAVELBOOK_SUPABASE_KEY) : null;
+const esc=v=>String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+async function refreshNews(){if(!client)return;const {data}=await client.from('family_news').select('*').order('created_at',{ascending:false}).limit(8);document.getElementById('newsList').innerHTML=(data||[]).map(x=>`<div class="item"><b>${esc(x.message)}</b><br><small>${esc(x.author)} · ${new Date(x.created_at).toLocaleString('no-NO')}</small></div>`).join('');}
+async function refreshProgram(){if(!client)return;const {data}=await client.from('program').select('*').order('time',{ascending:true}).limit(12);document.getElementById('programList').innerHTML=(data||[]).map(x=>`<div class="item"><b>${esc(x.time)} · ${esc(x.title)}</b><br><small>${esc(x.day)}</small></div>`).join('');}
+async function refreshMemories(){if(!client)return;const {data}=await client.from('memories').select('*').order('created_at',{ascending:false}).limit(8);document.getElementById('memoryList').innerHTML=(data||[]).map(x=>`<div class="item"><b>${esc(x.day)}</b><br><small>${esc(x.caption)} · ${esc(x.author)}</small></div>`).join('');}
+
+document.getElementById('newsForm').addEventListener('submit',async e=>{e.preventDefault();const status=document.getElementById('newsStatus');const {error}=await client.from('family_news').insert({message:newsMessage.value,author:newsAuthor.value});status.textContent=error?'Feil: '+error.message:'✓ Beskjed lagret';if(!error){newsForm.reset();newsAuthor.value='Trond';refreshNews();}});
+document.getElementById('programForm').addEventListener('submit',async e=>{e.preventDefault();const status=document.getElementById('programStatus');const {error}=await client.from('program').insert({time:programTime.value,title:programTitle.value,day:programDay.value});status.textContent=error?'Feil: '+error.message:'✓ Program lagret';if(!error){programForm.reset();refreshProgram();}});
+memoryFile.addEventListener('change',()=>{const f=memoryFile.files[0];if(!f)return;memoryPreview.src=URL.createObjectURL(f);memoryPreview.style.display='block';});
+document.getElementById('memoryForm').addEventListener('submit',async e=>{e.preventDefault();const status=document.getElementById('memoryStatus');const f=memoryFile.files[0];if(!f)return;const ext=(f.name.split('.').pop()||'jpg').toLowerCase();const name=`${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;const up=await client.storage.from('memories').upload(name,f,{cacheControl:'3600',upsert:false});if(up.error){status.textContent='Feil: '+up.error.message;return;}const {data:pub}=client.storage.from('memories').getPublicUrl(name);const ins=await client.from('memories').insert({image_url:pub.publicUrl,caption:memoryCaption.value,day:memoryDay.value,author:memoryAuthor.value});status.textContent=ins.error?'Feil: '+ins.error.message:'✓ Minne delt';if(!ins.error){memoryForm.reset();memoryAuthor.value='Trond';memoryPreview.style.display='none';refreshMemories();}});
+refreshNews();refreshProgram();refreshMemories();
+</script>
+</body>
+</html>
