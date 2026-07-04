@@ -225,6 +225,13 @@
 @media(max-width:760px){.market-week-card{position:relative;right:auto;top:auto;margin:16px;width:auto}.market-hero-premium{display:block;padding-top:250px}.market-hero-premium .market-hero-content{padding:22px}.market-features{grid-template-columns:repeat(2,1fr)}.bottomnav{grid-template-columns:repeat(8,1fr)!important}.bottomnav a{font-size:9px}.bottomnav span{font-size:17px}}
 @media(min-width:761px){.bottomnav{grid-template-columns:repeat(8,1fr)!important}}
 
+
+
+/* Program 2.0: levende dagsplan */
+.today-plan-hero{grid-column:span 12;position:relative;overflow:hidden;border-radius:36px;box-shadow:var(--shadow);background:linear-gradient(135deg,#083B4C,#1597A5 58%,#F7C948);color:white;min-height:360px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:end;padding:26px}
+.today-plan-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.20),transparent 20%),linear-gradient(180deg,rgba(8,59,76,.04),rgba(8,59,76,.62));z-index:0}.today-plan-hero>*{position:relative;z-index:1}.today-plan-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:950;color:rgba(255,255,255,.75);margin-bottom:10px}.today-plan-hero h3{font-size:clamp(38px,6vw,64px);line-height:.95;letter-spacing:-.06em;margin:0;color:white}.today-plan-hero p{color:rgba(255,255,255,.9);font-size:18px;line-height:1.45;max-width:660px}.today-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.today-mini div{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:18px;padding:12px;backdrop-filter:blur(12px)}.today-mini span{display:block;font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7)}.today-mini strong{display:block;margin-top:4px;color:white}.today-note{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:28px;padding:18px;backdrop-filter:blur(12px)}.today-note strong{display:block;font-size:22px;letter-spacing:-.035em}.today-note small{display:block;color:rgba(255,255,255,.82);font-weight:850;line-height:1.4;margin-top:7px}.day-plan-grid{grid-column:span 12;display:grid;grid-template-columns:1.25fr .75fr;gap:18px}.day-timeline,.day-side-card{background:rgba(255,253,247,.97);border:1px solid rgba(21,151,165,.16);border-radius:32px;box-shadow:var(--shadow);overflow:hidden}.day-timeline .pad,.day-side-card .pad{padding:22px}.day-timeline h3,.day-side-card h3{font-size:28px;letter-spacing:-.04em;margin:0 0 14px;color:var(--deep)}.timeline-list{display:grid;gap:11px}.timeline-item{display:grid;grid-template-columns:76px 44px 1fr;gap:12px;align-items:start;background:#fff;border:1px solid rgba(21,151,165,.14);border-radius:22px;padding:14px}.timeline-time{font-weight:950;color:var(--sea);padding-top:10px}.timeline-icon{width:44px;height:44px;border-radius:16px;background:#DDF5F7;display:grid;place-items:center;font-size:23px}.timeline-item b{display:block;color:var(--deep);font-size:17px}.timeline-item p{margin:4px 0 0;color:var(--muted);line-height:1.38;font-weight:750}.day-side-list{display:grid;gap:10px}.day-side-list div{background:#FFF4DF;border:1px solid rgba(21,151,165,.13);border-radius:20px;padding:13px}.day-side-list span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7C7A65;font-weight:950}.day-side-list strong{display:block;margin-top:3px;color:var(--deep)}.program-edit-note{grid-column:span 12;background:linear-gradient(135deg,#fffdf7,#FFF4DF);border:1px dashed rgba(21,151,165,.35);border-radius:28px;padding:18px 20px;color:var(--ink)}.program-edit-note strong{color:var(--deep);font-size:20px}.app-footer{padding:34px 18px 120px;text-align:center;color:var(--muted)}.app-footer .footer-card{max-width:720px;margin:auto;background:rgba(255,253,247,.72);border:1px solid rgba(21,151,165,.14);border-radius:28px;padding:22px;box-shadow:0 12px 28px rgba(8,59,76,.08)}.app-footer strong{display:block;font-size:24px;letter-spacing:-.04em;color:var(--deep)}.app-footer span{display:block;margin-top:5px;font-weight:850}
+@media(max-width:760px){.today-plan-hero{grid-template-columns:1fr;min-height:420px;padding:22px}.today-mini{grid-template-columns:1fr}.day-plan-grid{grid-template-columns:1fr}.timeline-item{grid-template-columns:60px 38px 1fr;padding:12px}.timeline-icon{width:38px;height:38px;border-radius:14px;font-size:20px}.timeline-time{font-size:13px}.today-note{padding:15px}}
+
 </style>
 </head>
 <body>
@@ -260,6 +267,31 @@ const FAMILY_NEWS = [
     text: "En rolig kveld hjemme i villaen."
   }
 ];
+
+/* ===========================
+   DAGENS PROGRAM
+   Endre bare teksten under når dere vil oppdatere planen.
+   Dette er en myk dagsplan, ikke en låst kalender.
+   =========================== */
+const TODAY_PLAN = {
+  date: "Lørdag 25. juli",
+  greeting: "Velkommen til Mallorca",
+  weather: "28° · sol",
+  mood: "Ankomst, basseng og rolig kveld",
+  recommendation: "Ta det enkelt første kvelden: pakk ut, hopp i bassenget og spis noe ukomplisert i nærheten.",
+  schedule: [
+    { time: "08:30", icon: "✈️", title: "Avreise Oslo", text: "Norwegian DY1734 til Palma." },
+    { time: "Etterm.", icon: "🏡", title: "Ankomst Alcanada", text: "Transport til villaen, innsjekk og bli kjent med huset." },
+    { time: "17:30", icon: "🏊", title: "Basseng og landing", text: "Rolig start hjemme i villaen." },
+    { time: "20:00", icon: "🍽️", title: "Enkel middag", text: "La Terraza / Aucanada eller tapas hjemme, avhengig av energi." }
+  ],
+  links: [
+    { label: "Villa", value: "Alcanada Luxury Villa" },
+    { label: "Dagens strand", value: "Cala Poncet hvis vi rekker et bad" },
+    { label: "Middag", value: "Rolig og nært første kveld" },
+    { label: "Husk", value: "Pass, lader, badetøy og godt humør" }
+  ]
+};
 </script>
 <div class="app">
 <header class="hero" id="top">
@@ -349,7 +381,30 @@ const FAMILY_NEWS = [
   <article class="card half reveal packing-card"><div class="pad"><h3>🧳 Bagasje og dokumenter</h3><p>En enkel felles sjekkliste som lagres på denne enheten. Perfekt siste dagene før avreise.</p><div class="packing-list" id="packingList"><label class="pack-item"><input type="checkbox" data-pack="pass"> Pass til alle</label><label class="pack-item"><input type="checkbox" data-pack="boarding"> Boardingkort i Norwegian</label><label class="pack-item"><input type="checkbox" data-pack="solkrem"> Solkrem og caps</label><label class="pack-item"><input type="checkbox" data-pack="ladere"> Ladere og powerbank</label><label class="pack-item"><input type="checkbox" data-pack="medisin"> Medisiner og plaster</label><label class="pack-item"><input type="checkbox" data-pack="barn"> Badetøy / barneting</label></div></div></article>
   <article class="card half reveal"><div class="pad"><h3>📌 Reisehurtigvalg</h3><p>Samler de viktigste snarveiene før og under flyreisen.</p><div class="info-strip"><div><span>Booking</span><strong>Z9K5G3</strong></div><div><span>Oppmøte</span><strong>ca. 06:30</strong></div><div><span>Første base</span><strong>Alcúdia</strong></div></div><div class="btns"><a class="btn" href="https://www.norwegian.com/no/" target="_blank" rel="noopener noreferrer">Norwegian</a><a class="btn light" href="https://avinor.no/flyplass/oslo/" target="_blank" rel="noopener noreferrer">Avinor OSL</a><a class="btn light" href="https://maps.google.com/?q=Alc%C3%BAdia%20Mallorca" target="_blank" rel="noopener noreferrer">Kart Alcúdia</a></div></div></article>
 </div></section>
-<section class="section" id="program"><div class="section-title"><h2>Program</h2><p>Første skisse – fylles ut med deres detaljer</p></div><article class="program-day reveal"><div class="day-head"><h3>Dag 1 · Ankomst</h3><p>Innsjekk, bli kjent med området og enkel middag.</p></div><div class="event"><div class="time">Etterm.</div><div><b>Ankomst Mallorca</b><p>Transport til Alcúdia og innsjekk.</p></div></div><div class="event"><div class="time">Kveld</div><div><b>Første tapasrunde</b><p>Uformell middag med noe alle liker.</p></div></div></article><article class="program-day reveal"><div class="day-head"><h3>Dag 2 · Alcúdia</h3><p>Gamlebyen, strand og rolig ferietempo.</p></div><div class="event"><div class="time">10:30</div><div><b>Alcúdia gamleby</b><p>Rusle i gatene, små butikker, kaffe og is.</p></div></div><div class="event"><div class="time">15:00</div><div><b>Playa de Muro</b><p>Barnevennlig strand, klart vann og god plass.</p></div></div></article><article class="program-day reveal"><div class="day-head"><h3>Dag 3 · Utflukt</h3><p>Pollença, Formentor eller Palma – avhengig av vær og energi.</p></div><div class="event"><div class="time">Form.</div><div><b>Cap de Formentor</b><p>Spektakulær utsikt. Start tidlig hvis det er varmt.</p></div></div></article></section>
+<section class="section" id="program"><div class="section-title"><h2>Program</h2><p>Levende dagsplan som kan oppdateres underveis</p></div><div class="grid">
+  <article class="today-plan-hero reveal">
+    <div>
+      <div class="today-plan-kicker">📅 I dag</div>
+      <h3 id="todayPlanGreeting">Dagens plan</h3>
+      <p id="todayPlanLead">Her kommer dagens myke plan for familien.</p>
+      <div class="today-mini">
+        <div><span>Dato</span><strong id="todayPlanDate">–</strong></div>
+        <div><span>Vær</span><strong id="todayPlanWeather">–</strong></div>
+        <div><span>Stemning</span><strong id="todayPlanMood">–</strong></div>
+      </div>
+    </div>
+    <aside class="today-note">
+      <strong>💡 TravelBook anbefaler</strong>
+      <small id="todayPlanRecommendation">Oppdater dagens anbefaling øverst i index.html.</small>
+    </aside>
+  </article>
+  <div class="day-plan-grid reveal">
+    <article class="day-timeline"><div class="pad"><h3>Plan for dagen</h3><div class="timeline-list" id="todayTimeline"></div></div></article>
+    <aside class="day-side-card"><div class="pad"><h3>Nøkkelinfo</h3><div class="day-side-list" id="todaySideInfo"></div><div class="btns"><a class="btn light" href="#familienytt">Familienytt</a><a class="btn light" href="#strender">Strender</a><a class="btn light" href="#matvin">Restauranter</a></div></div></aside>
+  </div>
+  <article class="program-edit-note reveal"><strong>✏️ Slik oppdateres programmet</strong><p>Åpne <b>index.html</b>, søk etter <b>DAGENS PROGRAM</b>, endre listen og publiser. Senere kan vi koble dette til en enkel mobil-admin slik at GitHub ikke trengs.</p></article>
+</div></section>
+
 <section class="section" id="strender"><div class="section-title"><h2>Strender</h2><p>Tre favoritter – valgt for denne turen</p></div><div class="explore-grid">
   <article class="beach-guide-hero reveal"><h3>Tre strender. Ingen dårlige valg.</h3><p>Vi prioriterer de tre strandene dere mest sannsynlig faktisk kommer til å bruke: nærstranden nedenfor villaen, den enkle familieklassikeren og den vakreste heldagsstranden.</p><div class="beach-pill-row"><span>🚶 Nær villa</span><span>👨‍👩‍👧‍👦 Familievennlig</span><span>💙 Turkist vann</span><span>📍 Kart rett fra appen</span></div></article>
   <article class="premium-beach reveal"><div class="premium-beach-image"><img src="images/beach-cala-poncet.jpg" alt="Cala Poncet" onerror="this.closest('.premium-beach').classList.add('no-photo');this.remove()"></div><div class="premium-beach-content"><span class="label">🥇 Vår nærstrand</span><h3>Cala Poncet</h3><p>Den lille stranden nedenfor huset. Perfekt for morgenbad, et raskt kveldsbad eller når dere vil slippe bil og logistikk.</p><div class="beach-score"><span>★★★★★</span><strong>TravelBook-favoritt</strong></div><div class="beach-details"><div><span>Fra villa</span><strong>ca. 650 m</strong></div><div><span>Tid</span><strong>5–10 min til fots</strong></div><div><span>Best for</span><strong>Morgenbad</strong></div><div><span>Stemning</span><strong>Rolig og lokal</strong></div></div><div class="beach-tags"><span>Klart vann</span><span>Kveldssol</span><span>Lite styr</span><span>Nærmest</span></div><div class="beach-tip"><b>💡 TravelBook anbefaler</b>Gå hit tidlig med kaffe eller ta et rolig bad før middag. Dette blir sannsynligvis stranden dere bruker mest.</div><div class="beach-time"><div><span>Morgen</span><strong>★★★★★</strong></div><div><span>Formiddag</span><strong>★★★</strong></div><div><span>Ettermiddag</span><strong>★★★</strong></div><div><span>Solnedgang</span><strong>★★★★★</strong></div></div><div class="btns"><a class="btn" href="https://maps.google.com/?q=Cala%20Poncet%20Alcanada" target="_blank">📍 Kart</a><a class="btn light" href="images/beach-cala-poncet.jpg" target="_blank">📷 Se bilde</a></div></div></article>
@@ -383,6 +438,14 @@ const FAMILY_NEWS = [
 <section class="section" id="kart"><div class="section-title"><h2>Kart</h2><p>Base, strender og utflukter</p></div><div class="card map reveal"><button class="pin" style="left:48%;top:48%">Villa Alcanada</button><button class="pin" style="left:64%;top:32%">Formentor</button><button class="pin" style="left:36%;top:34%">Pollença</button><button class="pin" style="left:22%;top:78%">Palma</button></div><div class="btns" style="margin-top:16px"><a class="btn" href="https://maps.google.com/?q=Alcanada%20Alcudia%20Mallorca" target="_blank">Åpne villaområdet i Google Maps</a></div></section>
 <section class="section" id="minnebok"><div class="section-title"><h2>Minnebok</h2><p>Første Mallorca-versjon – lokal lagring</p></div><div class="grid"><article class="card half reveal"><div class="pad"><h3>📸 Legg til minne</h3><form class="memory-form" id="memoryForm"><input id="memoryImage" type="file" accept="image/*" required><img id="preview" class="preview" alt="Forhåndsvisning"><textarea id="memoryText" placeholder="Hva vil du huske? Tekst er valgfritt."></textarea><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Dag 2 · Alcúdia</option><option>Dag 3 · Utflukt</option><option>Stranddag</option><option>Middag</option></select><button class="btn" type="submit">Lagre minne</button><p id="savedNote" style="display:none;color:var(--sea);font-weight:950">✓ Minnet er lagret</p></form></div></article><article class="card half reveal"><div class="pad"><h3>☁️ Felles minnebok</h3><p>Denne Mallorca-versjonen er klar for lokal minnebok. Når dere vil dele bilder mellom alle telefoner, lager vi en egen Supabase-bucket/tabell for Mallorca slik at den ikke blandes med Røros.</p><span class="tag">Neste steg</span><span class="tag">Sky-lagring</span></div></article></div><div class="memory-grid" id="memoryGrid"></div></section>
 
+
+<footer class="app-footer">
+  <div class="footer-card">
+    <strong>TravelBook · Mallorca 2026</strong>
+    <span>Made with ❤️ by familien Eek</span>
+  </div>
+</footer>
+
 <div class="villa-lightbox" id="villaLightbox" aria-hidden="true"><button type="button" id="closeVillaLightbox" aria-label="Lukk bilde">×</button><img id="villaLightboxImage" src="" alt="Villa-bilde i fullskjerm"></div>
 </div><nav class="bottomnav"><a href="#top"><span>🏠</span>Start</a><a href="#villa"><span>🏡</span>Villa</a><a href="#reise"><span>✈️</span>Reise</a><a href="#strender"><span>🏖️</span>Strand</a><a href="#matvin"><span>🍽️</span>Mat</a><a href="#markeder"><span>🛍️</span>Marked</a><a href="#program"><span>📅</span>Plan</a><a href="#minnebok"><span>📸</span>Minner</a></nav>
 <script>
@@ -397,6 +460,27 @@ function renderFamilyNews(){
   list.innerHTML=items.map(item=>`<div class="news-item"><span>${item.label||'Beskjed'}</span><b>${item.icon||'📌'} ${item.title||''}</b><small>${item.text||''}</small></div>`).join('');
 }
 renderFamilyNews();
+function renderTodayPlan(){
+  const plan=window.TODAY_PLAN||TODAY_PLAN;
+  const set=(id,val)=>{const el=document.getElementById(id); if(el) el.textContent=val||'';};
+  set('todayPlanGreeting', plan.greeting||'Dagens plan');
+  set('todayPlanLead', plan.date ? `${plan.date} · ${plan.mood||''}` : 'Dagens myke plan for familien.');
+  set('todayPlanDate', plan.date||'Ikke satt');
+  set('todayPlanWeather', plan.weather||'Oppdateres');
+  set('todayPlanMood', plan.mood||'Ferie');
+  set('todayPlanRecommendation', plan.recommendation||'Ingen anbefaling ennå.');
+  const timeline=document.getElementById('todayTimeline');
+  if(timeline){
+    const schedule=Array.isArray(plan.schedule)?plan.schedule:[];
+    timeline.innerHTML=schedule.length?schedule.map(item=>`<div class="timeline-item"><div class="timeline-time">${item.time||''}</div><div class="timeline-icon">${item.icon||'📌'}</div><div><b>${item.title||''}</b><p>${item.text||''}</p></div></div>`).join(''):'<div class="timeline-item"><div class="timeline-time">–</div><div class="timeline-icon">☀️</div><div><b>Ingen plan lagt inn</b><p>Nyt ferien.</p></div></div>';
+  }
+  const side=document.getElementById('todaySideInfo');
+  if(side){
+    const links=Array.isArray(plan.links)?plan.links:[];
+    side.innerHTML=links.length?links.map(item=>`<div><span>${item.label||'Info'}</span><strong>${item.value||''}</strong></div>`).join(''):'<div><span>Status</span><strong>Ingen nøkkelinfo lagt inn</strong></div>';
+  }
+}
+renderTodayPlan();
 </script>
 <script>
 const departure=new Date('2026-07-25T08:30:00');function updateCountdown(){const now=new Date();const days=Math.max(0,Math.ceil((departure-now)/(1000*60*60*24)));document.getElementById('countdown').textContent=days;document.getElementById('clockNumber').textContent=days}updateCountdown();
