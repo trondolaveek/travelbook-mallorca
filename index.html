@@ -24,7 +24,7 @@
 .flight-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;border-bottom:1px solid #F0E5D2;padding-bottom:14px;margin-bottom:14px}.flight-route{font-size:28px;font-weight:950;letter-spacing:-.04em;color:var(--deep)}.flight-number{background:#DDF5F7;color:var(--deep);border-radius:999px;padding:8px 12px;font-weight:950;white-space:nowrap}.flight-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.flight-meta div,.checklist li{background:white;border:1px solid rgba(21,151,165,.14);border-radius:18px;padding:11px 12px}.flight-meta span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:950}.flight-meta strong{display:block;margin-top:3px;color:var(--ink)}
 .checklist{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}.checklist li{font-weight:850}.checklist li:before{content:'✓';color:var(--sea);font-weight:950;margin-right:8px}
 .travel-status{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#E4FAFC;border:1px solid rgba(21,151,165,.18);border-radius:22px;padding:14px;margin-top:14px}.travel-status .status-icon{width:54px;height:54px;border-radius:19px;background:white;display:grid;place-items:center;font-size:26px;box-shadow:0 10px 22px rgba(8,59,76,.10)}
-.trip-bar{margin-top:18px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.27);border-radius:22px;padding:13px 15px;backdrop-filter:blur(14px);max-width:760px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.trip-bar b{font-size:16px}.trip-bar span{color:rgba(255,255,255,.86);font-weight:850}.trip-bar a{color:white;font-weight:950;text-decoration:none}
+.trip-bar{margin-top:16px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.27);border-radius:22px;padding:13px 15px;backdrop-filter:blur(14px);max-width:760px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.trip-bar b{font-size:16px}.trip-bar span{color:rgba(255,255,255,.86);font-weight:850}.trip-bar a{color:white;font-weight:950;text-decoration:none}
 @media(min-width:820px){.travel-alert{grid-column:span 12}.flight-card{grid-column:span 6}}@media(max-width:640px){.flight-head{display:block}.flight-number{display:inline-flex;margin-top:10px}.flight-meta{grid-template-columns:1fr}.bottomnav{grid-template-columns:repeat(7,1fr)!important}.bottomnav a{font-size:9px}.trip-bar{font-size:13px}}
 
 /* Travel Assistant 2.0 */
@@ -94,96 +94,16 @@
 .villa-gallery-intro span{display:block;margin-top:3px;color:var(--muted);font-weight:850}
 @media(max-width:760px){.villa-hero-card.photo-hero{min-height:430px}.villa-photo-card,.villa-photo-card.large{grid-column:span 12;min-height:240px}.villa-photo-card.large{min-height:310px}.villa-gallery-intro{display:block}}
 
-
-/* Villa premium update */
-.hero.villa-main-hero{background-image:linear-gradient(180deg,rgba(8,59,76,.18),rgba(8,59,76,.82)),url('images/villa-hero.jpg');background-size:cover;background-position:center;min-height:94vh}
-.hero.villa-main-hero .sea-art{opacity:.22}
-.hero.villa-main-hero:after{background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.72),rgba(255,244,223,.38) 42%,transparent 72%)}
-.villa-premium-panel{grid-column:span 12;display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
-.villa-story{background:linear-gradient(135deg,#083B4C,#1597A5);color:white;border-radius:34px;box-shadow:var(--shadow);padding:26px;position:relative;overflow:hidden}
-.villa-story:after{content:'☀️';position:absolute;right:22px;top:18px;font-size:70px;opacity:.18}.villa-story h3{color:white;font-size:34px;line-height:1;margin:0 0 10px;letter-spacing:-.045em}.villa-story p{color:rgba(255,255,255,.9);font-size:17px;line-height:1.55}.villa-story .tag{background:rgba(255,255,255,.16);color:white;border:1px solid rgba(255,255,255,.22)}
-.villa-amenities{background:#fffdf7;border:1px solid rgba(21,151,165,.16);border-radius:34px;box-shadow:var(--shadow);padding:22px}
-.villa-amenity-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.villa-amenity{background:#FFF4DF;border:1px solid rgba(21,151,165,.13);border-radius:18px;padding:13px 14px}.villa-amenity b{display:block;color:var(--deep);letter-spacing:-.02em}.villa-amenity span{display:block;color:var(--muted);font-weight:850;font-size:13px;margin-top:3px}
-.villa-photo-card{border:1px solid rgba(255,255,255,.16)}
-.villa-photo-card .zoom-hint{position:absolute;right:14px;top:14px;z-index:3;background:rgba(255,255,255,.88);color:var(--deep);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:950}
-.villa-lightbox .nav{position:fixed;top:50%;transform:translateY(-50%);border:0;background:rgba(255,255,255,.92);color:#083B4C;border-radius:999px;width:48px;height:48px;font-size:30px;font-weight:950;cursor:pointer;display:grid;place-items:center}
-.villa-lightbox .prev{left:18px}.villa-lightbox .next{right:18px}.villa-caption{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(255,255,255,.92);color:#083B4C;border-radius:999px;padding:10px 16px;font-weight:950;max-width:90vw;text-align:center}
-@media(max-width:760px){.hero.villa-main-hero{min-height:88vh}.villa-premium-panel{grid-template-columns:1fr}.villa-amenity-grid{grid-template-columns:1fr}.villa-lightbox .nav{width:42px;height:42px}.villa-lightbox .prev{left:10px}.villa-lightbox .next{right:10px}}
-
-
-/* Norwegian background for Travel Assistant */
-.assistant-card{
-  background:
-    linear-gradient(90deg,rgba(8,59,76,.96) 0%,rgba(8,59,76,.88) 34%,rgba(8,59,76,.48) 68%,rgba(8,59,76,.22) 100%),
-    url('images/norwegian-assistant-bg.jpg'),
-    linear-gradient(135deg,#083B4C,#1597A5 62%,#F7C948);
-  background-size:cover;
-  background-position:center right;
-  min-height:430px;
-}
-.assistant-card:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 15% 18%,rgba(255,255,255,.20),transparent 22%),
-             linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.06));
-  z-index:0;
-}
-.assistant-card:after{
-  content:"Norwegian";
-  right:24px;
-  top:22px;
-  width:auto;
-  height:auto;
-  border-radius:999px;
-  background:rgba(255,255,255,.88);
-  color:#D71920;
-  padding:9px 14px;
-  font-size:14px;
-  font-weight:950;
-  letter-spacing:.02em;
-  opacity:.95;
-  z-index:1;
-}
-.assistant-inner{
-  max-width:660px;
-  margin:22px;
-  padding:24px;
-  border-radius:30px;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.24);
-  backdrop-filter:blur(14px);
-  box-shadow:0 24px 70px rgba(0,0,0,.24);
-}
-.assistant-kicker{color:rgba(255,255,255,.86)}
-.assistant-card h3{font-size:38px;text-shadow:0 8px 24px rgba(0,0,0,.22)}
-.assistant-card p{max-width:560px}
-.assistant-grid div,.assistant-checks span{
-  background:rgba(255,255,255,.18);
-  border-color:rgba(255,255,255,.26);
-}
-.assistant-card .btn{background:white;color:var(--deep)}
-.assistant-card .btn.light{background:rgba(255,255,255,.82);color:var(--deep)}
-@media(max-width:640px){
-  .assistant-card{
-    min-height:520px;
-    background:
-      linear-gradient(180deg,rgba(8,59,76,.92) 0%,rgba(8,59,76,.74) 52%,rgba(8,59,76,.45) 100%),
-      url('images/norwegian-assistant-bg.jpg'),
-      linear-gradient(135deg,#083B4C,#1597A5 62%,#F7C948);
-    background-size:cover;
-    background-position:center top;
-  }
-  .assistant-card:after{right:18px;top:16px;font-size:12px}
-  .assistant-inner{margin:18px;padding:20px;border-radius:26px}
-  .assistant-card h3{font-size:30px}
-}
+.villa-source-card{grid-column:span 12;background:rgba(255,253,247,.82);box-shadow:0 12px 30px rgba(8,59,76,.08)}
+.villa-source-card h3{font-size:21px}.villa-source-card p{max-width:720px}
+.hero .trip-bar{animation-delay:1.0s;opacity:0;animation:fadeUp .8s cubic-bezier(.2,.75,.22,1) forwards}
+@media(max-width:640px){.hero-content{padding-bottom:28px}.trip-bar{margin-top:12px}}
 
 </style>
 </head>
 <body>
 <div class="app">
-<header class="hero villa-main-hero" id="top">
+<header class="hero" id="top">
   <div class="sea-art"><div class="island"></div><div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div></div>
   <div class="hero-content">
     <div class="hero-grid">
@@ -220,28 +140,25 @@
 
 
 <section class="section" id="villa"><div class="section-title"><h2>Villaen</h2><p>Hjertet i Mallorca-ferien</p></div><div class="grid">
-  <article class="villa-hero-card photo-hero reveal"><div class="villa-content"><div class="assistant-kicker">Alcanada · Alcúdia</div><h3>Velkommen hjem til Alcanada</h3><p>Dette blir familiens base på Mallorca: en moderne luksusvilla med utendørsbasseng, oppvarmet innendørsbasseng, jacuzzi, treningsrom, store terrasser og kort vei til golf, badevik og restauranter.</p><div class="villa-facts"><div><span>Soverom</span><strong>5</strong></div><div><span>Bad</span><strong>5</strong></div><div><span>Areal</span><strong>450 m²</strong></div><div><span>Lisens</span><strong>ETV/2290</strong></div></div><div class="btns"><a class="btn" href="#villaGallery">Se bilder</a><a class="btn light" href="https://mallorcautleie.no/property/alcanada-luksusvilla-med-bade-utendors-og-innendors-basseng-spa/" target="_blank" rel="noopener noreferrer">Åpne villa-annonsen</a><a class="btn light" href="https://maps.google.com/?q=Alcanada%20Alcudia%20Mallorca" target="_blank" rel="noopener noreferrer">Kart Alcanada</a></div></div></article>
+  <article class="villa-hero-card photo-hero reveal"><div class="villa-content"><div class="assistant-kicker">🏡 Hjemmet vårt på Mallorca</div><h3>Velkommen hjem til Alcanada</h3><p>Vår base på Mallorca – et sted for rolige morgener ved bassenget, sene middager på terrassen og gode minner sammen.</p><div class="villa-facts"><div><span>Soverom</span><strong>5</strong></div><div><span>Bad</span><strong>5</strong></div><div><span>Areal</span><strong>450 m²</strong></div><div><span>Lisens</span><strong>ETV/2290</strong></div></div><div class="btns"><a class="btn" href="#villaGallery">Se bilder</a><a class="btn light" href="https://maps.google.com/?q=Alcanada%20Alcudia%20Mallorca" target="_blank" rel="noopener noreferrer">Kart Alcanada</a></div></div></article>
   <article class="villa-gallery-intro reveal" id="villaGallery"><div><strong>📸 Villa-galleri</strong><span>Trykk på bildene for fullskjerm. Bytt bare bildefilene i images-mappen senere hvis du vil oppdatere galleriet.</span></div><a class="btn light" href="#villa">Til toppen av Villa</a></article>
   <div class="villa-gallery reveal">
-    <button class="villa-photo-card large" data-full="images/villa-hero.jpg"><img src="images/villa-hero.jpg" alt="Villaen i Alcanada"><span class="zoom-hint">Se stort</span><div><strong>Villaen</strong><span>Feriens base i Alcanada</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-pool.jpg"><img src="images/villa-pool.jpg" alt="Utendørsbasseng"><span class="zoom-hint">Se stort</span><div><strong>Utebasseng</strong><span>Sommerdagene starter her</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-indoor-spa.jpg"><img src="images/villa-indoor-spa.jpg" alt="Innendørs spa"><span class="zoom-hint">Se stort</span><div><strong>Innendørs spa</strong><span>Oppvarmet basseng og velvære</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-terrace.jpg"><img src="images/villa-terrace.jpg" alt="Terrasse"><span class="zoom-hint">Se stort</span><div><strong>Terrasse</strong><span>Frokost, vin og kveldsluft</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-livingroom.jpg"><img src="images/villa-livingroom.jpg" alt="Stue"><span class="zoom-hint">Se stort</span><div><strong>Stue</strong><span>Fellesrom for hele gjengen</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-kitchen.jpg"><img src="images/villa-kitchen.jpg" alt="Kjøkken"><span class="zoom-hint">Se stort</span><div><strong>Kjøkken</strong><span>Paella, salater og frokost</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-master-bedroom.jpg"><img src="images/villa-master-bedroom.jpg" alt="Master bedroom"><span class="zoom-hint">Se stort</span><div><strong>Master bedroom</strong><span>Romfordeling kommer senere</span></div></button>
-    <button class="villa-photo-card" data-full="images/villa-view.jpg"><img src="images/villa-view.jpg" alt="Utsikt"><span class="zoom-hint">Se stort</span><div><strong>Utsikt</strong><span>Hav, sol og Alcanada-stemning</span></div></button>
+    <button class="villa-photo-card large" data-full="images/villa-hero.jpg"><img src="images/villa-hero.jpg" alt="Villaen i Alcanada"><div><strong>Villaen</strong><span>Feriens base i Alcanada</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-pool.jpg"><img src="images/villa-pool.jpg" alt="Utendørsbasseng"><div><strong>Utebasseng</strong><span>Sommerdagene starter her</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-indoor-spa.jpg"><img src="images/villa-indoor-spa.jpg" alt="Innendørs spa"><div><strong>Innendørs spa</strong><span>Oppvarmet basseng og velvære</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-terrace.jpg"><img src="images/villa-terrace.jpg" alt="Terrasse"><div><strong>Terrasse</strong><span>Frokost, vin og kveldsluft</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-livingroom.jpg"><img src="images/villa-livingroom.jpg" alt="Stue"><div><strong>Stue</strong><span>Fellesrom for hele gjengen</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-kitchen.jpg"><img src="images/villa-kitchen.jpg" alt="Kjøkken"><div><strong>Kjøkken</strong><span>Paella, salater og frokost</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-master-bedroom.jpg"><img src="images/villa-master-bedroom.jpg" alt="Master bedroom"><div><strong>Master bedroom</strong><span>Romfordeling kommer senere</span></div></button>
+    <button class="villa-photo-card" data-full="images/villa-view.jpg"><img src="images/villa-view.jpg" alt="Utsikt"><div><strong>Utsikt</strong><span>Hav, sol og Alcanada-stemning</span></div></button>
   </div>
   <article class="villa-layout-note reveal"><div><span>Stemning</span><strong>Privat feriehus</strong></div><div><span>Beste start</span><strong>Basseng og tapas</strong></div><div><span>Nærområde</span><strong>Cala Poncet</strong></div><div><span>Utflukt</span><strong>Alcanada Golf</strong></div></article>
-  <section class="villa-premium-panel reveal">
-    <div class="villa-story"><div class="assistant-kicker">Villa-opplevelsen</div><h3>En base som gjør ferien enkel</h3><p>Her kan dagen starte med morgenbad, frokost på terrassen og korte turer til strand, golf eller restaurant. TravelBook samler alt dere trenger rundt huset: bilder, kart, praktisk info og nærmiljø.</p><span class="tag">Morgenbad</span><span class="tag">Terrassefrokost</span><span class="tag">Kveldsvin</span><span class="tag">Kort vei til sjø</span></div>
-    <div class="villa-amenities"><h3>🏡 Fasiliteter</h3><div class="villa-amenity-grid"><div class="villa-amenity"><b>🏊 Utebasseng</b><span>Hovedpunktet på varme dager</span></div><div class="villa-amenity"><b>💦 Innendørsbasseng</b><span>Oppvarmet spa-følelse</span></div><div class="villa-amenity"><b>🧖 Jacuzzi</b><span>Rolig kveld etter strand</span></div><div class="villa-amenity"><b>💪 Treningsrom</b><span>For den som vil starte dagen aktivt</span></div><div class="villa-amenity"><b>🍖 Grillområde</b><span>Perfekt til hjemmemiddag</span></div><div class="villa-amenity"><b>🌊 Havutsikt</b><span>Alcanada-stemning hele dagen</span></div></div></div>
-  </section>
-
   <article class="card half villa-highlight reveal"><div class="pad"><h3>🏊 Høydepunkter</h3><p>Villaen har to private basseng: ett utendørs for varme sommerdager og ett oppvarmet innendørsbasseng i velværeavdelingen. I tillegg får dere jacuzzi, treningsrom, bordtennis, grillområde og flere store terrasser.</p><span class="tag">Utebasseng</span><span class="tag">Innendørsbasseng</span><span class="tag">Jacuzzi</span><span class="tag">Treningsrom</span><span class="tag">Grill</span></div></article>
-  <article class="card half reveal"><div class="pad"><h3>🕓 Praktisk</h3><div class="house-rules"><div><span>Innsjekk</span><strong>fra kl. 16:00</strong></div><div><span>Utsjekk</span><strong>innen kl. 10:00</strong></div><div><span>Sengetøy</span><strong>inkludert</strong></div><div><span>Håndklær</span><strong>inkludert</strong></div></div><p style="margin-top:12px">Praktisk informasjon om WiFi, nøkler, kontaktperson og husregler kan legges inn her når vi har detaljene.</p></div></article>
+  <article class="card half reveal"><div class="pad"><h3>🕓 Praktisk</h3><div class="house-rules"><div><span>Innsjekk</span><strong>fra kl. 16:00</strong></div><div><span>Utsjekk</span><strong>innen kl. 10:00</strong></div><div><span>WiFi</span><strong>Legges inn</strong></div><div><span>Kapasitet</span><strong>10 personer</strong></div></div><p style="margin-top:12px">Praktisk informasjon oppdateres når vi får detaljer om nøkkel, WiFi og kontaktperson.</p></div></article>
   <article class="card half reveal"><div class="pad"><h3>📍 Nærområdet</h3><div class="nearby-grid"><div class="nearby-item"><span>🍽️</span><div><b>La Terrazza / Aucanada</b><span>ca. 650 m</span></div><a class="btn light" href="https://maps.google.com/?q=La%20Terrazza%20Aucanada" target="_blank">Kart</a></div><div class="nearby-item"><span>🏖️</span><div><b>Cala Poncet</b><span>ca. 650 m</span></div><a class="btn light" href="https://maps.google.com/?q=Cala%20Poncet%20Alcanada" target="_blank">Kart</a></div><div class="nearby-item"><span>⛳</span><div><b>Alcanada Golf</b><span>ca. 700 m</span></div><a class="btn light" href="https://maps.google.com/?q=Alcanada%20Golf" target="_blank">Kart</a></div><div class="nearby-item"><span>🛒</span><div><b>Bip supermarked</b><span>ca. 1,5 km</span></div><a class="btn light" href="https://maps.google.com/?q=Bip%20Supermarket%20Alcanada" target="_blank">Kart</a></div></div></div></article>
   <article class="card half reveal"><div class="pad"><h3>🛏️ Romfordeling</h3><p>Dette kan vi fylle inn når dere har bestemt hvem som sover hvor.</p><div class="flight-meta"><div><span>Master</span><strong>Ikke fordelt</strong></div><div><span>Rom 2</span><strong>Ikke fordelt</strong></div><div><span>Rom 3</span><strong>Ikke fordelt</strong></div><div><span>Rom 4</span><strong>Ikke fordelt</strong></div><div><span>Rom 5</span><strong>Ikke fordelt</strong></div></div></div></article>
+
+  <article class="card reveal villa-source-card"><div class="pad"><h3>🌐 Original villaannonse</h3><p>TravelBook inneholder den viktigste informasjonen om villaen. Den originale utleieannonsen ligger her som en diskret referanse hvis noen vil lese alle detaljer.</p><div class="btns"><a class="btn light" href="https://mallorcautleie.no/property/alcanada-luksusvilla-med-bade-utendors-og-innendors-basseng-spa/" target="_blank" rel="noopener noreferrer">Åpne original villaannonse</a></div></div></article>
 </div></section>
 
 <section class="section" id="reise"><div class="section-title"><h2>Reise</h2><p>Norwegian, innsjekk, avreise og hjemreise</p></div><div class="grid">
@@ -263,7 +180,7 @@
 <section class="section" id="kart"><div class="section-title"><h2>Kart</h2><p>Base, strender og utflukter</p></div><div class="card map reveal"><button class="pin" style="left:48%;top:48%">Villa Alcanada</button><button class="pin" style="left:64%;top:32%">Formentor</button><button class="pin" style="left:36%;top:34%">Pollença</button><button class="pin" style="left:22%;top:78%">Palma</button></div><div class="btns" style="margin-top:16px"><a class="btn" href="https://maps.google.com/?q=Alcanada%20Alcudia%20Mallorca" target="_blank">Åpne villaområdet i Google Maps</a></div></section>
 <section class="section" id="minnebok"><div class="section-title"><h2>Minnebok</h2><p>Første Mallorca-versjon – lokal lagring</p></div><div class="grid"><article class="card half reveal"><div class="pad"><h3>📸 Legg til minne</h3><form class="memory-form" id="memoryForm"><input id="memoryImage" type="file" accept="image/*" required><img id="preview" class="preview" alt="Forhåndsvisning"><textarea id="memoryText" placeholder="Hva vil du huske? Tekst er valgfritt."></textarea><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Dag 2 · Alcúdia</option><option>Dag 3 · Utflukt</option><option>Stranddag</option><option>Middag</option></select><button class="btn" type="submit">Lagre minne</button><p id="savedNote" style="display:none;color:var(--sea);font-weight:950">✓ Minnet er lagret</p></form></div></article><article class="card half reveal"><div class="pad"><h3>☁️ Felles minnebok</h3><p>Denne Mallorca-versjonen er klar for lokal minnebok. Når dere vil dele bilder mellom alle telefoner, lager vi en egen Supabase-bucket/tabell for Mallorca slik at den ikke blandes med Røros.</p><span class="tag">Neste steg</span><span class="tag">Sky-lagring</span></div></article></div><div class="memory-grid" id="memoryGrid"></div></section>
 
-<div class="villa-lightbox" id="villaLightbox" aria-hidden="true"><button type="button" id="closeVillaLightbox" aria-label="Lukk bilde">×</button><button type="button" class="nav prev" id="villaPrev" aria-label="Forrige bilde">‹</button><img id="villaLightboxImage" src="" alt="Villa-bilde i fullskjerm"><button type="button" class="nav next" id="villaNext" aria-label="Neste bilde">›</button><div class="villa-caption" id="villaCaption"></div></div>
+<div class="villa-lightbox" id="villaLightbox" aria-hidden="true"><button type="button" id="closeVillaLightbox" aria-label="Lukk bilde">×</button><img id="villaLightboxImage" src="" alt="Villa-bilde i fullskjerm"></div>
 </div><nav class="bottomnav"><a href="#top"><span>🏠</span>Start</a><a href="#villa"><span>🏡</span>Villa</a><a href="#reise"><span>✈️</span>Reise</a><a href="#program"><span>📅</span>Program</a><a href="#strender"><span>🏖️</span>Strand</a><a href="#matvin"><span>🍷</span>Mat</a><a href="#minnebok"><span>📸</span>Minner</a></nav>
 <script>
 const departure=new Date('2026-07-25T08:30:00');function updateCountdown(){const now=new Date();const days=Math.max(0,Math.ceil((departure-now)/(1000*60*60*24)));document.getElementById('countdown').textContent=days;document.getElementById('clockNumber').textContent=days}updateCountdown();
@@ -319,38 +236,18 @@ const form=document.getElementById('memoryForm'),file=document.getElementById('m
 function initVillaGallery(){
   const box=document.getElementById('villaLightbox');
   const img=document.getElementById('villaLightboxImage');
-  const caption=document.getElementById('villaCaption');
   const close=document.getElementById('closeVillaLightbox');
-  const prev=document.getElementById('villaPrev');
-  const next=document.getElementById('villaNext');
-  const cards=[...document.querySelectorAll('.villa-photo-card')];
-  let current=0;
-  function cardTitle(card){
-    const strong=card.querySelector('strong');
-    const span=card.querySelector('div span');
-    return [strong?.textContent, span?.textContent].filter(Boolean).join(' · ');
-  }
-  function show(i){
-    if(!cards.length)return;
-    current=(i+cards.length)%cards.length;
-    const card=cards[current];
-    img.src=card.dataset.full;
-    caption.textContent=cardTitle(card);
-    box.classList.add('open');
-    box.setAttribute('aria-hidden','false');
-  }
-  function closeBox(){box.classList.remove('open');box.setAttribute('aria-hidden','true');img.src='';}
-  cards.forEach((card,i)=>card.addEventListener('click',()=>show(i)));
-  if(close) close.addEventListener('click',closeBox);
-  if(prev) prev.addEventListener('click',e=>{e.stopPropagation();show(current-1);});
-  if(next) next.addEventListener('click',e=>{e.stopPropagation();show(current+1);});
-  if(box) box.addEventListener('click',e=>{if(e.target===box)closeBox();});
-  document.addEventListener('keydown',e=>{
-    if(!box.classList.contains('open'))return;
-    if(e.key==='Escape')closeBox();
-    if(e.key==='ArrowLeft')show(current-1);
-    if(e.key==='ArrowRight')show(current+1);
+  document.querySelectorAll('.villa-photo-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      img.src=card.dataset.full;
+      box.classList.add('open');
+      box.setAttribute('aria-hidden','false');
+    });
   });
+  function closeBox(){box.classList.remove('open');box.setAttribute('aria-hidden','true');img.src='';}
+  if(close) close.addEventListener('click',closeBox);
+  if(box) box.addEventListener('click',e=>{if(e.target===box)closeBox();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('open'))closeBox();});
 }
 initVillaGallery();
 
