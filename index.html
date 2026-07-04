@@ -192,6 +192,39 @@
 </style>
 </head>
 <body>
+<script>
+/* ===========================
+   FAMILIENYTT
+   Endre bare listen under når du vil oppdatere felles beskjeder.
+   La listen være tom [] hvis det ikke er noen beskjeder.
+   =========================== */
+const FAMILY_NEWS = [
+  {
+    label: "I dag",
+    icon: "🏃",
+    title: "Felles løpetur 07:00",
+    text: "Oppmøte ved porten. Rolig tempo for de som vil være med."
+  },
+  {
+    label: "Morgen",
+    icon: "🍳",
+    title: "Frokost 09:30",
+    text: "Felles frokost på terrassen."
+  },
+  {
+    label: "Dag",
+    icon: "🏖️",
+    title: "Strandvalg",
+    text: "Playa de Muro hvis været spiller på lag."
+  },
+  {
+    label: "Kveld",
+    icon: "🍷",
+    title: "Vin på terrassen 20:00",
+    text: "En rolig kveld hjemme i villaen."
+  }
+];
+</script>
 <div class="app">
 <header class="hero" id="top">
   <div class="hero-photo-bg" aria-hidden="true"></div>
@@ -232,11 +265,8 @@
           </div>
           <span class="news-chip">Alcanada 2026</span>
         </div>
-        <div class="news-list">
-          <div class="news-item"><span>I dag</span><b>🏃 Felles løpetur 07:00</b><small>Oppmøte ved porten. Rolig tempo for de som vil være med.</small></div>
-          <div class="news-item"><span>Morgen</span><b>🍳 Frokost 09:30</b><small>Felles frokost på terrassen.</small></div>
-          <div class="news-item"><span>Dag</span><b>🏖️ Strandvalg</b><small>Playa de Muro hvis været spiller på lag.</small></div>
-          <div class="news-item"><span>Kveld</span><b>🍷 Vin på terrassen 20:00</b><small>En rolig kveld hjemme i villaen.</small></div>
+        <div class="news-list" id="familyNewsList">
+          <div class="news-item"><span>Familienytt</span><b>☀️ Ingen beskjeder i dag</b><small>Nyt ferien!</small></div>
         </div>
       </div>
     </article>
@@ -316,6 +346,19 @@
 
 <div class="villa-lightbox" id="villaLightbox" aria-hidden="true"><button type="button" id="closeVillaLightbox" aria-label="Lukk bilde">×</button><img id="villaLightboxImage" src="" alt="Villa-bilde i fullskjerm"></div>
 </div><nav class="bottomnav"><a href="#top"><span>🏠</span>Start</a><a href="#villa"><span>🏡</span>Villa</a><a href="#reise"><span>✈️</span>Reise</a><a href="#program"><span>📅</span>Program</a><a href="#strender"><span>🏖️</span>Strand</a><a href="#matvin"><span>🍷</span>Mat</a><a href="#minnebok"><span>📸</span>Minner</a></nav>
+<script>
+function renderFamilyNews(){
+  const list=document.getElementById('familyNewsList');
+  if(!list)return;
+  const items=Array.isArray(window.FAMILY_NEWS)?window.FAMILY_NEWS:FAMILY_NEWS;
+  if(!items || items.length===0){
+    list.innerHTML='<div class="news-item"><span>Familienytt</span><b>☀️ Ingen beskjeder i dag</b><small>Nyt ferien!</small></div>';
+    return;
+  }
+  list.innerHTML=items.map(item=>`<div class="news-item"><span>${item.label||'Beskjed'}</span><b>${item.icon||'📌'} ${item.title||''}</b><small>${item.text||''}</small></div>`).join('');
+}
+renderFamilyNews();
+</script>
 <script>
 const departure=new Date('2026-07-25T08:30:00');function updateCountdown(){const now=new Date();const days=Math.max(0,Math.ceil((departure-now)/(1000*60*60*24)));document.getElementById('countdown').textContent=days;document.getElementById('clockNumber').textContent=days}updateCountdown();
 const weatherMap={wAlcudia:[39.8532,3.1214],wPalma:[39.5696,2.6502],wPollenca:[39.8768,3.0163]};async function loadWeather(){for(const [id,[lat,lon]] of Object.entries(weatherMap)){try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&timezone=auto`);const d=await r.json();const el=document.querySelector(`#${id} .temp`);const sm=document.querySelector(`#${id} small`);el.textContent=Math.round(d.current.temperature_2m)+'°';sm.textContent='Vind '+Math.round(d.current.wind_speed_10m)+' km/t · trykk for Yr'}catch(e){document.querySelector(`#${id} .temp`).textContent='☀️';}}document.getElementById('weatherNote').textContent='Vær hentet sist: '+new Date().toLocaleTimeString('no-NO',{hour:'2-digit',minute:'2-digit'});}loadWeather();
