@@ -273,6 +273,32 @@
   }
 }
 
+
+/* Ferdig minnebok: full bredde og sletting */
+#minnebok .grid > .card{
+  width:100% !important;
+  max-width:none !important;
+}
+.memory{position:relative}
+.memory-delete{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:4;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:rgba(10,28,35,.82);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  box-shadow:0 5px 14px rgba(0,0,0,.2);
+}
+.memory-delete:hover{background:#c9362b}
+
 </style>
 </head>
 <body>
@@ -477,7 +503,7 @@ const TODAY_PLAN = {
   <article class="wine-note reveal"><strong>🍷 Vinretning for turen</strong><p>Til sjømat og varme kvelder: Albariño, Godello, Verdejo, Cava og lokale Mallorca-viner. Rødvin bør serveres lett avkjølt.</p></article>
 </div></section>
 <section class="section" id="kart"><div class="section-title"><h2>Kart</h2><p>Base, strender og utflukter</p></div><div class="card map reveal"><button class="pin" style="left:48%;top:48%">Villa Alcanada</button><button class="pin" style="left:64%;top:32%">Formentor</button><button class="pin" style="left:36%;top:34%">Pollença</button><button class="pin" style="left:22%;top:78%">Palma</button></div><div class="btns" style="margin-top:16px"><a class="btn" href="https://maps.google.com/?q=Alcanada%20Alcudia%20Mallorca" target="_blank">Åpne villaområdet i Google Maps</a></div></section>
-<section class="section" id="minnebok"><div class="section-title"><h2>Minnebok</h2><p>Del minner med hele reisefølget</p></div><div class="grid"><article class="card half reveal"><div class="pad"><h3>📸 Legg til minne</h3><form class="memory-form" id="memoryForm"><input id="memoryImage" type="file" accept="image/*" required><img id="preview" class="preview" alt="Forhåndsvisning"><textarea id="memoryText" placeholder="Hva vil du huske? Tekst er valgfritt."></textarea><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Dag 2 · Alcúdia</option><option>Dag 3 · Utflukt</option><option>Stranddag</option><option>Middag</option></select><button class="btn" type="submit">Lagre minne</button><p id="savedNote" style="display:none;color:var(--sea);font-weight:950">✓ Minnet er lagret</p></form></div></article><article class="card half reveal"><div class="pad"><h3>☁️ Felles minnebok</h3><p>Denne Mallorca-versjonen er klar for lokal minnebok. Når dere vil dele bilder mellom alle telefoner, lager vi en egen Supabase-bucket/tabell for Mallorca slik at den ikke blandes med Røros.</p><span class="tag">Neste steg</span><span class="tag">Sky-lagring</span></div></article></div><div class="memory-grid" id="memoryGrid"></div></section>
+<section class="section" id="minnebok"><div class="section-title"><h2>Minnebok</h2><p>Del minner med hele reisefølget</p></div><div class="grid"><article class="card half reveal"><div class="pad"><h3>📸 Legg til minne</h3><form class="memory-form" id="memoryForm"><input id="memoryImage" type="file" accept="image/*" required><img id="preview" class="preview" alt="Forhåndsvisning"><textarea id="memoryText" placeholder="Hva vil du huske? Tekst er valgfritt."></textarea><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Dag 2 · Alcúdia</option><option>Dag 3 · Utflukt</option><option>Stranddag</option><option>Middag</option></select><button class="btn" type="submit">Lagre minne</button><p id="savedNote" style="display:none;color:var(--sea);font-weight:950">✓ Minnet er lagret</p></form></div></article></div><div class="memory-grid" id="memoryGrid"></div></section>
 
 
 <footer class="app-footer">
@@ -646,8 +672,37 @@ initPackingList();
     const {data,error}=await client.from('memories').select('*').order('created_at',{ascending:false}).limit(50);
     if(error){console.warn('memories:', error.message);return;}
     if(!data || !data.length){grid.innerHTML='';return;}
-    grid.innerHTML=data.map(m=>`<article class="memory"><img src="${esc(m.image_url)}" alt="Minne"><div class="pad"><b>${esc(m.day||'Mallorca-minne')}</b><p>${esc(m.caption||'Uten tekst')}</p><small>${esc(m.author||'')}</small></div></article>`).join('');
+    grid.innerHTML=data.map(m=>`<article class="memory">
+      <button class="memory-delete" type="button" aria-label="Slett bilde" title="Slett bilde" onclick="deleteCloudMemory('${esc(m.id)}','${esc(m.image_url)}')">🗑</button>
+      <img src="${esc(m.image_url)}" alt="Minne">
+      <div class="pad"><b>${esc(m.day||'Mallorca-minne')}</b><p>${esc(m.caption||'Uten tekst')}</p><small>${esc(m.author||'')}</small></div>
+    </article>`).join('');
   }
+
+
+  window.deleteCloudMemory = async function(id, imageUrl){
+    if(!confirm('Vil du slette dette bildet fra minneboken?')) return;
+
+    const rowDelete = await client.from('memories').delete().eq('id', id);
+    if(rowDelete.error){
+      alert('Kunne ikke slette minnet: ' + rowDelete.error.message);
+      return;
+    }
+
+    try{
+      const marker='/storage/v1/object/public/memories/';
+      const pos=String(imageUrl||'').indexOf(marker);
+      if(pos >= 0){
+        const storagePath=decodeURIComponent(String(imageUrl).slice(pos + marker.length));
+        const storageDelete=await client.storage.from('memories').remove([storagePath]);
+        if(storageDelete.error) console.warn('Bildet ble fjernet fra minneboken, men ikke fra lagringen:', storageDelete.error.message);
+      }
+    }catch(err){
+      console.warn('Kunne ikke rydde lagringsfil:', err);
+    }
+
+    await loadCloudMemories();
+  };
 
   function enableCloudMemoryForm(){
     const old=document.getElementById('memoryForm');
