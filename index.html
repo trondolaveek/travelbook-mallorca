@@ -250,6 +250,30 @@
  .memory-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 }
 
+
+/* Korrigering: to bilder på mobil og fire på PC/Mac */
+#memoryGrid.memory-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:10px !important;
+}
+#memoryGrid .memory{
+  grid-column:auto !important;
+  min-width:0;
+}
+#memoryGrid .memory img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  height:auto !important;
+  object-fit:cover !important;
+}
+@media (min-width:820px){
+  #memoryGrid.memory-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:16px !important;
+  }
+}
+
 </style>
 </head>
 <body>
