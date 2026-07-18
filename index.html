@@ -299,6 +299,38 @@
 }
 .memory-delete:hover{background:#c9362b}
 
+
+/* Familienytt – felles meldingstjeneste */
+.family-message-form{
+  display:grid;
+  grid-template-columns:180px 1fr auto;
+  gap:10px;
+  margin:0 0 16px;
+  align-items:center;
+}
+.family-message-form input{
+  width:100%;
+  border:1px solid rgba(21,151,165,.20);
+  border-radius:16px;
+  padding:12px 13px;
+  font:inherit;
+  background:#fff;
+  color:var(--ink);
+}
+.family-message-form button{white-space:nowrap}
+.family-message-status{
+  grid-column:1/-1;
+  min-height:18px;
+  margin:0;
+  font-size:13px;
+  font-weight:900;
+  color:var(--sea);
+}
+@media(max-width:700px){
+  .family-message-form{grid-template-columns:1fr}
+  .family-message-status{grid-column:1}
+}
+
 </style>
 </head>
 <body>
@@ -400,6 +432,12 @@ const TODAY_PLAN = {
           </div>
           <span class="news-chip">Alcanada 2026</span>
         </div>
+        <form class="family-message-form" id="familyMessageForm">
+          <input id="familyMessageAuthor" type="text" maxlength="40" placeholder="Navn" autocomplete="name" required>
+          <input id="familyMessageText" type="text" maxlength="240" placeholder="Skriv en beskjed til reisefølget …" required>
+          <button class="btn" type="submit">Send melding</button>
+          <p class="family-message-status" id="familyMessageStatus"></p>
+        </form>
         <div class="news-list" id="familyNewsList">
           <div class="news-item"><span>Familienytt</span><b>☀️ Ingen beskjeder i dag</b><small>Nyt ferien!</small></div>
         </div>
@@ -657,6 +695,52 @@ initPackingList();
     list.innerHTML=data.map(item=>`<div class="news-item"><span>${esc(item.author||'Familienytt')}</span><b>${esc(item.message||'')}</b><small>${new Date(item.created_at).toLocaleString('no-NO',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</small></div>`).join('');
   }
 
+
+  function enableCloudFamilyMessageForm(){
+    const form=document.getElementById('familyMessageForm');
+    const author=document.getElementById('familyMessageAuthor');
+    const message=document.getElementById('familyMessageText');
+    const status=document.getElementById('familyMessageStatus');
+    if(!form || !author || !message)return;
+
+    const savedAuthor=localStorage.getItem('travelbookFamilyAuthor');
+    if(savedAuthor) author.value=savedAuthor;
+
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const authorValue=author.value.trim();
+      const messageValue=message.value.trim();
+      if(!authorValue || !messageValue)return;
+
+      const button=form.querySelector('button[type="submit"]');
+      button.disabled=true;
+      button.textContent='Sender …';
+      if(status){status.textContent='';status.style.color='var(--sea)';}
+
+      const {error}=await client.from('family_news').insert({
+        author:authorValue,
+        message:messageValue
+      });
+
+      button.disabled=false;
+      button.textContent='Send melding';
+
+      if(error){
+        if(status){status.textContent='Kunne ikke sende: '+error.message;status.style.color='#b3322a';}
+        return;
+      }
+
+      localStorage.setItem('travelbookFamilyAuthor',authorValue);
+      message.value='';
+      if(status){
+        status.textContent='✓ Meldingen er delt med alle';
+        status.style.color='var(--sea)';
+        setTimeout(()=>status.textContent='',2200);
+      }
+      await loadCloudFamilyNews();
+    });
+  }
+
   async function loadCloudProgram(){
     const timeline=document.getElementById('todayTimeline');
     if(!timeline)return;
@@ -759,6 +843,7 @@ initPackingList();
   }
 
   loadCloudFamilyNews();
+  enableCloudFamilyMessageForm();
   loadCloudProgram();
   loadCloudMemories();
   enableCloudMemoryForm();
