@@ -331,6 +331,35 @@
   .family-message-status{grid-column:1}
 }
 
+
+/* Program – administreres fra Supabase */
+.program-cloud-card{grid-column:span 12;background:linear-gradient(135deg,rgba(255,253,247,.98),rgba(234,251,252,.94));border:1px solid rgba(21,151,165,.16);border-radius:32px;box-shadow:var(--shadow);overflow:hidden}
+.program-cloud-card .pad{padding:22px}
+.program-cloud-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.program-cloud-head h3{margin:4px 0 0;font-size:30px;letter-spacing:-.04em;color:var(--deep)}
+.program-cloud-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:950;color:var(--sea)}
+.program-days{display:grid;gap:18px}
+.program-day{background:#fff;border:1px solid rgba(21,151,165,.14);border-radius:24px;overflow:hidden}
+.program-day-head{padding:15px 17px;background:linear-gradient(135deg,#083B4C,#1597A5);color:#fff;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.program-day-head strong{font-size:19px}
+.program-day-head span{font-size:12px;font-weight:850;color:rgba(255,255,255,.82)}
+.program-items{display:grid}
+.program-item{display:grid;grid-template-columns:72px 42px 1fr;gap:12px;align-items:start;padding:15px 17px;border-top:1px solid rgba(21,151,165,.11)}
+.program-item:first-child{border-top:0}
+.program-time{font-weight:950;color:var(--deep);font-size:15px;padding-top:3px}
+.program-icon{width:38px;height:38px;border-radius:13px;background:#DDF5F7;display:grid;place-items:center;font-size:20px}
+.program-item b{display:block;font-size:17px;color:var(--ink)}
+.program-item p{margin:4px 0 0;color:var(--muted);font-weight:720;line-height:1.42}
+.program-empty{padding:24px;border-radius:22px;background:var(--sand);display:grid;gap:5px;color:var(--muted)}
+.program-empty strong{color:var(--deep);font-size:18px}
+@media(max-width:560px){
+  .program-cloud-card .pad{padding:17px}
+  .program-item{grid-template-columns:56px 36px 1fr;padding:13px 12px;gap:8px}
+  .program-icon{width:34px;height:34px;font-size:18px}
+  .program-time{font-size:13px}
+  .program-day-head{padding:13px 14px}
+}
+
 </style>
 </head>
 <body>
@@ -342,30 +371,6 @@
    =========================== */
 const FAMILY_NEWS = [];
 
-/* ===========================
-   DAGENS PROGRAM
-   Endre bare teksten under når dere vil oppdatere planen.
-   Dette er en myk dagsplan, ikke en låst kalender.
-   =========================== */
-const TODAY_PLAN = {
-  date: "Lørdag 25. juli",
-  greeting: "Velkommen til Mallorca",
-  weather: "28° · sol",
-  mood: "Ankomst, basseng og rolig kveld",
-  recommendation: "Ta det enkelt første kvelden: pakk ut, hopp i bassenget og spis noe ukomplisert i nærheten.",
-  schedule: [
-    { time: "08:30", icon: "✈️", title: "Avreise Oslo", text: "Norwegian DY1734 til Palma." },
-    { time: "Etterm.", icon: "🏡", title: "Ankomst Alcanada", text: "Transport til villaen, innsjekk og bli kjent med huset." },
-    { time: "17:30", icon: "🏊", title: "Basseng og landing", text: "Rolig start hjemme i villaen." },
-    { time: "20:00", icon: "🍽️", title: "Enkel middag", text: "La Terraza / Aucanada eller tapas hjemme, avhengig av energi." }
-  ],
-  links: [
-    { label: "Villa", value: "Alcanada Luxury Villa" },
-    { label: "Dagens strand", value: "Cala Poncet hvis vi rekker et bad" },
-    { label: "Middag", value: "Rolig og nært første kveld" },
-    { label: "Husk", value: "Pass, lader, badetøy og godt humør" }
-  ]
-};
 </script>
 <div class="app">
 <header class="hero" id="top">
@@ -403,7 +408,7 @@ const TODAY_PLAN = {
         <div class="family-news-head">
           <div>
             <h3>📢 Familienytt</h3>
-            <p>Dagens felles beskjeder – oppdateres enkelt i HTML når vi vil endre planen.</p>
+            
           </div>
           <span class="news-chip">Alcanada 2026</span>
         </div>
@@ -461,29 +466,31 @@ const TODAY_PLAN = {
   <article class="card half reveal packing-card"><div class="pad"><h3>🧳 Bagasje og dokumenter</h3><p>En enkel felles sjekkliste som lagres på denne enheten. Perfekt siste dagene før avreise.</p><div class="packing-list" id="packingList"><label class="pack-item"><input type="checkbox" data-pack="pass"> Pass til alle</label><label class="pack-item"><input type="checkbox" data-pack="boarding"> Boardingkort i Norwegian</label><label class="pack-item"><input type="checkbox" data-pack="solkrem"> Solkrem og caps</label><label class="pack-item"><input type="checkbox" data-pack="ladere"> Ladere og powerbank</label><label class="pack-item"><input type="checkbox" data-pack="medisin"> Medisiner og plaster</label><label class="pack-item"><input type="checkbox" data-pack="barn"> Badetøy / barneting</label></div></div></article>
   <article class="card half reveal"><div class="pad"><h3>📌 Reisehurtigvalg</h3><p>Samler de viktigste snarveiene før og under flyreisen.</p><div class="info-strip"><div><span>Booking</span><strong>Z9K5G3</strong></div><div><span>Oppmøte</span><strong>ca. 06:30</strong></div><div><span>Første base</span><strong>Alcúdia</strong></div></div><div class="btns"><a class="btn" href="https://www.norwegian.com/no/" target="_blank" rel="noopener noreferrer">Norwegian</a><a class="btn light" href="https://avinor.no/flyplass/oslo/" target="_blank" rel="noopener noreferrer">Avinor OSL</a><a class="btn light" href="https://maps.google.com/?q=Alc%C3%BAdia%20Mallorca" target="_blank" rel="noopener noreferrer">Kart Alcúdia</a></div></div></article>
 </div></section>
-<section class="section" id="program"><div class="section-title"><h2>Program</h2><p>Levende dagsplan som kan oppdateres underveis</p></div><div class="grid">
-  <article class="today-plan-hero reveal">
-    <div>
-      <div class="today-plan-kicker">📅 I dag</div>
-      <h3 id="todayPlanGreeting">Dagens plan</h3>
-      <p id="todayPlanLead">Her kommer dagens myke plan for familien.</p>
-      <div class="today-mini">
-        <div><span>Dato</span><strong id="todayPlanDate">–</strong></div>
-        <div><span>Vær</span><strong id="todayPlanWeather">–</strong></div>
-        <div><span>Stemning</span><strong id="todayPlanMood">–</strong></div>
-      </div>
-    </div>
-    <aside class="today-note">
-      <strong>💡 TravelBook anbefaler</strong>
-      <small id="todayPlanRecommendation">Oppdater dagens anbefaling øverst i index.html.</small>
-    </aside>
-  </article>
-  <div class="day-plan-grid reveal">
-    <article class="day-timeline"><div class="pad"><h3>Plan for dagen</h3><div class="timeline-list" id="todayTimeline"></div></div></article>
-    <aside class="day-side-card"><div class="pad"><h3>Nøkkelinfo</h3><div class="day-side-list" id="todaySideInfo"></div><div class="btns"><a class="btn light" href="#familienytt">Familienytt</a><a class="btn light" href="#strender">Strender</a><a class="btn light" href="#matvin">Restauranter</a></div></div></aside>
+<section class="section" id="program">
+  <div class="section-title">
+    <h2>Program</h2>
+    <p>Felles ferieprogram – oppdateres fra admin-siden</p>
   </div>
-  <article class="program-edit-note reveal"><strong>✏️ Slik oppdateres programmet</strong><p>Åpne <b>index.html</b>, søk etter <b>DAGENS PROGRAM</b>, endre listen og publiser. Senere kan vi koble dette til en enkel mobil-admin slik at GitHub ikke trengs.</p></article>
-</div></section>
+  <div class="grid">
+    <article class="program-cloud-card reveal">
+      <div class="pad">
+        <div class="program-cloud-head">
+          <div>
+            <span class="program-cloud-kicker">📅 Alcanada 2026</span>
+            <h3>Ferieprogram</h3>
+          </div>
+          <span class="news-chip" id="programStatusChip">Henter program …</span>
+        </div>
+        <div class="program-days" id="programDays">
+          <div class="program-empty">
+            <strong>Laster programmet …</strong>
+            <span>Et øyeblikk.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 
 <section class="section" id="strender"><div class="section-title"><h2>Strender</h2><p>Tre favoritter – valgt for denne turen</p></div><div class="explore-grid">
   <article class="beach-guide-hero reveal"><h3>Tre strender. Ingen dårlige valg.</h3><p>Vi prioriterer de tre strandene dere mest sannsynlig faktisk kommer til å bruke: nærstranden nedenfor villaen, den enkle familieklassikeren og den vakreste heldagsstranden.</p><div class="beach-pill-row"><span>🚶 Nær villa</span><span>👨‍👩‍👧‍👦 Familievennlig</span><span>💙 Turkist vann</span><span>📍 Kart rett fra appen</span></div></article>
@@ -540,27 +547,6 @@ function renderFamilyNews(){
   list.innerHTML=items.map(item=>`<div class="news-item"><span>${item.label||'Beskjed'}</span><b>${item.icon||'📌'} ${item.title||''}</b><small>${item.text||''}</small></div>`).join('');
 }
 renderFamilyNews();
-function renderTodayPlan(){
-  const plan=window.TODAY_PLAN||TODAY_PLAN;
-  const set=(id,val)=>{const el=document.getElementById(id); if(el) el.textContent=val||'';};
-  set('todayPlanGreeting', plan.greeting||'Dagens plan');
-  set('todayPlanLead', plan.date ? `${plan.date} · ${plan.mood||''}` : 'Dagens myke plan for familien.');
-  set('todayPlanDate', plan.date||'Ikke satt');
-  set('todayPlanWeather', plan.weather||'Oppdateres');
-  set('todayPlanMood', plan.mood||'Ferie');
-  set('todayPlanRecommendation', plan.recommendation||'Ingen anbefaling ennå.');
-  const timeline=document.getElementById('todayTimeline');
-  if(timeline){
-    const schedule=Array.isArray(plan.schedule)?plan.schedule:[];
-    timeline.innerHTML=schedule.length?schedule.map(item=>`<div class="timeline-item"><div class="timeline-time">${item.time||''}</div><div class="timeline-icon">${item.icon||'📌'}</div><div><b>${item.title||''}</b><p>${item.text||''}</p></div></div>`).join(''):'<div class="timeline-item"><div class="timeline-time">–</div><div class="timeline-icon">☀️</div><div><b>Ingen plan lagt inn</b><p>Nyt ferien.</p></div></div>';
-  }
-  const side=document.getElementById('todaySideInfo');
-  if(side){
-    const links=Array.isArray(plan.links)?plan.links:[];
-    side.innerHTML=links.length?links.map(item=>`<div><span>${item.label||'Info'}</span><strong>${item.value||''}</strong></div>`).join(''):'<div><span>Status</span><strong>Ingen nøkkelinfo lagt inn</strong></div>';
-  }
-}
-renderTodayPlan();
 </script>
 <script>
 const departure=new Date('2026-07-25T08:30:00');function updateCountdown(){const now=new Date();const days=Math.max(0,Math.ceil((departure-now)/(1000*60*60*24)));document.getElementById('countdown').textContent=days;document.getElementById('clockNumber').textContent=days}updateCountdown();
@@ -720,12 +706,65 @@ initPackingList();
   }
 
   async function loadCloudProgram(){
-    const timeline=document.getElementById('todayTimeline');
-    if(!timeline)return;
-    const {data,error}=await client.from('program').select('*').order('time',{ascending:true}).limit(12);
-    if(error){console.warn('program:', error.message);return;}
-    if(!data || !data.length)return;
-    timeline.innerHTML=data.map(item=>`<div class="timeline-item"><div class="timeline-time">${esc(item.time||'')}</div><div class="timeline-icon">📅</div><div><b>${esc(item.title||'Program')}</b><p>${esc(item.day||'')}</p></div></div>`).join('');
+    const container=document.getElementById('programDays');
+    const chip=document.getElementById('programStatusChip');
+    if(!container)return;
+
+    const {data,error}=await client
+      .from('program')
+      .select('*')
+      .eq('published',true)
+      .order('event_date',{ascending:true})
+      .order('sort_order',{ascending:true})
+      .order('event_time',{ascending:true});
+
+    if(error){
+      console.warn('program:', error.message);
+      container.innerHTML='<div class="program-empty"><strong>Programmet kunne ikke hentes</strong><span>Prøv å oppdatere siden litt senere.</span></div>';
+      if(chip)chip.textContent='Ikke tilgjengelig';
+      return;
+    }
+
+    if(!data || !data.length){
+      container.innerHTML='<div class="program-empty"><strong>Programmet kommer snart</strong><span>Ingen programpunkter er publisert ennå.</span></div>';
+      if(chip)chip.textContent='Ikke publisert';
+      return;
+    }
+
+    const groups={};
+    data.forEach(item=>{
+      const key=item.event_date || 'Uten dato';
+      (groups[key] ||= []).push(item);
+    });
+
+    const formatDate=value=>{
+      if(value==='Uten dato')return value;
+      const d=new Date(value+'T12:00:00');
+      return d.toLocaleDateString('no-NO',{weekday:'long',day:'numeric',month:'long'});
+    };
+
+    container.innerHTML=Object.entries(groups).map(([date,items])=>`
+      <section class="program-day">
+        <div class="program-day-head">
+          <strong>${esc(formatDate(date))}</strong>
+          <span>${items.length} ${items.length===1?'aktivitet':'aktiviteter'}</span>
+        </div>
+        <div class="program-items">
+          ${items.map(item=>`
+            <div class="program-item">
+              <div class="program-time">${esc((item.event_time||'').slice(0,5) || '–')}</div>
+              <div class="program-icon">${esc(item.icon||'📌')}</div>
+              <div>
+                <b>${esc(item.title||'Aktivitet')}</b>
+                ${item.description?`<p>${esc(item.description)}</p>`:''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+    `).join('');
+
+    if(chip)chip.textContent='Oppdatert';
   }
 
   async function loadCloudMemories(){

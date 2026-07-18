@@ -3,93 +3,80 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>TravelBook Admin – Familienytt</title>
+<title>TravelBook Admin – Program</title>
 <meta name="theme-color" content="#083B4C">
 <style>
-:root{
-  --deep:#083B4C;--sea:#1597A5;--sand:#FFF4DF;--cream:#FFF9EF;
-  --ink:#173A3F;--muted:#6D7875;--danger:#C93B32;--ok:#0A7E46;
-  --shadow:0 18px 46px rgba(8,59,76,.14)
-}
+:root{--deep:#083B4C;--sea:#1597A5;--sand:#FFF4DF;--cream:#FFF9EF;--ink:#173A3F;--muted:#6D7875;--danger:#C93B32;--ok:#0A7E46;--shadow:0 18px 46px rgba(8,59,76,.14)}
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  color:var(--ink);
-  background:linear-gradient(180deg,#EAFBFC 0%,#FFF9EF 42%,#F6E5C7 100%);
-  min-height:100vh
-}
-.wrap{max-width:960px;margin:auto;padding:24px 16px 60px}
-header{
-  background:linear-gradient(135deg,var(--deep),var(--sea));
-  color:#fff;border-radius:28px;padding:24px;box-shadow:var(--shadow);
-  margin-bottom:18px
-}
-header h1{margin:0;font-size:34px;letter-spacing:-.04em}
-header p{margin:7px 0 0;color:rgba(255,255,255,.86);line-height:1.45}
-.panel{
-  background:rgba(255,253,247,.97);
-  border:1px solid rgba(21,151,165,.16);
-  border-radius:26px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px
-}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#EAFBFC 0%,#FFF9EF 42%,#F6E5C7 100%);min-height:100vh}
+.wrap{max-width:1000px;margin:auto;padding:24px 16px 60px}
+header{background:linear-gradient(135deg,var(--deep),var(--sea));color:#fff;border-radius:28px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px}
+header h1{margin:0;font-size:34px;letter-spacing:-.04em} header p{margin:7px 0 0;color:rgba(255,255,255,.86);line-height:1.45}
+.panel{background:rgba(255,253,247,.97);border:1px solid rgba(21,151,165,.16);border-radius:26px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
 .panel h2{margin:0 0 14px;font-size:24px;letter-spacing:-.03em}
-form{display:grid;gap:10px}
-input,textarea{
-  width:100%;border:1px solid rgba(21,151,165,.22);border-radius:16px;
-  padding:13px 14px;font:inherit;background:#fff;color:var(--ink)
-}
-textarea{min-height:110px;resize:vertical}
-.actions{display:flex;gap:9px;flex-wrap:wrap}
-button,a.btn{
-  border:0;border-radius:15px;padding:11px 14px;font:inherit;font-weight:900;
-  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center
-}
-.primary{background:var(--deep);color:#fff}
-.light{background:#DDF5F7;color:var(--deep)}
-.danger{background:#FCE5E2;color:#8E211B}
-.status{min-height:20px;font-weight:850;color:var(--sea);margin:8px 0 0}
-.news-list{display:grid;gap:12px}
-.news-card{
-  background:#fff;border:1px solid rgba(21,151,165,.15);border-radius:20px;
-  padding:15px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start
-}
-.news-card b{display:block;font-size:17px;margin-bottom:5px}
-.news-card small{color:var(--muted);font-weight:750}
-.news-card .author{color:var(--sea);font-weight:950;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
-.news-card .card-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.empty{padding:18px;border-radius:18px;background:var(--sand);color:var(--muted);font-weight:850}
-@media(max-width:640px){
-  .news-card{grid-template-columns:1fr}
-  .news-card .card-actions{justify-content:flex-start}
-  header h1{font-size:29px}
-}
+form{display:grid;gap:11px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,textarea{width:100%;border:1px solid rgba(21,151,165,.22);border-radius:16px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:100px;resize:vertical}.actions{display:flex;gap:9px;flex-wrap:wrap}
+button,a.btn{border:0;border-radius:15px;padding:11px 14px;font:inherit;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.primary{background:var(--deep);color:#fff}.light{background:#DDF5F7;color:var(--deep)}.danger{background:#FCE5E2;color:#8E211B}.status{min-height:20px;font-weight:850;color:var(--sea);margin:8px 0 0}
+.login-note,.empty{padding:17px;border-radius:18px;background:var(--sand);color:var(--muted);font-weight:800;line-height:1.45}
+.program-list{display:grid;gap:12px}.program-card{background:#fff;border:1px solid rgba(21,151,165,.15);border-radius:20px;padding:15px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.program-card .date{color:var(--sea);font-weight:950;font-size:12px;text-transform:uppercase;letter-spacing:.07em}
+.program-card b{display:block;font-size:18px;margin:4px 0}.program-card p{margin:0;color:var(--muted);line-height:1.4}.card-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.published{display:inline-flex;margin-top:8px;padding:5px 8px;border-radius:999px;background:#E4F7EC;color:#0A7E46;font-size:12px;font-weight:900}.draft{background:#F4ECE0;color:#755C34}
+#adminArea{display:none}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}.program-card{grid-template-columns:1fr}.card-actions{justify-content:flex-start}header h1{font-size:29px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1>Familienytt – admin</h1>
-    <p>Legg til, rediger og slett meldinger som vises øverst i TravelBook Mallorca.</p>
-  </header>
+<header><h1>Program – admin</h1><p>Logg inn og administrer ferieprogrammet. Bare innlogget administrator kan lagre, redigere og slette.</p></header>
 
-  <section class="panel">
-    <h2 id="formTitle">Ny melding</h2>
-    <form id="newsForm">
-      <input id="author" maxlength="40" placeholder="Navn" required>
-      <textarea id="message" maxlength="240" placeholder="Skriv meldingen her …" required></textarea>
-      <div class="actions">
-        <button class="primary" type="submit" id="saveBtn">Lagre melding</button>
-        <button class="light" type="button" id="cancelBtn" style="display:none">Avbryt redigering</button>
-        <a class="btn light" href="index.html#top">Til TravelBook</a>
-      </div>
-      <p class="status" id="status"></p>
-    </form>
-  </section>
+<section class="panel" id="loginPanel">
+  <h2>Administratorinnlogging</h2>
+  <form id="loginForm">
+    <input id="email" type="email" placeholder="E-postadresse" autocomplete="username" required>
+    <input id="password" type="password" placeholder="Passord" autocomplete="current-password" required>
+    <div class="actions">
+      <button class="primary" type="submit">Logg inn</button>
+      <a class="btn light" href="index.html#program">Til TravelBook</a>
+    </div>
+    <p class="status" id="loginStatus"></p>
+  </form>
+  <div class="login-note">Brukeren opprettes én gang i Supabase under <b>Authentication → Users</b>. Programtabellen er satt opp slik at publikum kan lese, men bare innlogget bruker kan endre.</div>
+</section>
 
-  <section class="panel">
-    <h2>Publiserte meldinger</h2>
-    <div class="news-list" id="newsList"><div class="empty">Laster meldinger …</div></div>
-  </section>
+<div id="adminArea">
+<section class="panel">
+  <div class="actions" style="justify-content:space-between;align-items:center;margin-bottom:14px">
+    <h2 id="formTitle" style="margin:0">Nytt programpunkt</h2>
+    <button class="light" type="button" id="logoutBtn">Logg ut</button>
+  </div>
+  <form id="programForm">
+    <div class="form-grid">
+      <input id="eventDate" type="date" required>
+      <input id="eventTime" type="time">
+    </div>
+    <div class="form-grid">
+      <input id="icon" maxlength="8" placeholder="Ikon, f.eks. 🏖️">
+      <input id="sortOrder" type="number" min="0" step="1" value="0" placeholder="Rekkefølge">
+    </div>
+    <input id="title" maxlength="100" placeholder="Tittel" required>
+    <textarea id="description" maxlength="500" placeholder="Beskrivelse"></textarea>
+    <label style="display:flex;align-items:center;gap:9px;font-weight:850"><input id="published" type="checkbox" checked style="width:auto"> Publisert og synlig i TravelBook</label>
+    <div class="actions">
+      <button class="primary" type="submit" id="saveBtn">Lagre programpunkt</button>
+      <button class="light" type="button" id="cancelBtn" style="display:none">Avbryt redigering</button>
+    </div>
+    <p class="status" id="status"></p>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Programinnhold</h2>
+  <div class="program-list" id="programList"><div class="empty">Laster program …</div></div>
+</section>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -99,118 +86,125 @@ button,a.btn{
   const url=window.TRAVELBOOK_SUPABASE_URL;
   const key=window.TRAVELBOOK_SUPABASE_KEY;
   const ready=url && key && !String(key).includes('LIM_INN') && window.supabase;
-  const list=document.getElementById('newsList');
+  const loginPanel=document.getElementById('loginPanel');
+  const adminArea=document.getElementById('adminArea');
+  const loginForm=document.getElementById('loginForm');
+  const loginStatus=document.getElementById('loginStatus');
+  const list=document.getElementById('programList');
+  const form=document.getElementById('programForm');
   const status=document.getElementById('status');
-  const form=document.getElementById('newsForm');
-  const author=document.getElementById('author');
-  const message=document.getElementById('message');
   const saveBtn=document.getElementById('saveBtn');
   const cancelBtn=document.getElementById('cancelBtn');
   const formTitle=document.getElementById('formTitle');
   let editingId=null;
 
-  if(!ready){
-    list.innerHTML='<div class="empty">Supabase er ikke aktivert. Kontroller supabase-config.js.</div>';
-    return;
-  }
-
+  if(!ready){loginStatus.textContent='Supabase er ikke aktivert. Kontroller supabase-config.js.';return}
   const client=window.supabase.createClient(url,key);
   const esc=v=>String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 
+  function showAdmin(session){
+    loginPanel.style.display=session?'none':'block';
+    adminArea.style.display=session?'block':'none';
+    if(session)load();
+  }
+
+  client.auth.getSession().then(({data})=>showAdmin(data.session));
+  client.auth.onAuthStateChange((_event,session)=>showAdmin(session));
+
+  loginForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    loginStatus.textContent='Logger inn …';
+    const {error}=await client.auth.signInWithPassword({
+      email:document.getElementById('email').value.trim(),
+      password:document.getElementById('password').value
+    });
+    loginStatus.textContent=error?'Kunne ikke logge inn: '+error.message:'';
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click',()=>client.auth.signOut());
+
   async function load(){
-    const {data,error}=await client.from('family_news').select('*').order('created_at',{ascending:false});
-    if(error){
-      list.innerHTML='<div class="empty">Kunne ikke hente meldinger: '+esc(error.message)+'</div>';
-      return;
-    }
-    if(!data || !data.length){
-      list.innerHTML='<div class="empty">Ingen meldinger er publisert.</div>';
-      return;
-    }
+    const {data,error}=await client.from('program').select('*').order('event_date',{ascending:true}).order('sort_order',{ascending:true}).order('event_time',{ascending:true});
+    if(error){list.innerHTML='<div class="empty">Kunne ikke hente program: '+esc(error.message)+'</div>';return}
+    if(!data || !data.length){list.innerHTML='<div class="empty">Ingen programpunkter er lagt inn.</div>';return}
+
     list.innerHTML=data.map(item=>`
-      <article class="news-card">
+      <article class="program-card">
         <div>
-          <span class="author">${esc(item.author||'Familienytt')}</span>
-          <b>${esc(item.message||'')}</b>
-          <small>${new Date(item.created_at).toLocaleString('no-NO',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</small>
+          <span class="date">${esc(formatDate(item.event_date))} · ${esc((item.event_time||'').slice(0,5)||'uten tid')} · rekkefølge ${esc(item.sort_order)}</span>
+          <b>${esc(item.icon||'📌')} ${esc(item.title||'Aktivitet')}</b>
+          ${item.description?`<p>${esc(item.description)}</p>`:''}
+          <span class="${item.published?'published':'published draft'}">${item.published?'Publisert':'Kladd'}</span>
         </div>
         <div class="card-actions">
           <button class="light" type="button" data-edit="${esc(item.id)}">Rediger</button>
           <button class="danger" type="button" data-delete="${esc(item.id)}">Slett</button>
         </div>
-      </article>
-    `).join('');
+      </article>`).join('');
 
-    list.querySelectorAll('[data-edit]').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const item=data.find(x=>String(x.id)===String(btn.dataset.edit));
-        if(!item)return;
-        editingId=item.id;
-        author.value=item.author||'';
-        message.value=item.message||'';
-        formTitle.textContent='Rediger melding';
-        saveBtn.textContent='Lagre endringer';
-        cancelBtn.style.display='inline-flex';
-        window.scrollTo({top:0,behavior:'smooth'});
-      });
-    });
+    list.querySelectorAll('[data-edit]').forEach(btn=>btn.addEventListener('click',()=>{
+      const item=data.find(x=>String(x.id)===String(btn.dataset.edit)); if(!item)return;
+      editingId=item.id;
+      eventDate.value=item.event_date||'';
+      eventTime.value=(item.event_time||'').slice(0,5);
+      icon.value=item.icon||'';
+      sortOrder.value=item.sort_order??0;
+      title.value=item.title||'';
+      description.value=item.description||'';
+      published.checked=!!item.published;
+      formTitle.textContent='Rediger programpunkt';
+      saveBtn.textContent='Lagre endringer';
+      cancelBtn.style.display='inline-flex';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }));
 
-    list.querySelectorAll('[data-delete]').forEach(btn=>{
-      btn.addEventListener('click',async()=>{
-        if(!confirm('Vil du slette denne meldingen?'))return;
-        btn.disabled=true;
-        const {data:deleted,error}=await client.from('family_news').delete().eq('id',btn.dataset.delete).select('id');
-        if(error || !deleted || !deleted.length){
-          alert(error ? 'Kunne ikke slette: '+error.message : 'Meldingen ble ikke slettet. Kontroller Supabase-tillatelsene.');
-          btn.disabled=false;
-          return;
-        }
-        await load();
-      });
-    });
+    list.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',async()=>{
+      if(!confirm('Vil du slette dette programpunktet?'))return;
+      btn.disabled=true;
+      const {error}=await client.from('program').delete().eq('id',btn.dataset.delete);
+      if(error){alert('Kunne ikke slette: '+error.message);btn.disabled=false;return}
+      await load();
+    }));
+  }
+
+  function formatDate(value){
+    if(!value)return 'Uten dato';
+    return new Date(value+'T12:00:00').toLocaleDateString('no-NO',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
   }
 
   function resetForm(){
-    editingId=null;
-    form.reset();
-    formTitle.textContent='Ny melding';
-    saveBtn.textContent='Lagre melding';
-    cancelBtn.style.display='none';
+    editingId=null;form.reset();sortOrder.value=0;published.checked=true;
+    formTitle.textContent='Nytt programpunkt';saveBtn.textContent='Lagre programpunkt';cancelBtn.style.display='none';
   }
-
   cancelBtn.addEventListener('click',resetForm);
 
   form.addEventListener('submit',async e=>{
     e.preventDefault();
-    const payload={author:author.value.trim(),message:message.value.trim()};
-    if(!payload.author || !payload.message)return;
+    const payload={
+      event_date:eventDate.value,
+      event_time:eventTime.value||null,
+      icon:icon.value.trim()||'📌',
+      sort_order:Number(sortOrder.value||0),
+      title:title.value.trim(),
+      description:description.value.trim(),
+      published:published.checked
+    };
+    if(!payload.event_date || !payload.title)return;
 
-    saveBtn.disabled=true;
-    status.textContent=editingId?'Lagrer endringer …':'Publiserer …';
-
-    let result;
-    if(editingId){
-      result=await client.from('family_news').update(payload).eq('id',editingId).select('id');
-    }else{
-      result=await client.from('family_news').insert(payload).select('id');
-    }
-
+    saveBtn.disabled=true;status.textContent=editingId?'Lagrer endringer …':'Lagrer …';
+    const result=editingId
+      ? await client.from('program').update(payload).eq('id',editingId).select('id')
+      : await client.from('program').insert(payload).select('id');
     saveBtn.disabled=false;
 
-    if(result.error || !result.data || !result.data.length){
-      status.textContent=result.error ? 'Kunne ikke lagre: '+result.error.message : 'Ingen endring ble lagret. Kontroller Supabase-tillatelsene.';
-      status.style.color='#C93B32';
-      return;
+    if(result.error || !result.data?.length){
+      status.textContent=result.error?'Kunne ikke lagre: '+result.error.message:'Ingen endring ble lagret.';
+      status.style.color='#C93B32';return;
     }
-
-    status.textContent=editingId?'✓ Endringene er lagret':'✓ Meldingen er publisert';
-    status.style.color='#0A7E46';
-    resetForm();
-    await load();
+    status.textContent=editingId?'✓ Endringene er lagret':'✓ Programpunktet er lagret';
+    status.style.color='#0A7E46';resetForm();await load();
     setTimeout(()=>status.textContent='',2200);
   });
-
-  load();
 })();
 </script>
 </body>
