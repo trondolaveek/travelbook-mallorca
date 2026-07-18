@@ -439,7 +439,7 @@ const TODAY_PLAN = {
   <article class="wine-note reveal"><strong>🍷 Vinretning for turen</strong><p>Til sjømat og varme kvelder: Albariño, Godello, Verdejo, Cava og lokale Mallorca-viner. Rødvin bør serveres lett avkjølt.</p></article>
 </div></section>
 <section class="section" id="kart"><div class="section-title"><h2>Kart</h2><p>Base, strender og utflukter</p></div><div class="card map reveal"><button class="pin" style="left:48%;top:48%">Villa Alcanada</button><button class="pin" style="left:64%;top:32%">Formentor</button><button class="pin" style="left:36%;top:34%">Pollença</button><button class="pin" style="left:22%;top:78%">Palma</button></div><div class="btns" style="margin-top:16px"><a class="btn" href="https://maps.google.com/?q=Alcanada%20Alcudia%20Mallorca" target="_blank">Åpne villaområdet i Google Maps</a></div></section>
-<section class="section" id="minnebok"><div class="section-title"><h2>Minnebok</h2><p>Første Mallorca-versjon – lokal lagring</p></div><div class="grid"><article class="card half reveal"><div class="pad"><h3>📸 Legg til minne</h3><form class="memory-form" id="memoryForm"><input id="memoryImage" type="file" accept="image/*" required><img id="preview" class="preview" alt="Forhåndsvisning"><textarea id="memoryText" placeholder="Hva vil du huske? Tekst er valgfritt."></textarea><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Dag 2 · Alcúdia</option><option>Dag 3 · Utflukt</option><option>Stranddag</option><option>Middag</option></select><button class="btn" type="submit">Lagre minne</button><p id="savedNote" style="display:none;color:var(--sea);font-weight:950">✓ Minnet er lagret</p></form></div></article><article class="card half reveal"><div class="pad"><h3>☁️ Felles minnebok</h3><p>Denne Mallorca-versjonen er klar for lokal minnebok. Når dere vil dele bilder mellom alle telefoner, lager vi en egen Supabase-bucket/tabell for Mallorca slik at den ikke blandes med Røros.</p><span class="tag">Neste steg</span><span class="tag">Sky-lagring</span></div></article></div><div class="memory-grid" id="memoryGrid"></div></section>
+<section class="section" id="minnebok"><div class="section-title"><h2>Felles minnebok</h2><p>Bildene deles med hele reisefølget</p></div><div class="grid"><article class="card half reveal"><div class="pad"><h3>📸 Legg til minne</h3><form class="memory-form" id="memoryForm"><input id="memoryImage" type="file" accept="image/*" required><img id="preview" class="preview" alt="Forhåndsvisning"><textarea id="memoryText" placeholder="Hva vil du huske? Tekst er valgfritt."></textarea><select id="memoryDay"><option>Dag 1 · Ankomst</option><option>Dag 2 · Alcúdia</option><option>Dag 3 · Utflukt</option><option>Stranddag</option><option>Middag</option></select><button class="btn" id="memorySubmitBtn" type="submit">Del i felles minnebok</button><p id="memoryCloudStatus" style="margin:0;color:var(--muted);font-weight:850">Kontrollerer tilkobling til felles minnebok…</p><p id="savedNote" style="display:none;color:var(--sea);font-weight:950">✓ Minnet er delt med alle</p></form></div></article><article class="card half reveal"><div class="pad"><h3>☁️ Felles minnebok</h3><p>Alle i reisefølget kan laste opp bilder her. Bildene lagres i Supabase og vises på alle telefoner som åpner TravelBook.</p><span class="tag">Felles for alle</span><span class="tag">Sky-lagring</span></div></article></div><div class="memory-grid" id="memoryGrid"></div></section>
 
 
 <footer class="app-footer">
@@ -578,7 +578,16 @@ initPackingList();
   const url = window.TRAVELBOOK_SUPABASE_URL;
   const key = window.TRAVELBOOK_SUPABASE_KEY;
   const ready = url && key && !String(key).includes('LIM_INN') && window.supabase;
-  if(!ready){ console.log('TravelBook Cloud ikke aktivert ennå.'); return; }
+  const statusEl=document.getElementById('memoryCloudStatus');
+  const submitEl=document.getElementById('memorySubmitBtn');
+  if(!ready){
+    if(statusEl){statusEl.textContent='Felles minnebok er ikke koblet til ennå.';statusEl.style.color='var(--coral)';}
+    if(submitEl){submitEl.disabled=true;submitEl.textContent='Felles minnebok ikke aktiv';submitEl.style.opacity='.55';}
+    console.log('TravelBook Cloud ikke aktivert ennå.');
+    return;
+  }
+  if(statusEl){statusEl.textContent='✓ Tilkoblet felles minnebok';statusEl.style.color='var(--sea)';}
+  if(submitEl){submitEl.disabled=false;submitEl.textContent='Del i felles minnebok';}
   const client = window.supabase.createClient(url, key);
   window.travelbookSupabase = client;
 
@@ -627,11 +636,15 @@ initPackingList();
     fresh.addEventListener('submit',async e=>{
       e.preventDefault();
       const f=file.files[0];
+      const submit=fresh.querySelector('#memorySubmitBtn');
+      const cloudStatus=fresh.querySelector('#memoryCloudStatus');
       if(!f){alert('Velg et bilde først');return;}
+      if(submit){submit.disabled=true;submit.textContent='Laster opp bilde…';}
+      if(cloudStatus){cloudStatus.textContent='Laster opp til felles minnebok…';cloudStatus.style.color='var(--sea)';}
       const ext=(f.name.split('.').pop()||'jpg').toLowerCase();
-      const name=`${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+      const name=`mallorca/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
       const up=await client.storage.from('memories').upload(name,f,{cacheControl:'3600',upsert:false});
-      if(up.error){alert('Kunne ikke laste opp bilde: '+up.error.message);return;}
+      if(up.error){if(submit){submit.disabled=false;submit.textContent='Prøv igjen';}if(cloudStatus){cloudStatus.textContent='Opplasting feilet.';cloudStatus.style.color='var(--coral)';}alert('Kunne ikke laste opp bilde: '+up.error.message);return;}
       const {data:pub}=client.storage.from('memories').getPublicUrl(name);
       const payload={
         image_url:pub.publicUrl,
@@ -640,9 +653,11 @@ initPackingList();
         author:'TravelBook'
       };
       const ins=await client.from('memories').insert(payload);
-      if(ins.error){alert('Bildet ble lastet opp, men minnet ble ikke lagret: '+ins.error.message);return;}
-      fresh.reset(); preview.style.display='none';
-      if(note){note.textContent='✓ Minnet er delt med alle'; note.style.display='block'; setTimeout(()=>note.style.display='none',1800);}
+      if(ins.error){if(submit){submit.disabled=false;submit.textContent='Prøv igjen';}if(cloudStatus){cloudStatus.textContent='Bildet ble lastet opp, men registreringen feilet.';cloudStatus.style.color='var(--coral)';}alert('Bildet ble lastet opp, men minnet ble ikke lagret: '+ins.error.message);return;}
+      fresh.reset(); preview.style.display='none'; preview.src='';
+      if(submit){submit.disabled=false;submit.textContent='Del i felles minnebok';}
+      if(cloudStatus){cloudStatus.textContent='✓ Tilkoblet felles minnebok';cloudStatus.style.color='var(--sea)';}
+      if(note){note.textContent='✓ Minnet er delt med alle'; note.style.display='block'; setTimeout(()=>note.style.display='none',2200);}
       loadCloudMemories();
     });
   }
