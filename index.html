@@ -598,7 +598,7 @@ function updateTravelAssistant(){
 }
 updateTravelAssistant();setInterval(updateTravelAssistant,60000);
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const form=document.getElementById('memoryForm'),file=document.getElementById('memoryImage'),preview=document.getElementById('preview'),grid=document.getElementById('memoryGrid');let selectedImage='';function renderMemories(){const memories=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');grid.innerHTML=memories.map((m,i)=>`<article class="memory"><img src="${m.image}" alt="Minne"><div class="pad"><b>${m.day}</b><p>${m.text||'Uten tekst'}</p><button class="btn light" onclick="deleteMemory(${i})">Slett</button></div></article>`).join('')}window.deleteMemory=i=>{const a=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');a.splice(i,1);localStorage.setItem('mallorcaMemories',JSON.stringify(a));renderMemories()};file.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{selectedImage=reader.result;preview.src=selectedImage;preview.style.display='block'};reader.readAsDataURL(f)});form.addEventListener('submit',e=>{e.preventDefault();if(!selectedImage){alert('Velg et bilde først');return}const memories=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');memories.unshift({image:selectedImage,text:document.getElementById('memoryText').value,day:document.getElementById('memoryDay').value,created:new Date().toISOString()});localStorage.setItem('mallorcaMemories',JSON.stringify(memories));form.reset();selectedImage='';preview.style.display='none';document.getElementById('savedNote').style.display='block';setTimeout(()=>document.getElementById('savedNote').style.display='none',1600);renderMemories()});renderMemories();
+const form=document.getElementById('memoryForm'),file=document.getElementById('memoryImage'),preview=document.getElementById('preview'),grid=document.getElementById('memoryGrid');let selectedImage='';function renderMemories(){const memories=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');grid.innerHTML=memories.map((m,i)=>`<article class="memory"><img src="${m.image}" alt="Minne"><div class="pad"><b>${m.day}</b><p>${m.text||'Uten tekst'}</p><button class="btn light" onclick="deleteMemory(${i})">Slett</button></div></article>`).join('')}window.deleteMemory=i=>{const a=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');a.splice(i,1);localStorage.setItem('mallorcaMemories',JSON.stringify(a));renderMemories()};file.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{selectedImage=reader.result;preview.src=selectedImage;preview.style.display='block'};reader.readAsDataURL(f)});form.addEventListener('submit',e=>{e.preventDefault();if(!selectedImage){alert('Velg et bilde først');return}const memories=JSON.parse(localStorage.getItem('mallorcaMemories')||'[]');memories.unshift({image:selectedImage,text:document.getElementById('memoryText').value,day:document.getElementById('memoryDay').value,created:new Date().toISOString()});localStorage.setItem('mallorcaMemories',JSON.stringify(memories));form.reset();selectedImage='';preview.style.display='none';document.getElementById('savedNote').style.display='block';setTimeout(()=>document.getElementById('savedNote').style.display='none',1600);renderMemories()});/* Lokal minnebok beholdes kun som reserve. Skygalleriet lastes nedenfor. */
 
 function initVillaGallery(){
   const box=document.getElementById('villaLightbox');
@@ -683,9 +683,27 @@ initPackingList();
   window.deleteCloudMemory = async function(id, imageUrl){
     if(!confirm('Vil du slette dette bildet fra minneboken?')) return;
 
-    const rowDelete = await client.from('memories').delete().eq('id', id);
-    if(rowDelete.error){
-      alert('Kunne ikke slette minnet: ' + rowDelete.error.message);
+    const button = document.activeElement;
+    if(button && button.classList && button.classList.contains('memory-delete')){
+      button.disabled = true;
+      button.textContent = '…';
+    }
+
+    const {data:deletedRows,error:rowError} = await client
+      .from('memories')
+      .delete()
+      .eq('id', id)
+      .select('id,image_url');
+
+    if(rowError){
+      if(button){button.disabled=false;button.textContent='🗑';}
+      alert('Kunne ikke slette minnet: ' + rowError.message);
+      return;
+    }
+
+    if(!deletedRows || deletedRows.length === 0){
+      if(button){button.disabled=false;button.textContent='🗑';}
+      alert('Bildet ble ikke slettet. Supabase mangler tillatelse til sletting i memories-tabellen.');
       return;
     }
 
@@ -694,11 +712,11 @@ initPackingList();
       const pos=String(imageUrl||'').indexOf(marker);
       if(pos >= 0){
         const storagePath=decodeURIComponent(String(imageUrl).slice(pos + marker.length));
-        const storageDelete=await client.storage.from('memories').remove([storagePath]);
-        if(storageDelete.error) console.warn('Bildet ble fjernet fra minneboken, men ikke fra lagringen:', storageDelete.error.message);
+        const {error:storageError}=await client.storage.from('memories').remove([storagePath]);
+        if(storageError) console.warn('Minnet ble slettet, men bildefilen kunne ikke fjernes fra Storage:', storageError.message);
       }
     }catch(err){
-      console.warn('Kunne ikke rydde lagringsfil:', err);
+      console.warn('Kunne ikke rydde bildefilen:', err);
     }
 
     await loadCloudMemories();
