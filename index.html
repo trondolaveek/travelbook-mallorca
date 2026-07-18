@@ -340,32 +340,7 @@
    Endre bare listen under når du vil oppdatere felles beskjeder.
    La listen være tom [] hvis det ikke er noen beskjeder.
    =========================== */
-const FAMILY_NEWS = [
-  {
-    label: "I dag",
-    icon: "🏃",
-    title: "Felles løpetur 07:00",
-    text: "Oppmøte ved porten. Rolig tempo for de som vil være med."
-  },
-  {
-    label: "Morgen",
-    icon: "🍳",
-    title: "Frokost 09:30",
-    text: "Felles frokost på terrassen."
-  },
-  {
-    label: "Dag",
-    icon: "🏖️",
-    title: "Strandvalg",
-    text: "Playa de Muro hvis været spiller på lag."
-  },
-  {
-    label: "Kveld",
-    icon: "🍷",
-    title: "Vin på terrassen 20:00",
-    text: "En rolig kveld hjemme i villaen."
-  }
-];
+const FAMILY_NEWS = [];
 
 /* ===========================
    DAGENS PROGRAM
@@ -432,15 +407,15 @@ const TODAY_PLAN = {
           </div>
           <span class="news-chip">Alcanada 2026</span>
         </div>
+        <div class="news-list" id="familyNewsList">
+          <div class="news-item"><span>Familienytt</span><b>Ingen meldinger ennå</b><small>Bli den første til å skrive en melding.</small></div>
+        </div>
         <form class="family-message-form" id="familyMessageForm">
           <input id="familyMessageAuthor" type="text" maxlength="40" placeholder="Navn" autocomplete="name" required>
           <input id="familyMessageText" type="text" maxlength="240" placeholder="Skriv en beskjed til reisefølget …" required>
           <button class="btn" type="submit">Send melding</button>
           <p class="family-message-status" id="familyMessageStatus"></p>
         </form>
-        <div class="news-list" id="familyNewsList">
-          <div class="news-item"><span>Familienytt</span><b>☀️ Ingen beskjeder i dag</b><small>Nyt ferien!</small></div>
-        </div>
       </div>
     </article>
     <article class="villa-mini reveal"><div><strong>🏡 Alcanada Luxury Villa</strong><span>5 soverom · 5 bad · utebasseng · oppvarmet innendørsbasseng · jacuzzi · treningsrom</span></div><a class="btn" href="#villa">Åpne villaen</a></article>
@@ -559,7 +534,7 @@ function renderFamilyNews(){
   if(!list)return;
   const items=Array.isArray(window.FAMILY_NEWS)?window.FAMILY_NEWS:FAMILY_NEWS;
   if(!items || items.length===0){
-    list.innerHTML='<div class="news-item"><span>Familienytt</span><b>☀️ Ingen beskjeder i dag</b><small>Nyt ferien!</small></div>';
+    list.innerHTML='<div class="news-item"><span>Familienytt</span><b>Ingen meldinger ennå</b><small>Bli den første til å skrive en melding.</small></div>';
     return;
   }
   list.innerHTML=items.map(item=>`<div class="news-item"><span>${item.label||'Beskjed'}</span><b>${item.icon||'📌'} ${item.title||''}</b><small>${item.text||''}</small></div>`).join('');
@@ -691,7 +666,10 @@ initPackingList();
     if(!list)return;
     const {data,error}=await client.from('family_news').select('*').order('created_at',{ascending:false}).limit(8);
     if(error){console.warn('family_news:', error.message);return;}
-    if(!data || !data.length)return;
+    if(!data || !data.length){
+      list.innerHTML='<div class="news-item"><span>Familienytt</span><b>Ingen meldinger ennå</b><small>Bli den første til å skrive en melding.</small></div>';
+      return;
+    }
     list.innerHTML=data.map(item=>`<div class="news-item"><span>${esc(item.author||'Familienytt')}</span><b>${esc(item.message||'')}</b><small>${new Date(item.created_at).toLocaleString('no-NO',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</small></div>`).join('');
   }
 
